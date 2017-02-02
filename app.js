@@ -18,12 +18,12 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
 const users = require('./routes/users.js');
-const profiles = require('./routes/profiles.js');
+// const profiles = require('./routes/profiles.js');
 const token = require('./routes/token.js');
 const index = require('./routes/index.js');
-const photos = require('./routes/photos.js');
-const conversations = require('./routes/conversations.js');
-const messages = require('./routes/messages.js');
+// const photos = require('./routes/photos.js');
+// const conversations = require('./routes/conversations.js');
+// const messages = require('./routes/messages.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -31,19 +31,19 @@ app.use(cookieParser());
 
 app.use(express.static(__dirname + '/public'));
 app.use('/users', users);
-app.use('/profiles', profiles);
+// app.use('/profiles', profiles);
 app.use('/token', token);
 app.use('/', index);
-app.use('/photos', photos);
-app.use('/conversations', conversations);
-app.use('/messages', messages);
+// app.use('/photos', photos);
+// app.use('/conversations', conversations);
+// app.use('/messages', messages);
 
 app.set('view engine', 'ejs');
 app.set('views', [path.join(__dirname, 'views/users/'),
                   path.join(__dirname, 'views/profiles/'),
-                  path.join(__dirname, 'views/photos/'),
-                  path.join(__dirname, 'views/messages/'),
-                  path.join(__dirname, 'views/conversations/'),
+                  // path.join(__dirname, 'views/photos/'),
+                  // path.join(__dirname, 'views/messages/'),
+                  // path.join(__dirname, 'views/conversations/'),
                   path.join(__dirname, 'views/site/')]);
 
 
