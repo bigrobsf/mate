@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About</title>
+  </head>
+  <body>
+
+    <%- include("../partials/nav", {home: false, trade: false, open: false, closed: false}) %>
+
+    <main class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <h4>About this Site</h4>
+          <p>TradeTrack is a stock market portfolio dashboard/manager with
+            performance analytics and an equity tracker that will provide quick
+            view dashboard of the current market conditions along with current
+            portfolio holdings. Analytics will be also be provided on closed
+            positions to aid making future decisions.
+          </p>
+          <p>This project uses the following techologies:
+            <ul>
+              <li><span class="bold">Backend:</span> JS6, Node, Express, bcrypt</li>
+              <li><span class="bold">Pages:</span> EJS</li>
+              <li><span class="bold">CSS:</span> Materialize</li>
+              <li><span class="bold">Database:</span> Postgres</li>
+              <li><span class="bold">Version control:</span> Git, GitHub</li>
+              <li><span class="bold">APIs:</span> Yahoo Finance, Worden, TradingView</li>
+            </ul>
+          </p>
+          <p>Feature List:
+            <ul>
+              <li>User Authentication and Authorization</li>
+              <li>Create, Update, and Delete User Accounts</li>
+              <li>Enter, Update, and Delete Transactions / Trades</li>
+              <li>Financial News Feed</li>
+              <li>Reports: Open and Closed Positions</li>
+              <li>Analytics</li>
+            </ul>
+          </p>
+       </div>
+       <div class="col m1">
+       </div>
+       <div class="col s12 m5 center">
+           <img class="logo" src="../images/es6-logo.png" alt="JavaScript">
+           <img class="logo" src="../images/html5css3badges.png" alt="HTML5 CSS3">
+           <img class="logo" src="../images/nodejs-logo.png" alt="nodeJS">
+           <img class="logo" src="../images/express.png" alt="express">
+        </div>
+      </div>
+    </main>
+
+    <%- include("../partials/footer") %>
+
+  </body>
+</html>

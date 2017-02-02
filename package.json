@@ -1,0 +1,43 @@
+{
+  "name": "mate",
+  "version": "1.0.0",
+  "description": "an app for single men looking for single men",
+  "main": "app.js",
+  "scripts": {
+    "knex": "knex",
+    "nf": "nf start",
+    "heroku-postbuild": "knex migrate:latest --env production",
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigrobsf/mate.git"
+  },
+  "author": "Rob Conner",
+  "license": "All Rights Reserved",
+  "bugs": {
+    "url": "https://github.com/bigrobsf/mate/issues"
+  },
+  "homepage": "https://github.com/bigrobsf/mate#readme",
+  "engines": {
+    "node": "6.8.1"
+  },
+  "dependencies": {
+    "bcrypt-as-promised": "^1.1.0",
+    "body-parser": "^1.16.0",
+    "boom": "^4.2.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "humps": "^2.0.0",
+    "knex": "^0.12.6",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.7",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.2"
+  },
+  "devDependencies": {
+    "foreman": "^2.0.0"
+  }
+}
