@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+</head>
+<body>
+
+    <%- include("../partials/nav", {browse: false, profile: true, photos: false, messages: false}) %>
+
+  <main class="container">
+    <div class="row">
+      <div class="col s12 m12">
+        <h4>Profile <%= status%></h4>
+        <h5>I Am: <%= iAm%></h5>
+        <h5>I Like: $<%= iLike%></h5>
+        <h5>Birthdate: $<%= birthdate%></h5>
+        <h5>Height: <%= height%> inches</h5>
+        <h5>Weight: <%= weight%> pounds</h5>
+        <h5>Body Hair: <%= bodyHair%> pounds</h5>
+        <h5>Ethnicity: <%= ethnicity%></h5>
+        <h5>What I do: $<%= overview%></h5>
+        <h5>What I'm looking for: $<%= lookingFor%></h5>
+        <h5>Interests: <%= interests%></h5>
+        <h5>Positions: <%= positions%></h5>
+        <h5>Safety: <%= safety%></h5>
+        <h5>Hometown: <%= hometown%></h5>
+      </div>
+    </div>
+  </main>
+
+    <%- include("../partials/footer") %>
+
+</body>
+</html>

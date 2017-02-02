@@ -10,6 +10,12 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 const router = express.Router();
 
 // =============================================================================
+// show input form for new user
+router.get('/new', function(req, res) {
+  res.render('signup');
+});
+
+// =============================================================================
 // POST new user
 router.post('/', (req, res) => {
 

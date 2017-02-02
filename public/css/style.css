@@ -4,7 +4,11 @@ Site */
 a.brand-logo {
   margin-left: 10px;
   font-weight:800;
-  color: #FFC107;
+  color: #d50000;
+}
+
+body {
+  background-color: #ddd;
 }
 
 /* =============================================================================
@@ -22,33 +26,33 @@ Input form colors */
 
  /* label focus color */
  .input-field input[type=text]:focus + label {
-   color: #FFC107;
+   color: #d50000;
  }
 
  /* label underline focus color */
  .input-field input[type=text]:focus {
-   border-bottom: 1px solid #FFC107;
-   box-shadow: 0 1px 0 0 #FFC107;
+   border-bottom: 1px solid #d50000;
+   box-shadow: 0 1px 0 0 #d50000;
  }
 
  .input-field input[type=number]:focus {
-   border-bottom: 1px solid #FFC107;
-   box-shadow: 0 1px 0 0 #FFC107;
+   border-bottom: 1px solid #d50000;
+   box-shadow: 0 1px 0 0 #d50000;
  }
 
 .input-field input[type=date]:focus {
-   border-bottom: 1px solid #FFC107;
-   box-shadow: 0 1px 0 0 #FFC107;
+   border-bottom: 1px solid #d50000;
+   box-shadow: 0 1px 0 0 #d50000;
  }
 
  .input-field input[type=email]:focus {
-   border-bottom: 1px solid #FFC107;
-   box-shadow: 0 1px 0 0 #FFC107;
+   border-bottom: 1px solid #d50000;
+   box-shadow: 0 1px 0 0 #d50000;
  }
 
  .input-field input[type=password]:focus {
-   border-bottom: 1px solid #FFC107;
-   box-shadow: 0 1px 0 0 #FFC107;
+   border-bottom: 1px solid #d50000;
+   box-shadow: 0 1px 0 0 #d50000;
  }
 
 
@@ -56,11 +60,11 @@ Input form colors */
 Buttons */
 
 button.submit {
-  background-color: #FFC107;
+  background-color: #d50000;
 }
 
 button.submit:hover {
-  background-color: #ffd740;
+  background-color: #ff5252;
 }
 
 .button-dim {
@@ -72,13 +76,13 @@ button.submit:hover {
 Typography */
 
 h3 {
-  color: #455A64; /* blue-grey */
+  color: #212121;
   text-transform: uppercase;
-  text-shadow: 2px 2px 1px #DDD;
+  text-shadow: 2px 2px 1px #000;
 }
 
 h4 {
-  color: #607d8b; /* blue-grey lighten-2 */
+  color: #424242;
   text-transform: uppercase;
   font-weight: 800;
   margin: 6px 0;
@@ -86,7 +90,7 @@ h4 {
 }
 
 h5 {
-  color: #607d8b; /* blue-grey */
+  color: #424242;
 }
 
 .error-msg {
@@ -115,11 +119,11 @@ Navigation */
 
 nav {
   color: #fff;
-  background-color: #455A64; /* blue-grey darken-3 */
+  background-color: #212121; /* blue-grey darken-3 */
 }
 
 ul#mobile li a {
-  color: #FFC107;
+  color: #d50000;
 }
 
 a.disabled {
@@ -133,7 +137,7 @@ a.disabled {
 }
 
 /* =============================================================================
-Footer */
+footer */
 
 #github {
   text-decoration: underline;
@@ -149,11 +153,11 @@ Footer */
 }
 
 footer.page-footer {
-  background-color: #607D8B; /* blue-grey lighten-2 */
+  background-color: #424242;
 }
 
 footer.page-footer .footer-copyright {
-  background-color: #455A64; /* blue-grey darken-3 */
+  background-color: #212121;
 }
 
 body {
@@ -164,4 +168,37 @@ body {
 
 main {
   flex: 1 0 auto;
+}
+
+/* =============================================================================
+Splash overlay */
+
+#overlay {
+  display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: 0.8;
+	z-index:2;
+}
+
+#overlay-content {
+	position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	width: 200px;
+	height: 200px;
+	padding: 16px;
+	border: 16px solid #d50000;
+  border-radius: 10px;
+	background-color: #aaa;
+	z-index:3;
+}
+
+#clear-splash:hover {
+  cursor: pointer;
 }

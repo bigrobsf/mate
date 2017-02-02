@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Update Profile</title>
+</head>
+<body>
+
+    <%- include("../partials/nav", {browse: false, profile: true, photos: false, messages: false}) %>
+
+  <main class="container">
+    <div class="row">
+      <div class="col s12 m12">
+        <!-- <h4><%= firstName + " " + lastName%></h4>
+        <h5>User Name: <%= userName%></h5>
+        <h5>Email: <%= email%></h5> -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="row">
+          <div class="col s12 m5">  <!-- left column -->
+            <h4>Update Profile</h4>
+
+            <form method="POST" action="/profiles?_method=PUT">
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <select name="iAm" multiple>
+                    <option value="" disabled selected>I am</option>
+                    <option value="bear">bear</option>
+                    <option value="daddy">daddy</option>
+                    <option value="muscle">muscle</option>
+                    <option value="geek">geek</option>
+                    <option value="jock">jock</option>
+                    <option value="beast">beast</option>
+                    <option value="tiger">tiger</option>
+                    <option value="otter">otter</option>
+                    <option value="buddy">buddy</option>
+                    <option value="bro">bro</option>
+                  </select>
+                  <label>I am:</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <select name="iLike" multiple>
+                    <option value="" disabled selected>I like</option>
+                    <option value="bear">bear</option>
+                    <option value="daddy">daddy</option>
+                    <option value="muscle">muscle</option>
+                    <option value="geek">geek</option>
+                    <option value="jock">jock</option>
+                    <option value="beast">beast</option>
+                    <option value="tiger">tiger</option>
+                    <option value="otter">otter</option>
+                    <option value="buddy">buddy</option>
+                    <option value="bro">bro</option>
+                  </select>
+                  <label>I like:</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <label for="birthdate">Birth Date: </label>
+                  <input type="date" required name="birthdate" id="birthdate">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <label for="height">Height (inches): </label>
+                  <input type="number" required name="height" id="height" class="validate">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field  col l6 s12">
+                  <label for="weight">Weight (pounds): </label>
+                  <input type="number" required name="weight" id="weight" class="validate">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <select name="bodyHair">
+                    <option value="" disabled selected>I am</option>
+                    <option value="smooth">smooth</option>
+                    <option value="some hair">some hair</option>
+                    <option value="hairy">hairy</option>
+                    <option value="very hairy">very hairy</option>
+                    <option value="gorilla">gorilla</option>
+                  </select>
+                  <label>Body Hair:</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <label for="ethnicity">Ethnicity: </label>
+                  <input type="text" required name="ethnicity" id="ethnicity" class="validate">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <textarea id="overview" class="materialize-textarea"></textarea>
+                  <label for="overview">What I do: </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <textarea id="lookingFor" class="materialize-textarea"></textarea>
+                  <label for="looking-for">What I'm looking for: </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <textarea id="interests" class="materialize-textarea"></textarea>
+                  <label for="interests">What I enjoy: </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <select name="positions" multiple>
+                    <option value="" disabled selected>Positions</option>
+                    <option value="top">top</option>
+                    <option value="bottom">bottom</option>
+                    <option value="versatile">versatile</option>
+                    <option value="oral">oral</option>
+                    <option value="N/A">N/A</option>
+                  </select>
+                  <label>Positions: </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <select name="methods" multiple>
+                    <option value="" disabled selected>Methods</option>
+                    <option value="PrEP">PrEP</option>
+                    <option value="condoms">condoms</option>
+                    <option value="ask me">ask me</option>
+                  </select>
+                  <label>Safety: </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <label for="hometown">Hometown: </label>
+                  <input type="text" required name="hometown" id="hometown" class="validate">
+                </div>
+              </div>
+
+              <input type="hidden" name="_method" value="put">
+
+              <div class="row center">
+                <button class="submit btn waves-effect waves-light" type="submit" name="action">Update
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="col m2">  <!-- middle column -->
+          </div>
+
+          <div class="col s12 m5">  <!-- right column -->
+            <h4 class="center">Delete Profile</h4>
+            <form method="POST" action="/profiles?_method=DELETE">
+              <div class="row center">
+                <input type="hidden" name="_method" value="delete">
+              </div>
+
+              <div class="row center">
+                <button class="submit btn waves-effect waves-light" type="submit" name="action">Delete
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <%- include("../partials/footer") %>
+
+</body>
+</html>
