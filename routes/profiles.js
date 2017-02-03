@@ -25,17 +25,25 @@ function concatSelected(array) {
 }
 
 // =============================================================================
+// function to return a friendly date format
+function formateDate(rawDate) {
+  let format = { year: 'numeric', month: 'long', day: 'numeric' };
+  let date = new Date(rawDate);
+
+  return date.toLocaleDateString('en-US', format);
+}
+
+// =============================================================================
 // show input form for new profile
 router.get('/new', function(req, res) {
   console.log('COOKIE: ', req.cookies);
   if (req.cookies['/token']) {
     let userId = Number(req.cookies['/token'].split('.')[0]);
     console.log(userId);
-    // check to make
+    // check to see if profile already exists or not
     knex.select('id').from('profiles')
       .where('user_id', userId).first()
       .then((exist) => {
-        console.log('profile id:', exist);
         if (!exist) res.render('make-profile');
         else res.render('edit-profile');
       });
@@ -49,8 +57,6 @@ router.get('/new', function(req, res) {
 // POST new profile
 router.post('/', (req, res) => {
   let userId = Number(req.cookies['/token'].split('.')[0]);
-
-  console.log('profile POST req.body: ', req.body);
 
   let allIAms = concatSelected(req.body.iAm);
   let allILikes = concatSelected(req.body.iLike);
@@ -82,10 +88,11 @@ router.post('/', (req, res) => {
     .returning('*')
     .then((row) => {
       const profile = camelizeKeys(row[0]);
-      console.log('NEW PROFILE: ', profile);
+      let formattedDate = formateDate(profile.birthdate);
+
       res.render('confirm-profile', {iAm: profile.iAm,
                                 iLike: profile.iLike,
-                                birthdate: profile.birthdate,
+                                birthdate: formattedDate,
                                 height: profile.height,
                                 weight: profile.weight,
                                 bodyHair: profile.bodyHair,
@@ -113,26 +120,26 @@ router.get('/update', (req, res) => {
     knex.select('user_id', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
     'body_hair', 'ethnicity', 'overview', 'looking_for', 'interests',
     'positions', 'safety', 'hometown')
-    .from('profiles').where('user_id', userId)
-    .then((profile) => {
-      profile = camelizeKeys(profile[0]);
+      .from('profiles').where('user_id', userId)
+      .then((profile) => {
+        profile = camelizeKeys(profile[0]);
 
-      if (profile) {
-        res.render('edit-profile', {iAm: profile.iAm,
-                                  iLike: profile.iLike,
-                                  birthdate: profile.birthdate,
-                                  height: profile.height,
-                                  weight: profile.weight,
-                                  bodyHair: profile.bodyHair,
-                                  ethnicity: profile.ethnicity,
-                                  overview: profile.overview,
-                                  lookingFor: profile.lookingFor,
-                                  interests: profile.interests,
-                                  positions: profile.positions,
-                                  safety: profile.safety,
-                                  hometown: profile.hometown
-                                });
-      }
+        if (profile) {
+          res.render('edit-profile', {iAm: profile.iAm,
+                                    iLike: profile.iLike,
+                                    birthdate: profile.birthdate,
+                                    height: profile.height,
+                                    weight: profile.weight,
+                                    bodyHair: profile.bodyHair,
+                                    ethnicity: profile.ethnicity,
+                                    overview: profile.overview,
+                                    lookingFor: profile.lookingFor,
+                                    interests: profile.interests,
+                                    positions: profile.positions,
+                                    safety: profile.safety,
+                                    hometown: profile.hometown
+                                  });
+        }
     });
 
   } else {
@@ -149,9 +156,6 @@ router.put('/', (req, res) => {
     .where('user_id', userId).first()
     .then((profile) => {
       if(profile) {
-
-        console.log('profile from profiles PUT', profile);
-
         const { iAm, iLike, birthdate, bodyHair, ethnicity,
                 overview, lookingFor, interests, positions, methods, hometown } = req.body;
 
@@ -202,13 +206,14 @@ router.put('/', (req, res) => {
     .then((row) => {
 
       const profile = camelizeKeys(row[0]);
+      let formattedDate = formateDate(profile.birthdate);
 
       delete profile.createdAt;
       delete profile.updatedAt;
 
       res.render('confirm-profile', {iAm: profile.iAm,
                                 iLike: profile.iLike,
-                                birthdate: profile.birthdate,
+                                birthdate: formattedDate,
                                 height: profile.height,
                                 weight: profile.weight,
                                 bodyHair: profile.bodyHair,
@@ -241,7 +246,7 @@ router.delete('/', (req, res, next) => {
         deletedProfile = profile;
 
         return knex('profiles')
-          .del().where('id', profileId);
+          .del().where('user_id', userId);
       } else {
         throw new Error('Profile Not Found');
       }
@@ -249,13 +254,14 @@ router.delete('/', (req, res, next) => {
     .then(() => {
 
       const profile = camelizeKeys(deletedProfile);
+      let formattedDate = formateDate(profile.birthdate);
 
       delete profile.createdAt;
       delete profile.updatedAt;
 
       res.render('confirm-profile', {iAm: profile.iAm,
                                 iLike: profile.iLike,
-                                birthdate: profile.birthdate,
+                                birthdate: formattedDate,
                                 height: profile.height,
                                 weight: profile.weight,
                                 bodyHair: profile.bodyHair,

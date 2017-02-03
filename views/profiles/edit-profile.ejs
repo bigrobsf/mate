@@ -24,7 +24,7 @@
           <div class="col s12 m5">  <!-- left column -->
             <h4>Update Profile</h4>
 
-            <form method="POST" action="/profiles?_method=PUT">
+            <form id="edit-profile" method="POST" action="/profiles?_method=PUT">
               <div class="row">
                 <div class="input-field col s12">
                   <select name="iAm" multiple>
@@ -107,6 +107,27 @@
 
               <div class="row">
                 <div class="input-field col s12">
+                  <label for="overview">What I do: </label>
+                  <input type="text" name="overview" id="overview" class="validate">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="lookingFor">What I'm looking for: </label>
+                  <input type="text" name="lookingFor" id="looking-for" class="validate">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="interests">Interests: </label>
+                  <input type="text" name="interests" id="interests" class="validate">
+                </div>
+              </div>
+
+              <!-- <div class="row">
+                <div class="input-field col s12">
                   <textarea id="overview" class="materialize-textarea"></textarea>
                   <label for="overview">What I do: </label>
                 </div>
@@ -124,7 +145,7 @@
                   <textarea id="interests" class="materialize-textarea"></textarea>
                   <label for="interests">What I enjoy: </label>
                 </div>
-              </div>
+              </div> -->
 
               <div class="row">
                 <div class="input-field col s12">
@@ -180,7 +201,7 @@
               </div>
 
               <div class="row center">
-                <button class="submit btn waves-effect waves-light" type="submit" name="action">Delete
+                <button id="edit-profile-btn" class="submit btn waves-effect waves-light" type="submit" name="action">Delete
                   <i class="material-icons right">send</i>
                 </button>
               </div>

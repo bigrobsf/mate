@@ -75,6 +75,13 @@ button.submit:hover {
 /* =============================================================================
 Typography */
 
+h2 {
+  color: #000;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 2px #212121;
+}
+
 h3 {
   color: #212121;
   text-transform: uppercase;
@@ -102,16 +109,18 @@ h5 {
 }
 
 /* =============================================================================
-Images */
+Cards */
 
-img:first-of-type {
-  margin-top: 40px;
+.card .card-image .card-title {
+  text-shadow: 1px 1px 2px black;
 }
 
-img.logo {
-  max-height: 125px;
-  max-width: 250px;
-  margin-bottom: 20px;
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+  color: #d50000;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+  color: #ff5252;
 }
 
 /* =============================================================================
@@ -193,9 +202,9 @@ Splash overlay */
 	width: 200px;
 	height: 200px;
 	padding: 16px;
-	border: 16px solid #d50000;
+	border: 16px solid #780000;
   border-radius: 10px;
-	background-color: #aaa;
+	background-color: #d50000;
 	z-index:3;
 }
 

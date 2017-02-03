@@ -14,7 +14,11 @@ const router = express.Router();
 // =============================================================================
 // show home page
 router.get('/', function(req, res) {
-  res.render('index');
+  if (req.cookies['/token']) {
+    res.render('index', {loggedIn: true});
+  } else {
+    res.render('index', {loggedIn: false});
+  }
 });
 
 // =============================================================================

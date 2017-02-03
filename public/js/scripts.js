@@ -5,12 +5,13 @@
 /* jshint jquery: true */
 'use strict';
 
-$(document).ready(function() {
+$(document).ready(() => {
   $('select').material_select();
   $('.button-collapse').sideNav({
     menuWidth: 200
   });
 
+  // code to display and fade out splash screen
   let displayedSplash = localStorage.getItem('displayedSplash');
 
   if (!displayedSplash) {
@@ -37,6 +38,7 @@ $(document).ready(function() {
     }, 2000);
   }
 
+  // removes flag from localStorage to enable the splash screen
   let enableSplashElement = document.getElementById('clear-splash');
   enableSplashElement.addEventListener('mousedown', enableSplash);
 

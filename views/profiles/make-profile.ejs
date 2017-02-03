@@ -18,7 +18,7 @@
       <div class="col s12 m12">
         <h4>Create Profile</h4>
 
-        <form action="/profiles" method="POST">
+        <form id="make-profile" <!-- action="/profiles" method="POST" -->
           <div class="row">
             <div class="input-field col l6 s12">
               <select name="iAm" multiple>
@@ -100,6 +100,27 @@
           </div>
 
           <div class="row">
+            <div class="input-field col s12">
+              <label for="overview">What I do: </label>
+              <input type="text" name="overview" id="overview" class="validate">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="lookingFor">What I'm looking for: </label>
+              <input type="text" name="lookingFor" id="looking-for" class="validate">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="interests">Interests: </label>
+              <input type="text" name="interests" id="interests" class="validate">
+            </div>
+          </div>
+
+          <!-- <div class="row">
             <div class="input-field col l6 s12">
               <textarea id="overview" class="materialize-textarea"></textarea>
               <label for="overview">What I do: </label>
@@ -118,7 +139,7 @@
               <textarea id="interests" class="materialize-textarea"></textarea>
               <label for="interests">What I enjoy: </label>
             </div>
-          </div>
+          </div> -->
 
           <div class="row">
             <div class="input-field col l6 s12">
@@ -154,7 +175,7 @@
           </div>
 
           <div class="row center">
-            <button class="submit btn waves-effect waves-light" type="submit" name="action">Submit
+            <button id="make-profile" class="submit btn waves-effect waves-light" type="submit" name="action">Submit
               <i class="material-icons right">send</i>
             </button>
           </div>
