@@ -10,11 +10,36 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 const router = express.Router();
 
 // =============================================================================
+// function to concatenate multiple selections from form input into a string
+function concatSelected(array) {
+  if (typeof array === 'object') {
+    let result = '';
+
+    for (var i = 0; i < array.length; i++) {
+      if (i !== array.length - 1) result = result + array[i] + ', ';
+      else result = result + array[i];
+    }
+
+    return result;
+  } else return array;
+}
+
+// =============================================================================
 // show input form for new profile
 router.get('/new', function(req, res) {
   console.log('COOKIE: ', req.cookies);
   if (req.cookies['/token']) {
-    res.render('make-profile');
+    let userId = Number(req.cookies['/token'].split('.')[0]);
+    console.log(userId);
+    // check to make
+    knex.select('id').from('profiles')
+      .where('user_id', userId).first()
+      .then((exist) => {
+        console.log('profile id:', exist);
+        if (!exist) res.render('make-profile');
+        else res.render('edit-profile');
+      });
+
   } else {
     res.redirect('../token/login');
   }
@@ -24,6 +49,8 @@ router.get('/new', function(req, res) {
 // POST new profile
 router.post('/', (req, res) => {
   let userId = Number(req.cookies['/token'].split('.')[0]);
+
+  console.log('profile POST req.body: ', req.body);
 
   let allIAms = concatSelected(req.body.iAm);
   let allILikes = concatSelected(req.body.iLike);
@@ -44,7 +71,7 @@ router.post('/', (req, res) => {
     interests: req.body.interests,
     positions: allPositions,
     safety: allMethods,
-    hometown: hometown
+    hometown: req.body.hometown
   };
 
   knex('profiles')
@@ -117,34 +144,59 @@ router.get('/update', (req, res) => {
 // PUT - update profile record
 router.put('/', (req, res) => {
   let userId = Number(req.cookies['/token'].split('.')[0]);
-  let passwordUpdated = false;
 
   knex('profiles')
-    .where('id', profileId).first()
+    .where('user_id', userId).first()
     .then((profile) => {
       if(profile) {
 
-        const { firstName, lastName, profileName, email, password1 } = req.body;
-        const updateprofile = {};
+        console.log('profile from profiles PUT', profile);
 
-        if (firstName) updateprofile.firstName = firstName;
-        if (lastName) updateprofile.lastName = lastName;
-        if (profileName) updateprofile.profileName = profileName;
-        if (email) updateprofile.email = profileName;
-        if (password1) {
-          bcrypt.hash(password1, 12)
-            .then((hashed) => {
-              updateprofile.hashedPassword = hashed;
-              passwordUpdated = true;
-            });
+        const { iAm, iLike, birthdate, bodyHair, ethnicity,
+                overview, lookingFor, interests, positions, methods, hometown } = req.body;
+
+        let height = Number(req.body.height);
+        let weight = Number(req.body.weight);
+
+        const updateProfile = {};
+
+        if (iAm) {
+          let allIAms = concatSelected(iAm);
+          updateProfile.iAm = allIAms;
         }
 
+        if (iLike) {
+          let allILikes = concatSelected(iLike);
+          updateProfile.iLike = allILikes;
+        }
+
+        if (birthdate) updateProfile.birthdate = birthdate;
+        if (height) updateProfile.height = height;
+        if (weight) updateProfile.weight = weight;
+        if (bodyHair) updateProfile.bodyHair = bodyHair;
+        if (ethnicity) updateProfile.ethnicity = ethnicity;
+        if (overview) updateProfile.overview = overview;
+        if (lookingFor) updateProfile.lookingFor = lookingFor;
+        if (interests) updateProfile.interests = interests;
+
+        if (positions) {
+          let allPositions = concatSelected(positions);
+          updateProfile.positions = allPositions;
+        }
+
+        if (methods) {
+          let allMethods = concatSelected(methods);
+          updateProfile.safety = allMethods;
+        }
+
+        if (hometown) updateProfile.hometown = hometown;
+
         return knex('profiles')
-          .update(decamelizeKeys(updateprofile), '*')
-          .where('id', profileId);
+          .update(decamelizeKeys(updateProfile), '*')
+          .where('user_id', userId);
 
       } else {
-        throw new Error('profile Not Found');
+        throw new Error('Profile Not Found');
       }
     })
     .then((row) => {
@@ -153,15 +205,21 @@ router.put('/', (req, res) => {
 
       delete profile.createdAt;
       delete profile.updatedAt;
-      delete profile.hashedPassword;
 
-      res.render('confirm-profile', {firstName: profile.firstName || '',
-                                   lastName: profile.lastName || '',
-                                   profileName: profile.profileName || '',
-                                      email: profile.email || '',
-                                   pwStatus: passwordUpdated ? 'Updated' : 'Unchanged',
-                                     status: 'Updated'
-                                  });
+      res.render('confirm-profile', {iAm: profile.iAm,
+                                iLike: profile.iLike,
+                                birthdate: profile.numShares,
+                                height: profile.sharePrice,
+                                weight: profile.commission,
+                                bodyHair: profile.bodyHair,
+                                ethnicity: profile.ethnicity,
+                                overview: profile.overview,
+                                lookingFor: profile.lookingFor,
+                                interests: profile.interests,
+                                positions: profile.positions,
+                                safety: profile.safety,
+                                hometown: profile.hometown,
+                                status: 'Updated'});
     })
     .catch((err) => {
       console.log('PUT ERROR: ', err);
@@ -173,41 +231,42 @@ router.put('/', (req, res) => {
 // DELETE profile
 router.delete('/', (req, res, next) => {
   let userId = Number(req.cookies['/token'].split('.')[0]);
-  let trxId = Number(req.body.trxId);
-  let deletedTrx;
+  let deletedProfile;
 
   knex.select('*')
-    .from('transactions')
-    .join('stocks', 'stocks.id', 'stock_id')
-    .where('user_id', userId)
-    .where('transactions.id', trxId).first()
-    .then((trx) => {
-      if(trx) {
+    .from('profiles')
+    .where('user_id', userId).first()
+    .then((profile) => {
+      if(profile) {
+        deletedProfile = profile;
 
-        deletedTrx = trx;
-
-        return knex('transactions')
-          .del().where('id', trxId);
+        return knex('profiles')
+          .del().where('id', profileId);
       } else {
-        throw new Error('Transaction Not Found');
+        throw new Error('Profile Not Found');
       }
     })
     .then(() => {
 
-      const trx = camelizeKeys(deletedTrx);
+      const profile = camelizeKeys(deletedProfile);
 
-      delete trx.createdAt;
-      delete trx.updatedAt;
+      delete profile.createdAt;
+      delete profile.updatedAt;
 
-      res.render('confirm-trade', {ticker: trx.ticker || '',
-                                  company: trx.companyName || '',
-                                numShares: trx.numShares || '',
-                               sharePrice: trx.sharePrice || '',
-                               commission: trx.commission || '',
-                                direction: trx.type || '',
-                                   action: trx.action || '',
-                                   status: 'Deleted'
-                                  });
+      res.render('confirm-trade', {iAm: profile.iAm,
+                                iLike: profile.iLike,
+                                birthdate: profile.numShares,
+                                height: profile.sharePrice,
+                                weight: profile.commission,
+                                bodyHair: profile.bodyHair,
+                                ethnicity: profile.ethnicity,
+                                overview: profile.overview,
+                                lookingFor: profile.lookingFor,
+                                interests: profile.interests,
+                                positions: profile.positions,
+                                safety: profile.safety,
+                                hometown: profile.hometown,
+                                status: 'Deleted'});
     })
     .catch((err) => {
       console.log('DELETE ERROR: ', err);

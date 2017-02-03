@@ -18,7 +18,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
 const users = require('./routes/users.js');
-// const profiles = require('./routes/profiles.js');
+const profiles = require('./routes/profiles.js');
 const token = require('./routes/token.js');
 const index = require('./routes/index.js');
 // const photos = require('./routes/photos.js');
@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 app.use(express.static(__dirname + '/public'));
 app.use('/users', users);
-// app.use('/profiles', profiles);
+app.use('/profiles', profiles);
 app.use('/token', token);
 app.use('/', index);
 // app.use('/photos', photos);

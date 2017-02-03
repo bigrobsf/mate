@@ -12,7 +12,6 @@ $(document).ready(function() {
   });
 
   let displayedSplash = localStorage.getItem('displayedSplash');
-  let enableSplashElement = document.getElementById('clear-splash');
 
   if (!displayedSplash) {
     $.fn.center = function () {
@@ -38,18 +37,11 @@ $(document).ready(function() {
     }, 2000);
   }
 
-  enableSplashElement = addEventListener('mousedown', enableSplash);
+  let enableSplashElement = document.getElementById('clear-splash');
+  enableSplashElement.addEventListener('mousedown', enableSplash);
 
   function enableSplash() {
     localStorage.removeItem('displayedSplash');
     console.log('Splash flag cleared.');
   }
 });
-
-// =============================================================================
-// function to concatenate multiple selections from form input into a string
-function concatSelected(array) {
-  array.reduce((result, selection) => {
-    return result + selection;
-  }, '');
-}

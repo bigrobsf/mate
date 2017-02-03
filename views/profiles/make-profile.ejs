@@ -18,7 +18,7 @@
       <div class="col s12 m12">
         <h4>Create Profile</h4>
 
-        <form action="/profile" method="POST">
+        <form action="/profiles" method="POST">
           <div class="row">
             <div class="input-field col l6 s12">
               <select name="iAm" multiple>
@@ -34,7 +34,7 @@
                 <option value="buddy">buddy</option>
                 <option value="bro">bro</option>
               </select>
-              <label>I am:</label>
+              <!-- <label>I am:</label> -->
             </div>
           </div>
 
@@ -53,13 +53,13 @@
                 <option value="buddy">buddy</option>
                 <option value="bro">bro</option>
               </select>
-              <label>I like:</label>
+              <!-- <label>I like:</label> -->
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col l6 s12">
-              <label for="birthdate">Birth Date: </label>
+              <!-- <label for="birthdate">Birthdate: </label> -->
               <input type="date" required name="birthdate" id="birthdate">
             </div>
           </div>
@@ -67,14 +67,14 @@
           <div class="row">
             <div class="input-field col l6 s12">
               <label for="height">Height (inches): </label>
-              <input type="number" required name="height" id="height" class="validate">
+              <input type="number" required min="36" name="height" id="height" class="validate">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field  col l6 s12">
               <label for="weight">Weight (pounds): </label>
-              <input type="number" required name="weight" id="weight" class="validate">
+              <input type="number" required min= "90" name="weight" id="weight" class="validate">
             </div>
           </div>
 

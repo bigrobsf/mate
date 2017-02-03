@@ -15,10 +15,6 @@
 
   <main class="container">
     <div class="row">
-      <div class="col s12 m12">
-        <!-- <h4><%= firstName + " " + lastName%></h4>
-        <h5>User Name: <%= userName%></h5>
-        <h5>Email: <%= email%></h5> -->
       </div>
     </div>
 
@@ -30,7 +26,7 @@
 
             <form method="POST" action="/profiles?_method=PUT">
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <select name="iAm" multiple>
                     <option value="" disabled selected>I am</option>
                     <option value="bear">bear</option>
@@ -49,7 +45,7 @@
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <select name="iLike" multiple>
                     <option value="" disabled selected>I like</option>
                     <option value="bear">bear</option>
@@ -68,28 +64,28 @@
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <label for="birthdate">Birth Date: </label>
-                  <input type="date" required name="birthdate" id="birthdate">
+                  <input type="date" name="birthdate" id="birthdate">
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <label for="height">Height (inches): </label>
-                  <input type="number" required name="height" id="height" class="validate">
+                  <input type="number" min="36" name="height" id="height" class="validate">
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field  col l6 s12">
+                <div class="input-field  col s12">
                   <label for="weight">Weight (pounds): </label>
-                  <input type="number" required name="weight" id="weight" class="validate">
+                  <input type="number" min="90" name="weight" id="weight" class="validate">
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <select name="bodyHair">
                     <option value="" disabled selected>I am</option>
                     <option value="smooth">smooth</option>
@@ -103,35 +99,35 @@
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <label for="ethnicity">Ethnicity: </label>
-                  <input type="text" required name="ethnicity" id="ethnicity" class="validate">
+                  <input type="text" name="ethnicity" id="ethnicity" class="validate">
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <textarea id="overview" class="materialize-textarea"></textarea>
                   <label for="overview">What I do: </label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <textarea id="lookingFor" class="materialize-textarea"></textarea>
                   <label for="looking-for">What I'm looking for: </label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <textarea id="interests" class="materialize-textarea"></textarea>
                   <label for="interests">What I enjoy: </label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <select name="positions" multiple>
                     <option value="" disabled selected>Positions</option>
                     <option value="top">top</option>
@@ -145,7 +141,7 @@
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <select name="methods" multiple>
                     <option value="" disabled selected>Methods</option>
                     <option value="PrEP">PrEP</option>
@@ -157,9 +153,9 @@
               </div>
 
               <div class="row">
-                <div class="input-field col l6 s12">
+                <div class="input-field col s12">
                   <label for="hometown">Hometown: </label>
-                  <input type="text" required name="hometown" id="hometown" class="validate">
+                  <input type="text" name="hometown" id="hometown" class="validate">
                 </div>
               </div>
 
