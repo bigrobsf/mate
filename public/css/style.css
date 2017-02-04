@@ -9,6 +9,12 @@ a.brand-logo {
 
 body {
   background-color: #ddd;
+  background-image: url("../images/site/nasty_fabric.png");
+
+}
+
+main.container {
+
 }
 
 /* =============================================================================

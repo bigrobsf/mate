@@ -29,11 +29,11 @@ function saveLocation(data) {
   let lon1 = data.location.lng;
   let accuracy = data.accuracy;
 
-  let location = {'lat1': lat1,
-                  'lon1': lon1,
-                  'accuracy': accuracy};
 
-  localStorage.setItem('location', JSON.stringify(location));
+  // let location = {'lat1': lat1,
+  //                 'lon1': lon1,
+  //                 'accuracy': accuracy};
+
 }
 
 //==============================================================================
