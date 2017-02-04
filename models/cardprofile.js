@@ -6,7 +6,7 @@
 /* jshint browser: true */
 
 // =============================================================================
-// card profile class definition - this is used in showing profiles in grid
+// card profile class definition - this gets info for showing profiles on index page
 var CardProfile = class {
   constructor(imgPath, title, lat1, lon1, lat2, lon2, userId) {
     this.imgPath = imgPath;
@@ -36,7 +36,7 @@ Number.prototype.toRadians = function() {
   source: http://www.movable-type.co.uk/scripts/latlong.html
 }
 */
-function distance(lat1, lon1, lat2, lon2) {
+var distance = function(lat1, lon1, lat2, lon2) {
   const R = 6371000; // Earth's radius in meters
   let dist = '';
 
@@ -62,41 +62,9 @@ function distance(lat1, lon1, lat2, lon2) {
   else dist = 'unavailable';
 
   return dist;
-}
+};
 
-//==============================================================================
-// makes the AJAX request to the Google Maps Geolocation API
-function locationRequest() {
-
-  // The object we use to start the AJAX request using JQuery's format
-  let requestObject = {
-    url: `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi0kaurEfWwzDKye0ezKEXWhzmZmxEFYI`,
-    method: "POST",
-    success: saveLocation,
-    error: logError
-  };
-
-  // Actually start the AJAX request
-  $.ajax(requestObject);
-}
-
-//==============================================================================
-// The event handler for a successful ajax request
-function saveLocation(data) {
-  console.log('my location: ', data);
-  let lat1 = data.location.lat;
-  let lon1 = data.location.lng;
-  let accuracy = data.accuracy;
-
-  let location = {'lat1': lat1,
-                  'lon1': lon1,
-                  'accuracy': accuracy};
-
-  localStorage.setItem('location', JSON.stringify(location));
-}
-
-//==============================================================================
-// The event handler for a failed ajax request
-function logError(err) {
-  console.log('AJAX Error: ', err);
-}
+module.exports = {
+  CardProfile: CardProfile,
+  distance: distance
+};
