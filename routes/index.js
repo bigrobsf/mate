@@ -30,28 +30,28 @@ router.get('/', function(req, res) {
     .where('profile_flag', true)
     .then((profiles) => {
       profiles = camelizeKeys(profiles);
-      console.log(profiles);
+      // console.log(profiles);
       let profileArray = [];
 
-      let retrievedLocation = localStorage.getItem('location');
-      let locObject = JSON.parse(retrievedLocation);
-
-      let lat1 = locObject.location.lat;
-      let lon1 = locObject.location.lng;
-      let accuracy = locObject.accuracy;
-
-      profiles.forEach(function(ele, i) {
-        let lat2 = profiles[i].lat2;
-        let lon2 = profiles[i].lon2;
-
-        var newCard = new CardProfile(profiles[i].imgPath, profiles[i].title,
-          lat1, lon1, lat2, lon2, profiles[i].userId);
-
-        newCard.distance = distance(lat1, lon1, lat2, lon2);
-        console.log(newCard.distance);
-
-        profileArray.push(newCard);
-      });
+      // let retrievedLocation = localStorage.getItem('location');
+      // let locObject = JSON.parse(retrievedLocation);
+      //
+      // let lat1 = locObject.location.lat;
+      // let lon1 = locObject.location.lng;
+      // let accuracy = locObject.accuracy;
+      //
+      // profiles.forEach(function(ele, i) {
+      //   let lat2 = profiles[i].lat2;
+      //   let lon2 = profiles[i].lon2;
+      //
+      //   var newCard = new CardProfile(profiles[i].imgPath, profiles[i].title,
+      //     lat1, lon1, lat2, lon2, profiles[i].userId);
+      //
+      //   newCard.distance = distance(lat1, lon1, lat2, lon2);
+      //   console.log(newCard.distance);
+      //
+      //   profileArray.push(newCard);
+      // });
 
     });
 

@@ -2,7 +2,7 @@ var photos = [{
   id: 1,
   user_id: 1,
   profile_flag: true,
-  image_path: '/public/images/bigrobsf.jpg',
+  image_path: '/images/bigrobsf.jpg',
   caption: 'Where I spend most of my time. literally.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -10,7 +10,7 @@ var photos = [{
   id: 2,
   user_id: 2,
   profile_flag: true,
-  image_path: '/public/images/tiger.jpg',
+  image_path: '/images/tiger.jpg',
   caption: 'At Lazy Bear in 2016.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -18,7 +18,7 @@ var photos = [{
   id: 3,
   user_id: 1,
   profile_flag: false,
-  image_path: '/public/images/flex.jpg',
+  image_path: '/images/flex.jpg',
   caption: "It's a start.",
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -26,7 +26,7 @@ var photos = [{
   id: 4,
   user_id: 1,
   profile_flag: false,
-  image_path: '/public/images/facing_forward.jpg',
+  image_path: '/images/facing_forward.jpg',
   caption: 'Yeah, I like cats.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -34,7 +34,7 @@ var photos = [{
   id: 5,
   user_id: 1,
   profile_flag: false,
-  image_path: '/public/images/shade.jpg',
+  image_path: '/images/shade.jpg',
   caption: 'A different angle.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -42,7 +42,7 @@ var photos = [{
   id: 6,
   user_id: 3,
   profile_flag: false,
-  image_path: '/public/images/mike.jpg',
+  image_path: '/images/mike.jpg',
   caption: 'BIG.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -50,7 +50,7 @@ var photos = [{
   id: 7,
   user_id: 3,
   profile_flag: true,
-  image_path: '/public/images/mike1.jpg',
+  image_path: '/images/mike1.jpg',
   caption: 'Working.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -58,7 +58,7 @@ var photos = [{
   id: 8,
   user_id: 4,
   profile_flag: true,
-  image_path: '/public/images/mitch.jpg',
+  image_path: '/images/mitch.jpg',
   caption: 'Better times.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -66,7 +66,7 @@ var photos = [{
   id: 9,
   user_id: 5,
   profile_flag: true,
-  image_path: '/public/images/derek.jpg',
+  image_path: '/images/derek.jpg',
   caption: 'Hi.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -74,7 +74,7 @@ var photos = [{
   id: 10,
   user_id: 6,
   profile_flag: true,
-  image_path: '/public/images/keyvon.jpg',
+  image_path: '/images/keyvon.jpg',
   caption: 'What?',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -82,7 +82,7 @@ var photos = [{
   id: 11,
   user_id: 7,
   profile_flag: true,
-  image_path: '/public/images/dave.jpg',
+  image_path: '/images/dave.jpg',
   caption: 'Man with beard.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -90,7 +90,7 @@ var photos = [{
   id: 12,
   user_id: 8,
   profile_flag: true,
-  image_path: '/public/images/pilotoso.jpg',
+  image_path: '/images/pilotoso.jpg',
   caption: 'Welcome to my office!',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')

@@ -26,7 +26,7 @@ function concatSelected(array) {
 
 // =============================================================================
 // function to return a friendly date format
-function formateDate(rawDate) {
+function formatDate(rawDate) {
   let format = { year: 'numeric', month: 'long', day: 'numeric' };
   let date = new Date(rawDate);
 
@@ -35,7 +35,7 @@ function formateDate(rawDate) {
 
 // =============================================================================
 // show input form for new profile
-router.get('/new', function(req, res) {
+router.get('/new', (req, res) => {
   console.log('COOKIE: ', req.cookies);
   if (req.cookies['/token']) {
     let userId = Number(req.cookies['/token'].split('.')[0]);
@@ -88,7 +88,7 @@ router.post('/', (req, res) => {
     .returning('*')
     .then((row) => {
       const profile = camelizeKeys(row[0]);
-      let formattedDate = formateDate(profile.birthdate);
+      let formattedDate = formatDate(profile.birthdate);
 
       res.render('confirm-profile', {iAm: profile.iAm,
                                 iLike: profile.iLike,
@@ -229,6 +229,48 @@ router.put('/', (req, res) => {
     .catch((err) => {
       console.log('PUT ERROR: ', err);
       res.status(400).send(err);
+    });
+});
+
+// =============================================================================
+// GET - show profile
+router.get('/show/:id', (req, res) => {
+  let userId = Number(req.params.id);
+
+  knex.select('user_name', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
+                'body_hair', 'ethnicity', 'overview', 'looking_for', 'interests',
+                'positions', 'safety', 'hometown', 'profile_flag', 'image_path',
+                'caption')
+    .from('users')
+    .join('profiles', 'users.id', 'profiles.user_id')
+    .join('photos', 'users.id', 'photos.user_id')
+    .where('users.id', userId)
+    .where('profile_flag', true)
+    .then((row) => {
+      const profile = camelizeKeys(row[0]);
+      let age = Math.floor((Date.now() - profile.birthdate) / 31556952000);
+
+      if (profile) {
+        res.render('show-profile', {
+          userName: profile.userName,
+          iAm: profile.iAm,
+          iLike: profile.iLike,
+          age: age,
+          height: profile.height,
+          weight: profile.weight,
+          bodyHair: profile.bodyHair,
+          ethnicity: profile.ethnicity,
+          overview: profile.overview,
+          lookingFor: profile.lookingFor,
+          interests: profile.interests,
+          positions: profile.positions,
+          safety: profile.safety,
+          hometown: profile.hometown,
+          imagePath: profile.imagePath,
+          caption: profile.caption});
+      }
+
+      else console.log("Profile display error.");
     });
 });
 
