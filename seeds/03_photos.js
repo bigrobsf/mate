@@ -38,6 +38,62 @@ var photos = [{
   caption: 'A different angle.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 6,
+  user_id: 3,
+  profile_flag: false,
+  image_path: '/public/images/mike.jpg',
+  caption: 'BIG.',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 7,
+  user_id: 3,
+  profile_flag: true,
+  image_path: '/public/images/mike1.jpg',
+  caption: 'Working.',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 8,
+  user_id: 4,
+  profile_flag: true,
+  image_path: '/public/images/mitch.jpg',
+  caption: 'Better times.',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 9,
+  user_id: 5,
+  profile_flag: true,
+  image_path: '/public/images/derek.jpg',
+  caption: 'Hi.',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 10,
+  user_id: 6,
+  profile_flag: true,
+  image_path: '/public/images/keyvon.jpg',
+  caption: 'What?',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 11,
+  user_id: 7,
+  profile_flag: true,
+  image_path: '/public/images/dave.jpg',
+  caption: 'Man with beard.',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 12,
+  user_id: 8,
+  profile_flag: true,
+  image_path: '/public/images/pilotoso.jpg',
+  caption: 'Welcome to my office!',
+  created_at: new Date('2017-01-31 12:26:16 UTC'),
+  updated_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
