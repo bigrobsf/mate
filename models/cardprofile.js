@@ -37,8 +37,12 @@ Number.prototype.toRadians = function() {
 }
 */
 var distance = function(lat1, lon1, lat2, lon2) {
+
+
   const R = 6371000; // Earth's radius in meters
   let dist = '';
+
+  console.log('in distance function', lat1, lon1, lat2, lon2);
 
   let latRad1 = lat1.toRadians();
   let latRad2 = lat2.toRadians();

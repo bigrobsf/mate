@@ -152,6 +152,20 @@ a.disabled {
 }
 
 /* =============================================================================
+images */
+
+img.profile-img {
+  border: 1px solid #424242;
+  padding: 5px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  box-shadow: 0 28px 16px -26px #000;
+  -webkit-box-shadow: 0 28px 16px -26px #000;
+  -moz-box-shadow: 0 28px 16px -26px #000;
+}
+
+/* =============================================================================
 footer */
 
 #github {

@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3007;
 
 app.disable('x-powered-by');
 
+const pg = require('pg');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');

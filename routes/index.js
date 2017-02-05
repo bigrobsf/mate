@@ -28,35 +28,60 @@ router.get('/', function(req, res) {
     .join('profiles', 'photos.user_id', 'profiles.user_id')
     .join('users', 'photos.user_id', 'users.id')
     .where('profile_flag', true)
-    .then((profiles) => {
-      profiles = camelizeKeys(profiles);
-      // console.log(profiles);
-      let profileArray = [];
+    .then((rows) => {
+      let profiles = camelizeKeys(rows);
+      console.log(profiles);
 
-      // let retrievedLocation = localStorage.getItem('location');
-      // let locObject = JSON.parse(retrievedLocation);
-      //
-      // let lat1 = locObject.location.lat;
-      // let lon1 = locObject.location.lng;
-      // let accuracy = locObject.accuracy;
-      //
-      // profiles.forEach(function(ele, i) {
-      //   let lat2 = profiles[i].lat2;
-      //   let lon2 = profiles[i].lon2;
-      //
-      //   var newCard = new CardProfile(profiles[i].imgPath, profiles[i].title,
-      //     lat1, lon1, lat2, lon2, profiles[i].userId);
-      //
-      //   newCard.distance = distance(lat1, lon1, lat2, lon2);
-      //   console.log(newCard.distance);
-      //
-      //   profileArray.push(newCard);
-      // });
+      knex.select('lat', 'lon').from('curlocation')
+      .then((locs) => {
+        let loc = locs[0];
+        let lat1 = loc.lat;
+        let lon1 = loc.lon;
+
+        let profileArray = [];
+
+        profiles.forEach(function(ele, i) {
+          let lat2 = profiles[i].lat;
+          let lon2 = profiles[i].lon;
+
+          console.log('for each', lat2, lon2);
+
+          var newCard = new CardProfile(profiles[i].imgPath, profiles[i].title,
+            lat1, lon1, lat2, lon2, profiles[i].userId);
+
+          // newCard.distance = distance(lat1, lon1, lat2, lon2);
+          // console.log(newCard.distance);
+
+          profileArray.push(newCard);
+        });
+      });
 
     });
 
     res.render('index', {loggedIn: flag});
 });
+
+// =============================================================================
+// store location
+router.post('/location', function(req, res) {
+  let location = {
+    lat: req.body.lat1,
+    lon: req.body.lon1,
+    accuracy: req.body.accuracy
+  };
+
+  knex('curlocation')
+  .insert(decamelizeKeys(location),
+    ['lat', 'lon', 'accuracy'])
+  .returning('*')
+  .then((row) => {
+    const loc = camelizeKeys(row[0]);
+      console.log('from request',loc);
+  });
+});
+// .catch((err) => {
+//   console.log('PUT ERROR: ', err);
+// });
 
 // =============================================================================
 // show about page

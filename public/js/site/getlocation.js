@@ -30,10 +30,19 @@ function saveLocation(data) {
   let accuracy = data.accuracy;
 
 
-  // let location = {'lat1': lat1,
-  //                 'lon1': lon1,
-  //                 'accuracy': accuracy};
+  let location = {'lat1': lat1,
+                  'lon1': lon1,
+                  'accuracy': accuracy};
 
+  $.ajax({
+    type: 'POST',
+    url: '/location',
+    data: location,
+    success: console.log('success'),
+    error: function(jqXHR, textStatus, err) {
+            console.log('text status '+textStatus+', err '+err);
+            }
+  });
 }
 
 //==============================================================================
