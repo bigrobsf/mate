@@ -47,7 +47,7 @@ router.get('/', function(req, res) {
 
         let profileArray = [];
 
-        cardProfiles.forEach(function(ele, i) {
+        cardProfiles.forEach((ele, i) => {
           let lat2 = cardProfiles[i].lat;
           let lon2 = cardProfiles[i].lon;
 
@@ -62,7 +62,7 @@ router.get('/', function(req, res) {
           // newCard.distance = distance(lat1, lon1, lat2, lon2);
           // console.log(newCard.distance);
 
-          if (i < 4) profileArray.push(newCard);
+          profileArray.push(newCard);
         });
 
         // console.log('from /index unsorted: ', profileArray);

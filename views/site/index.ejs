@@ -32,14 +32,15 @@
             <div class="col s12 m6 l3">
               <div class="card">
                 <div class="card-image">
-                  <img src='<%= profile.imagePath%>'>
+                  <a href="/profiles/show/<%= profile.userId%>">
+                    <img src="<%= profile.imagePath%>"></a>
                   <span class="card-title"><%= profile.title%></span>
                 </div>
                 <div class="card-content">
                   <p><%= profile.distance%> miles away</p>
                 </div>
                 <div class="card-action">
-                  <a href="/profiles/show/<%= profile.userId%>">Profile</a>
+                  <a href="/photos/show/<%= profile.userId%>">Photos</a>
                   <a class="right" href="#">Chat</a>
                 </div>
               </div>
