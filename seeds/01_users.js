@@ -29,7 +29,7 @@ var users = [{
   id: 4,
   first_name: 'Mitch',
   last_name: 'James',
-  user_name: 'tiger',
+  user_name: 'mitch',
   email: 'mitch@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   created_at: new Date('2017-01-31 12:26:16 UTC'),

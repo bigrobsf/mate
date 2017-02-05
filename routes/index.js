@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
   let flag = false;
 
   if (req.cookies['/token']) {
-    let flag = true;
+    flag = true;
   }
 
   knex.select('photos.user_id', 'image_path', 'lat', 'lon', 'user_name')
@@ -29,36 +29,58 @@ router.get('/', function(req, res) {
     .join('users', 'photos.user_id', 'users.id')
     .where('profile_flag', true)
     .then((rows) => {
-      let profiles = camelizeKeys(rows);
-      console.log(profiles);
+      let cardProfiles = camelizeKeys(rows);
+      // console.log('from /index', cardProfiles);
 
       knex.select('lat', 'lon').from('curlocation')
       .then((locs) => {
-        let loc = locs[0];
-        let lat1 = loc.lat;
-        let lon1 = loc.lon;
+
+        let loc;
+        let lat1 = 0;
+        let lon1 = 0;
+
+        if(locs) {
+          loc = locs[0];
+          lat1 = loc.lat;
+          lon1 = loc.lon;
+        }
 
         let profileArray = [];
 
-        profiles.forEach(function(ele, i) {
-          let lat2 = profiles[i].lat;
-          let lon2 = profiles[i].lon;
+        cardProfiles.forEach(function(ele, i) {
+          let lat2 = cardProfiles[i].lat;
+          let lon2 = cardProfiles[i].lon;
 
-          console.log('for each', lat2, lon2);
+          var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
+            lat1, lon1, lat2, lon2, cardProfiles[i].userId);
 
-          var newCard = new CardProfile(profiles[i].imgPath, profiles[i].title,
-            lat1, lon1, lat2, lon2, profiles[i].userId);
+          // delete when distance function fixed
+          if (cardProfiles[i].userId !== 1) {
+            newCard.distance = Math.floor(Math.random() * 2000);
+          }
 
           // newCard.distance = distance(lat1, lon1, lat2, lon2);
           // console.log(newCard.distance);
 
-          profileArray.push(newCard);
+          if (i < 4) profileArray.push(newCard);
+        });
+
+        // console.log('from /index unsorted: ', profileArray);
+
+        profileArray.sort((a, b) => {
+          var eleA = a.distance;
+          var eleB = b.distance;
+
+          return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
+        });
+
+        console.log('from /index sorted: ', profileArray);
+
+        res.render('index', {loggedIn: flag,
+                             profileArray: profileArray
         });
       });
-
     });
-
-    res.render('index', {loggedIn: flag});
 });
 
 // =============================================================================
@@ -76,7 +98,7 @@ router.post('/location', function(req, res) {
   .returning('*')
   .then((row) => {
     const loc = camelizeKeys(row[0]);
-      console.log('from request',loc);
+      console.log('from /index/location: ',loc);
   });
 });
 // .catch((err) => {

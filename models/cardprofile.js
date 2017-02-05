@@ -8,9 +8,9 @@
 // =============================================================================
 // card profile class definition - this gets info for showing profiles on index page
 var CardProfile = class {
-  constructor(imgPath, title, lat1, lon1, lat2, lon2, userId) {
-    this.imgPath = imgPath;
-    this.title = title; // username
+  constructor(imagePath, userName, lat1, lon1, lat2, lon2, userId) {
+    this.imagePath = imagePath;
+    this.title = userName; // username
     this.lat1 = lat1;
     this.lon1 = lon1;
     this.lat2 = lat2;

@@ -45,7 +45,8 @@ router.get('/new', (req, res) => {
       .where('user_id', userId).first()
       .then((exist) => {
         if (!exist) res.render('make-profile');
-        else res.render('edit-profile');
+        else res.redirect('/profiles/update');
+        // else res.render('edit-profile');
       });
 
   } else {
@@ -117,17 +118,22 @@ router.get('/update', (req, res) => {
   if (req.cookies['/token']) {
     let userId = Number(req.cookies['/token'].split('.')[0]);
 
-    knex.select('user_id', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
+    knex.select('user_name', 'user_id', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
     'body_hair', 'ethnicity', 'overview', 'looking_for', 'interests',
     'positions', 'safety', 'hometown')
-      .from('profiles').where('user_id', userId)
+      .from('users')
+      .join('profiles', 'users.id', 'profiles.user_id')
+      .where('users.id', userId)
       .then((profile) => {
         profile = camelizeKeys(profile[0]);
 
+        let formattedDate = formatDate(profile.birthdate);
+
         if (profile) {
-          res.render('edit-profile', {iAm: profile.iAm,
+          res.render('edit-profile', {userName: profile.userName,
+                                    iAm: profile.iAm,
                                     iLike: profile.iLike,
-                                    birthdate: profile.birthdate,
+                                    birthdate: formattedDate,
                                     height: profile.height,
                                     weight: profile.weight,
                                     bodyHair: profile.bodyHair,

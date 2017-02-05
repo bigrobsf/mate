@@ -28,135 +28,28 @@
 
       <div id="card-grid">
         <div class="row">
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/bigrobsf.jpg">
-                <span class="card-title">bigrobsf</span>
-              </div>
-              <div class="card-content">
-                <p>0 feet away</p>
-              </div>
-              <div class="card-action">
-                <a href="/profiles/show/1">Profile</a>
-                <a class="right" href="#">Chat</a>
+          <% profileArray.forEach((profile) => { %>
+            <div class="col s12 m6 l3">
+              <div class="card">
+                <div class="card-image">
+                  <img src='<%= profile.imagePath%>'>
+                  <span class="card-title"><%= profile.title%></span>
+                </div>
+                <div class="card-content">
+                  <p><%= profile.distance%> miles away</p>
+                </div>
+                <div class="card-action">
+                  <a href="/profiles/show/<%= profile.userId%>">Profile</a>
+                  <a class="right" href="#">Chat</a>
+                </div>
               </div>
             </div>
-          </div>
+          <% }); %>
 
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/tiger.jpg">
-                <span class="card-title">tiger</span>
-              </div>
-              <div class="card-content">
-                <p>1.24 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/mitch.jpg">
-                <span class="card-title">mitch</span>
-              </div>
-              <div class="card-content">
-                <p>3.12 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/mike1.jpg">
-                <span class="card-title">misteru</span>
-              </div>
-              <div class="card-content">
-                <p>458 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
         </div> <!-- end first row -->
 
         <div class="row">
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/derek.jpg">
-                <span class="card-title">mixmutt</span>
-              </div>
-              <div class="card-content">
-                <p>681 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
 
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/keyvon.jpg">
-                <span class="card-title">theamir</span>
-              </div>
-              <div class="card-content">
-                <p>2014 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/dave.jpg">
-                <span class="card-title">dave</span>
-              </div>
-              <div class="card-content">
-                <p>2539 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image">
-                <img src="../images/pilotoso.jpg">
-                <span class="card-title">pilotoso</span>
-              </div>
-              <div class="card-content">
-                <p>4729 miles away</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Profile</a>
-                <a class="right" href="#">Chat</a>
-              </div>
-            </div>
-          </div>
         </div> <!-- end second row -->
     </div> <!-- end card-grid -->
     </main>
