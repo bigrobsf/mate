@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link type="text/css" rel="stylesheet" href="../../css/materialize.min.css"  media="screen,projection"/>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Update Photo</title>
+</head>
+<body>
+
+    <%- include("../partials/nav", {browse: false, profile: false, photos: true, messages: false}) %>
+
+  <main class="container">
+
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="row">
+          <div class="col s12 m5">  <!-- left column -->
+            <h4>Update Photo</h4>
+
+            <a href="/photos/show/<%= userId%>"><img src="<%= imagePath%>" class="profile-img" /></a>
+            <h5><%= caption%></h5></a>
+            <p class="highlighted"><%= profileFlag ? "This is your profile photo." : "" %></p>
+
+            <form id="edit-photo" method="POST" action="/photos?_method=PUT">
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="caption">New caption: </label>
+                  <input type="text" name="caption" id="caption">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                    <input type="checkbox" class="filled-in" name="profileFlag" id="profileFlag" />
+                    <label for="profileFlag">Profile Photo</label>
+                </div>
+              </div>
+
+              <input type="hidden" name="_method" value="put">
+              <input type="hidden" name="photoId" value="<%= photoId%>">
+              <input type="hidden" name="userId" value="<%= userId%>">
+
+              <div class="row center">
+                <button class="submit btn waves-effect waves-light" type="submit" name="action">Update
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="col m2">  <!-- middle column -->
+          </div>
+
+          <div class="col s12 m5">  <!-- right column -->
+            <h4 class="center">Delete Photo</h4>
+            <form method="POST" action="/photos?_method=DELETE">
+              <div class="row center">
+                <input type="hidden" name="_method" value="delete">
+              </div>
+
+              <div class="row center">
+                <button id="edit-profile-btn" class="submit btn waves-effect waves-light" type="submit" name="action">Delete
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer" id="footer">
+    <div class="container">
+      <div class="row footer-row">
+        <div class="col l6 s12">
+          <!-- <h5 class="white-text">Footer Content</h5> -->
+          <ul>
+            <li class="grey-text text-lighten-4 bold">MATE</li>
+            <li class="grey-text text-lighten-4">Find yours.</li>
+          </ul>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <!-- <h5 class="white-text">Links</h5> -->
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="/site/contact">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="/site/about">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+      © 2017 Rob Conner. All Rights Reserved.
+      <p id="clear-splash" class="grey-text right">Clear</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/materialize.js"></script>
+  <script type="text/javascript" src="../../js/scripts.js"></script>
+
+</body>
+</html>

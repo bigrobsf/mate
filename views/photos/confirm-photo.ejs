@@ -17,13 +17,44 @@
     <div class="row">
       <div class="col s12 m12">
         <h4>Photo <%= status%></h4>
-        <h5>Path: <%= imagePath%></h5>
+        <img src="<%= imagePath%>" class="profile-img">
         <h5>Caption: <%= caption%></h5>
       </div>
     </div>
   </main>
 
-    <%- include("../partials/footer") %>
+  <footer class="page-footer" id="footer">
+    <div class="container">
+      <div class="row footer-row">
+        <div class="col l6 s12">
+          <!-- <h5 class="white-text">Footer Content</h5> -->
+          <ul>
+            <li class="grey-text text-lighten-4 bold">MATE</li>
+            <li class="grey-text text-lighten-4">Find yours.</li>
+          </ul>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <!-- <h5 class="white-text">Links</h5> -->
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="/site/contact">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="/site/about">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+      © 2017 Rob Conner. All Rights Reserved.
+      <p id="clear-splash" class="grey-text right">Clear</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/materialize.js"></script>
+  <script type="text/javascript" src="../../js/scripts.js"></script>
+
 
 </body>
 </html>

@@ -91,20 +91,21 @@ router.post('/', (req, res) => {
       const profile = camelizeKeys(row[0]);
       let formattedDate = formatDate(profile.birthdate);
 
-      res.render('confirm-profile', {iAm: profile.iAm,
-                                iLike: profile.iLike,
-                                birthdate: formattedDate,
-                                height: profile.height,
-                                weight: profile.weight,
-                                bodyHair: profile.bodyHair,
-                                ethnicity: profile.ethnicity,
-                                overview: profile.overview,
-                                lookingFor: profile.lookingFor,
-                                interests: profile.interests,
-                                positions: profile.positions,
-                                safety: profile.safety,
-                                hometown: profile.hometown,
-                                status: 'Added'});
+      res.render('confirm-profile', {
+        iAm: profile.iAm,
+        iLike: profile.iLike,
+        birthdate: formattedDate,
+        height: profile.height,
+        weight: profile.weight,
+        bodyHair: profile.bodyHair,
+        ethnicity: profile.ethnicity,
+        overview: profile.overview,
+        lookingFor: profile.lookingFor,
+        interests: profile.interests,
+        positions: profile.positions,
+        safety: profile.safety,
+        hometown: profile.hometown,
+        status: 'Added'});
     }).catch(err => {
       console.log('POST ERROR: ', err);
       res.status(400).send(err);
@@ -130,21 +131,22 @@ router.get('/update', (req, res) => {
         let formattedDate = formatDate(profile.birthdate);
 
         if (profile) {
-          res.render('edit-profile', {userName: profile.userName,
-                                    iAm: profile.iAm,
-                                    iLike: profile.iLike,
-                                    birthdate: formattedDate,
-                                    height: profile.height,
-                                    weight: profile.weight,
-                                    bodyHair: profile.bodyHair,
-                                    ethnicity: profile.ethnicity,
-                                    overview: profile.overview,
-                                    lookingFor: profile.lookingFor,
-                                    interests: profile.interests,
-                                    positions: profile.positions,
-                                    safety: profile.safety,
-                                    hometown: profile.hometown
-                                  });
+          res.render('edit-profile', {
+            userName: profile.userName,
+            iAm: profile.iAm,
+            iLike: profile.iLike,
+            birthdate: formattedDate,
+            height: profile.height,
+            weight: profile.weight,
+            bodyHair: profile.bodyHair,
+            ethnicity: profile.ethnicity,
+            overview: profile.overview,
+            lookingFor: profile.lookingFor,
+            interests: profile.interests,
+            positions: profile.positions,
+            safety: profile.safety,
+            hometown: profile.hometown
+          });
         }
     });
 
@@ -217,20 +219,21 @@ router.put('/', (req, res) => {
       delete profile.createdAt;
       delete profile.updatedAt;
 
-      res.render('confirm-profile', {iAm: profile.iAm,
-                                iLike: profile.iLike,
-                                birthdate: formattedDate,
-                                height: profile.height,
-                                weight: profile.weight,
-                                bodyHair: profile.bodyHair,
-                                ethnicity: profile.ethnicity,
-                                overview: profile.overview,
-                                lookingFor: profile.lookingFor,
-                                interests: profile.interests,
-                                positions: profile.positions,
-                                safety: profile.safety,
-                                hometown: profile.hometown,
-                                status: 'Updated'});
+      res.render('confirm-profile', {
+        iAm: profile.iAm,
+        iLike: profile.iLike,
+        birthdate: formattedDate,
+        height: profile.height,
+        weight: profile.weight,
+        bodyHair: profile.bodyHair,
+        ethnicity: profile.ethnicity,
+        overview: profile.overview,
+        lookingFor: profile.lookingFor,
+        interests: profile.interests,
+        positions: profile.positions,
+        safety: profile.safety,
+        hometown: profile.hometown,
+        status: 'Updated'});
     })
     .catch((err) => {
       console.log('PUT ERROR: ', err);
@@ -308,20 +311,21 @@ router.delete('/', (req, res, next) => {
       delete profile.createdAt;
       delete profile.updatedAt;
 
-      res.render('confirm-profile', {iAm: profile.iAm,
-                                iLike: profile.iLike,
-                                birthdate: formattedDate,
-                                height: profile.height,
-                                weight: profile.weight,
-                                bodyHair: profile.bodyHair,
-                                ethnicity: profile.ethnicity,
-                                overview: profile.overview,
-                                lookingFor: profile.lookingFor,
-                                interests: profile.interests,
-                                positions: profile.positions,
-                                safety: profile.safety,
-                                hometown: profile.hometown,
-                                status: 'Deleted'});
+      res.render('confirm-profile', {
+        iAm: profile.iAm,
+        iLike: profile.iLike,
+        birthdate: formattedDate,
+        height: profile.height,
+        weight: profile.weight,
+        bodyHair: profile.bodyHair,
+        ethnicity: profile.ethnicity,
+        overview: profile.overview,
+        lookingFor: profile.lookingFor,
+        interests: profile.interests,
+        positions: profile.positions,
+        safety: profile.safety,
+        hometown: profile.hometown,
+        status: 'Deleted'});
     })
     .catch((err) => {
       console.log('DELETE ERROR: ', err);
