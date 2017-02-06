@@ -76,7 +76,8 @@ router.get('/show/:id', (req, res) => {
         photoArray.push(photo);
       });
 
-      res.render('show-photos', {userName: userName,
+      res.render('show-photos', {userId: userId,
+                                userName: userName,
                                 photoArray: photoArray});
     });
 });

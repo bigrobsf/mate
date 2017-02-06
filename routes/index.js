@@ -39,7 +39,7 @@ router.get('/', function(req, res) {
         let lat1 = 0;
         let lon1 = 0;
 
-        if(locs) {
+        if(locs.length) {
           loc = locs[0];
           lat1 = loc.lat;
           lon1 = loc.lon;

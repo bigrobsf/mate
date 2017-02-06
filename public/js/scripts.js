@@ -13,7 +13,7 @@ $(document).ready(() => {
   });
 
   // code to display and fade out splash screen
-  let displayedSplash = localStorage.getItem('displayedSplash');
+  let displayedSplash = sessionStorage.getItem('displayedSplash');
 
   if (!displayedSplash) {
     $.fn.center = function () {
@@ -35,16 +35,16 @@ $(document).ready(() => {
     setTimeout(function(){
       $('#overlay').fadeOut();
 
-      localStorage.setItem('displayedSplash', 'true');
+      sessionStorage.setItem('displayedSplash', 'true');
     }, 2000);
   }
 
-  // removes flag from localStorage to enable the splash screen
-  let enableSplashElement = document.getElementById('clear-splash');
-  enableSplashElement.addEventListener('mousedown', enableSplash);
-
-  function enableSplash() {
-    localStorage.removeItem('displayedSplash');
-    console.log('Splash flag cleared.');
-  }
+  // // removes flag from localStorage to enable the splash screen
+  // let enableSplashElement = document.getElementById('clear-splash');
+  // enableSplashElement.addEventListener('mousedown', enableSplash);
+  //
+  // function enableSplash() {
+  //   localStorage.removeItem('displayedSplash');
+  //   console.log('Splash flag cleared.');
+  // }
 });

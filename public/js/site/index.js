@@ -6,7 +6,5 @@
 'use strict';
 
 $(document).ready(() => {
-  let url = window.location.href;
-
   locationRequest(); // getlocation.js
 });
