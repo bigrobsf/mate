@@ -20,13 +20,21 @@
         <a href="/profiles/show/<%= userId%>"><h4 class="photo-page-link"><%= userName%></h4></a>
         <h5 class="error-msg bold"><%= msg%></h5>
         <a href="/photos/show/<%= userId%>"><img src="<%= imagePath%>" class="profile-img" /></a>
+        <h5><%= caption%></h5>
+
         <% if (activeUser === userId) { %>
-          <a href="/photos/update/<%= photoId%>">
+          <form method="GET" action="/photos/update/<%= photoId%>">
+            <div class="row center">
+            </div>
+
+            <div class="row center">
+              <button id="edit-photo-btn" class="submit btn waves-effect waves-light" type="submit" name="action">Edit
+                <i class="material-icons right">mode_edit</i>
+              </button>
+            </div>
+          </form>
         <% } %>
-          <h5><%= caption%></h5>
-        <% if (activeUser === userId) { %>
-          </a>
-        <% } %>
+
       </div>
     </div>
   </main>

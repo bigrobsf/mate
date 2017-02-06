@@ -55,20 +55,21 @@
 
           <div class="col m2">  <!-- middle column -->
           </div>
-
           <div class="col s12 m5">  <!-- right column -->
-            <h4 class="center">Delete Photo</h4>
-            <form method="POST" action="/photos/<%= photoId%>?_method=DELETE">
-              <div class="row center">
-                <input type="hidden" name="_method" value="delete">
-              </div>
+            <% if (profileFlag === false) { %>
+              <h4 class="center">Delete Photo</h4>
+              <form method="POST" action="/photos/<%= photoId%>?_method=DELETE">
+                <div class="row center">
+                  <input type="hidden" name="_method" value="delete">
+                </div>
 
-              <div class="row center">
-                <button id="edit-profile-btn" class="submit btn waves-effect waves-light" type="submit" name="action">Delete
-                  <i class="material-icons right">send</i>
-                </button>
-              </div>
-            </form>
+                <div class="row center">
+                  <button id="delete-photo-btn" class="submit btn waves-effect waves-light" type="submit" name="action">Delete
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            <% } %>
           </div>
         </div>
       </div>

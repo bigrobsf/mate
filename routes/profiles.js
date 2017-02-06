@@ -214,7 +214,7 @@ router.put('/', (req, res) => {
     .then((row) => {
 
       const profile = camelizeKeys(row[0]);
-      let formattedDate = formateDate(profile.birthdate);
+      let formattedDate = formatDate(profile.birthdate);
 
       delete profile.createdAt;
       delete profile.updatedAt;
@@ -307,7 +307,7 @@ router.delete('/', (req, res, next) => {
       .then(() => {
 
         const profile = camelizeKeys(deletedProfile);
-        let formattedDate = formateDate(profile.birthdate);
+        let formattedDate = formatDate(profile.birthdate);
 
         delete profile.createdAt;
         delete profile.updatedAt;
