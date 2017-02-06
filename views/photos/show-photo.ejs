@@ -19,7 +19,13 @@
       <div class="col s12 m12">
         <a href="/profiles/show/<%= userId%>"><h4><%= userName%></h4></a>
         <a href="/photos/show/<%= userId%>"><img src="<%= imagePath%>" class="profile-img" /></a>
-        <a href="/photos/update/<%= photoId%>"><h5><%= caption%></h5></a>
+        <% if (activeUser === userId) { %>
+          <a href="/photos/update/<%= photoId%>">
+        <% } %>
+          <h5><%= caption%></h5>
+        <% if (activeUser === userId) { %>
+          </a>
+        <% } %>
       </div>
     </div>
   </main>

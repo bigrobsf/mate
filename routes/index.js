@@ -23,6 +23,8 @@ router.get('/', function(req, res) {
     flag = true;
   }
 
+ let profileArray = [];
+
   knex.select('photos.user_id', 'image_path', 'lat', 'lon', 'user_name')
     .from('photos')
     .join('profiles', 'photos.user_id', 'profiles.user_id')
@@ -30,7 +32,7 @@ router.get('/', function(req, res) {
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
-      // console.log('from /index', cardProfiles);
+      console.log('from /index', cardProfiles);
 
       knex.select('lat', 'lon', 'id').from('curlocation')
       .orderBy('created_at','desc')
@@ -45,8 +47,6 @@ router.get('/', function(req, res) {
           lat1 = loc.lat;
           lon1 = loc.lon;
         }
-
-        let profileArray = [];
 
         cardProfiles.forEach((ele, i) => {
           let lat2 = cardProfiles[i].lat;
@@ -66,7 +66,7 @@ router.get('/', function(req, res) {
           profileArray.push(newCard);
         });
 
-        // console.log('from /index unsorted: ', profileArray);
+        console.log('from /index unsorted: ', profileArray);
 
         profileArray.sort((a, b) => {
           var eleA = a.distance;

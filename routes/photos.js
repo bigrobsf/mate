@@ -160,9 +160,10 @@ router.get('/show/:id', (req, res) => {
         photoArray.push(photo);
       });
 
-      res.render('show-photos', {userId: userId,
-                                userName: userName,
-                                photoArray: photoArray});
+      res.render('show-photos', {
+        userId: userId,
+        userName: userName,
+        photoArray: photoArray});
     });
 });
 
@@ -170,6 +171,13 @@ router.get('/show/:id', (req, res) => {
 // GET - show one photo
 router.get('/showone/:id', (req, res) => {
   let photoId = Number(req.params.id);
+  let activeUser = 0;
+
+  if (req.cookies['/token']) {
+    activeUser = Number(req.cookies['/token'].split('.')[0]);
+  }
+  
+  console.log('activeUser', activeUser);
 
   knex.select('user_name', 'users.id', 'image_path', 'caption')
     .from('users')
@@ -179,11 +187,13 @@ router.get('/showone/:id', (req, res) => {
       let photo = camelizeKeys(pic[0]);
       console.log('photoinfo', photo);
 
-      res.render('show-photo', {userName: photo.userName,
-                                userId: photo.id,
-                                photoId: photoId,
-                                imagePath: photo.imagePath,
-                                caption: photo.caption});
+      res.render('show-photo', {
+        userName: photo.userName,
+        userId: photo.id,
+        activeUser: activeUser,
+        photoId: photoId,
+        imagePath: photo.imagePath,
+        caption: photo.caption});
     });
 });
 
