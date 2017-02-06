@@ -20,6 +20,7 @@ router.get('/', function(req, res) {
   let userId = 0;
   let curApp = '';
   let profileArray = [];
+  let loggedInFlag = false;
 
   if (req.cookies['/token']) {
     userId = Number(req.cookies['/token'].split('.')[0]);
@@ -50,69 +51,29 @@ router.get('/', function(req, res) {
         }
 
         if (userId && curApp === 'mate') {
+          loggedInFlag = true;
           console.log('update user location: ', userId, lat1, lon1);
           knex('users').where('id', userId).update({lat: lat1})
             .then(() => {
               knex('users').where('id', userId).update({lon: lon1})
-               .then(() => {
-                 cardProfiles.forEach((ele, i) => {
-                   let lat2 = cardProfiles[i].lat;
-                   let lon2 = cardProfiles[i].lon;
+                .then(() => {
 
-                   var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
-                     lat1, lon1, lat2, lon2, cardProfiles[i].userId);
+                  profileArray = createCardProfiles(cardProfiles, lat1, lon1, profileArray);
 
-                     newCard.distance = distance(lat1, lon1, lat2, lon2);
-                     console.log(newCard.distance);
-
-                     profileArray.push(newCard);
-                   });
-
-                   // console.log('from /index unsorted: ', profileArray);
-
-                   profileArray.sort((a, b) => {
-                     var eleA = a.distance;
-                     var eleB = b.distance;
-
-                     return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
-                   });
-
-                   // console.log('from /index sorted: ', profileArray);
-
-                   res.render('index', {loggedIn: true,
-                     profileArray: profileArray
-                   });
-                 });
-               });
+                  res.render('index', {
+                    loggedIn: true,
+                    profileArray: profileArray
+                  });
+                });
+              });
 
         } else {
 
-          cardProfiles.forEach((ele, i) => {
-            let lat2 = cardProfiles[i].lat;
-            let lon2 = cardProfiles[i].lon;
+          profileArray = createCardProfiles(cardProfiles, lat1, lon1, profileArray);
 
-            var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
-              lat1, lon1, lat2, lon2, cardProfiles[i].userId);
-
-            newCard.distance = distance(lat1, lon1, lat2, lon2);
-            console.log(newCard.distance);
-
-            profileArray.push(newCard);
-          });
-
-          // console.log('from /index unsorted: ', profileArray);
-
-          profileArray.sort((a, b) => {
-            var eleA = a.distance;
-            var eleB = b.distance;
-
-            return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
-          });
-
-          // console.log('from /index sorted: ', profileArray);
-
-          res.render('index', {loggedIn: false,
-                               profileArray: profileArray
+          res.render('index', {
+            loggedIn: false,
+            profileArray: profileArray
           });
         }
       });
@@ -152,5 +113,46 @@ router.get('/site/about', function(req, res) {
 router.get('/site/contact', function(req, res) {
   res.render('contact');
 });
+
+// =============================================================================
+// helper function for index route
+function createCardProfiles(cardProfiles, lat1, lon1, profileArray) {
+
+  cardProfiles.forEach((ele, i) => {
+    let lat2 = cardProfiles[i].lat;
+    let lon2 = cardProfiles[i].lon;
+
+    var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
+      lat1, lon1, lat2, lon2, cardProfiles[i].userId);
+
+      newCard.distance = distance(lat1, lon1, lat2, lon2);
+      var d = newCard.distance;
+
+      if (d < 100) newCard.distString = '< 100 feet away';
+      else if (d < 1000) newCard.distString += d + ' feet away';
+      else if (d < 5200) newCard.distString += (Math.round(d * 100 / 5280) / 100) + ' miles away';
+      else if (d >= 5200 && d <= 5400) newCard.distString = '1 mile away';
+      else if (d > 5400 && d <= 5 * 5280) newCard.distString += (Math.round(d * 10 / 5280) / 10) + ' miles away';
+      else if (d > 5 * 5280) newCard.distString += Math.round(d / 5280) + ' miles away';
+      else newCard.distString = 'unavailable';
+
+      console.log(newCard.distance);
+
+      profileArray.push(newCard);
+  });
+
+  // console.log('from /index unsorted: ', profileArray);
+
+  profileArray.sort((a, b) => {
+    var eleA = a.distance;
+    var eleB = b.distance;
+
+    return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
+  });
+
+  // console.log('from /index sorted: ', profileArray);
+
+  return profileArray;
+}
 
 module.exports = router;

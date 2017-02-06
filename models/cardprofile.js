@@ -15,8 +15,8 @@ var CardProfile = class {
     this.lon1 = lon1;
     this.lat2 = lat2;
     this.lon2 = lon2;
-    this.distance = "";
-    this.distNum = 0;
+    this.distance = 0;
+    this.distString = '';
     this.userId = userId; // userId of selected profile
   }
 };
