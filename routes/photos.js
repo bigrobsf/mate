@@ -15,7 +15,7 @@ const router = express.Router();
 // show input form to upload photo
 router.get('/new', (req, res) => {
   console.log('COOKIE: ', req.cookies);
-  if (req.cookies['/token']) {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     res.render('upload');
   } else {
     res.redirect('../token/login');
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
 router.get('/update/:id', (req, res) => {
   let photoId = Number(req.params.id);
 
-  if (req.cookies['/token']) {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let userId = Number(req.cookies['/token'].split('.')[0]);
 
     knex.select('id', 'user_id', 'profile_flag', 'image_path', 'caption')
@@ -176,7 +176,7 @@ router.get('/showone/:id', (req, res) => {
   if (req.cookies['/token']) {
     activeUser = Number(req.cookies['/token'].split('.')[0]);
   }
-  
+
   console.log('activeUser', activeUser);
 
   knex.select('user_name', 'users.id', 'image_path', 'caption')

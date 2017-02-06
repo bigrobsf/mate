@@ -37,7 +37,7 @@
                   <span class="card-title"><%= profile.title%></span>
                 </div>
                 <div class="card-content">
-                  <p><%= profile.distance%> miles away</p>
+                  <p><%= profile.distance%></p>
                 </div>
                 <div class="card-action">
                   <a href="/photos/show/<%= profile.userId%>">Photos</a>
@@ -58,7 +58,7 @@
     <%- include("../partials/footer") %>
 
     <script type="text/javascript" src="../js/scripts.js"></script>
-    <script type="text/javascript" src="../js/site/getlocation.js"></script>
+    <script type="text/javascript" src="../js/site/get-cur-user-location.js"></script>
     <script type="text/javascript" src="../js/site/index.js"></script>
   </body>
 </html>

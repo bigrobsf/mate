@@ -15,7 +15,8 @@ var CardProfile = class {
     this.lon1 = lon1;
     this.lat2 = lat2;
     this.lon2 = lon2;
-    this.distance = 0;
+    this.distance = "";
+    this.distNum = 0;
     this.userId = userId; // userId of selected profile
   }
 };
@@ -40,15 +41,12 @@ var distance = function(lat1, lon1, lat2, lon2) {
 
 
   const R = 6371000; // Earth's radius in meters
-  let dist = '';
-
-  console.log('in distance function', lat1, lon1, lat2, lon2);
+  let dist = 0;
 
   lat1 = Number(lat1);
   lat2 = Number(lat2);
   lon1 = Number(lon1);
   lon2 = Number(lon2);
-
 
   let latRad1 = lat1.toRadians();
   let latRad2 = lat2.toRadians();
@@ -61,15 +59,15 @@ var distance = function(lat1, lon1, lat2, lon2) {
 
   let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  let d = R * c * 3.28; // distance apart in feet
+  dist = R * c * 3.28; // distance in feet
 
-  if (d < 100) dist = '< 100 feet away';
-  else if (d < 1000) dist += d + ' feet away';
-  else if (d < 5200) dist += (Math.round(d * 100 / 5280) / 100) + ' miles away';
-  else if (d >= 5200 && d <= 5400) dist = '1 mile away';
-  else if (d > 5400 && d <= 5 * 5280) dist += (Math.round(d * 10 / 5280) / 10) + ' miles away';
-  else if (d > 5 * 5280) dist += Math.round(d / 5280) + ' miles away';
-  else dist = 'unavailable';
+  // if (d < 100) dist = '< 100 feet away';
+  // else if (d < 1000) dist += d + ' feet away';
+  // else if (d < 5200) dist += (Math.round(d * 100 / 5280) / 100) + ' miles away';
+  // else if (d >= 5200 && d <= 5400) dist = '1 mile away';
+  // else if (d > 5400 && d <= 5 * 5280) dist += (Math.round(d * 10 / 5280) / 10) + ' miles away';
+  // else if (d > 5 * 5280) dist += Math.round(d / 5280) + ' miles away';
+  // else dist = 'unavailable';
 
   return dist;
 };

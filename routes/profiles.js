@@ -37,7 +37,7 @@ function formatDate(rawDate) {
 // show input form for new profile
 router.get('/new', (req, res) => {
   console.log('COOKIE: ', req.cookies);
-  if (req.cookies['/token']) {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let userId = Number(req.cookies['/token'].split('.')[0]);
     console.log(userId);
     // check to see if profile already exists or not
@@ -116,7 +116,7 @@ router.post('/', (req, res) => {
 // show profile update page for current user
 router.get('/update', (req, res) => {
 
-  if (req.cookies['/token']) {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let userId = Number(req.cookies['/token'].split('.')[0]);
 
     knex.select('user_name', 'user_id', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
@@ -287,50 +287,52 @@ router.get('/show/:id', (req, res) => {
 // =============================================================================
 // DELETE profile
 router.delete('/', (req, res, next) => {
-  let userId = Number(req.cookies['/token'].split('.')[0]);
-  let deletedProfile;
+  if (req.cookies['/token'].split('.')[1] === 'mate') {
+    let userId = Number(req.cookies['/token'].split('.')[0]);
+    let deletedProfile;
 
-  knex.select('*')
-    .from('profiles')
-    .where('user_id', userId).first()
-    .then((profile) => {
-      if(profile) {
-        deletedProfile = profile;
+    knex.select('*')
+      .from('profiles')
+      .where('user_id', userId).first()
+      .then((profile) => {
+        if(profile) {
+          deletedProfile = profile;
 
-        return knex('profiles')
-          .del().where('user_id', userId);
-      } else {
-        throw new Error('Profile Not Found');
-      }
-    })
-    .then(() => {
+          return knex('profiles')
+            .del().where('user_id', userId);
+        } else {
+          throw new Error('Profile Not Found');
+        }
+      })
+      .then(() => {
 
-      const profile = camelizeKeys(deletedProfile);
-      let formattedDate = formateDate(profile.birthdate);
+        const profile = camelizeKeys(deletedProfile);
+        let formattedDate = formateDate(profile.birthdate);
 
-      delete profile.createdAt;
-      delete profile.updatedAt;
+        delete profile.createdAt;
+        delete profile.updatedAt;
 
-      res.render('confirm-profile', {
-        iAm: profile.iAm,
-        iLike: profile.iLike,
-        birthdate: formattedDate,
-        height: profile.height,
-        weight: profile.weight,
-        bodyHair: profile.bodyHair,
-        ethnicity: profile.ethnicity,
-        overview: profile.overview,
-        lookingFor: profile.lookingFor,
-        interests: profile.interests,
-        positions: profile.positions,
-        safety: profile.safety,
-        hometown: profile.hometown,
-        status: 'Deleted'});
-    })
-    .catch((err) => {
-      console.log('DELETE ERROR: ', err);
-      res.status(400).send(err);
-    });
+        res.render('confirm-profile', {
+          iAm: profile.iAm,
+          iLike: profile.iLike,
+          birthdate: formattedDate,
+          height: profile.height,
+          weight: profile.weight,
+          bodyHair: profile.bodyHair,
+          ethnicity: profile.ethnicity,
+          overview: profile.overview,
+          lookingFor: profile.lookingFor,
+          interests: profile.interests,
+          positions: profile.positions,
+          safety: profile.safety,
+          hometown: profile.hometown,
+          status: 'Deleted'});
+      })
+      .catch((err) => {
+        console.log('DELETE ERROR: ', err);
+        res.status(400).send(err);
+      });
+  } else res.redirect('../');
 });
 
 module.exports = router;

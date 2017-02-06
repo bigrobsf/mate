@@ -18,10 +18,12 @@ const router = express.Router();
 // show home page
 router.get('/', function(req, res) {
   let userId = 0;
+  let curApp = '';
   let profileArray = [];
 
   if (req.cookies['/token']) {
     userId = Number(req.cookies['/token'].split('.')[0]);
+    curApp = req.cookies['/token'].split('.')[1];
   }
 
   knex.select('photos.user_id', 'image_path', 'lat', 'lon', 'user_name')
@@ -47,7 +49,7 @@ router.get('/', function(req, res) {
           lon1 = loc.lon;
         }
 
-        if (userId) {
+        if (userId && curApp === 'mate') {
           console.log('update user location: ', userId, lat1, lon1);
           knex('users').where('id', userId).update({lat: lat1})
             .then(() => {
@@ -71,7 +73,7 @@ router.get('/', function(req, res) {
                    profileArray.sort((a, b) => {
                      var eleA = a.distance;
                      var eleB = b.distance;
-                     
+
                      return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
                    });
 

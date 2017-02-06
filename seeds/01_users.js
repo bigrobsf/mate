@@ -16,8 +16,8 @@ var users = [{
   user_name: 'tiger',
   email: 'tiger@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
-  lat: 37.7841336,
-  lon: -122.3957437,
+  lat: 37.7582657,
+  lon: -122.4014102,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -38,8 +38,8 @@ var users = [{
   user_name: 'mitch',
   email: 'mitch@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
-  lat: 37.7576763,
-  lon: -122.5076397,
+  lat: 37.755144,
+  lon: -122.424906,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {

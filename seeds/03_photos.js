@@ -3,7 +3,7 @@ var photos = [{
   user_id: 1,
   profile_flag: true,
   image_path: '/images/bigrobsf.jpg',
-  caption: 'Where I spend most of my time. literally.',
+  caption: 'Where I spend most of my time. Literally.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {

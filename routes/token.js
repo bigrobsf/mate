@@ -56,7 +56,7 @@ router.post('/', (req, res, next) => {
       delete user.createdAt;
       delete user.updatedAt;
 
-      res.cookie('/token', user.id + '.cookie.monster.rawr', { path: '/', httpOnly: true });
+      res.cookie('/token', user.id + '.mate.cookie.rawr', { path: '/', httpOnly: true });
 
       res.redirect('../'); // get index
     })

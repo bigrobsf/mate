@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
 // show account update page for current user
 router.get('/update', (req, res) => {
 
-  if (req.cookies['/token']) {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let userId = Number(req.cookies['/token'].split('.')[0]);
 
     knex.select('id', 'first_name', 'last_name', 'user_name', 'email')
@@ -143,45 +143,48 @@ router.put('/', (req, res) => {
 // =============================================================================
 // DELETE user record
 router.delete('/', (req, res) => {
-  let userId = Number(req.cookies['/token'].split('.')[0]);
-  let deletedUser;
+  if (req.cookies['/token'].split('.')[1] === 'mate') {
+    let userId = Number(req.cookies['/token'].split('.')[0]);
+    let deletedUser;
 
-  knex('users')
-    .where('id', userId).first()
-    .then((user) => {
-      console.log('DELETE ROUTE: ', user);
-      if (user) {
-        res.clearCookie('/token', { path: '/', httpOnly: true });
+    knex('users')
+      .where('id', userId).first()
+      .then((user) => {
+        console.log('DELETE ROUTE: ', user);
+        if (user) {
+          res.clearCookie('/token', { path: '/', httpOnly: true });
 
-        deletedUser = user;
+          deletedUser = user;
 
-        return knex('users')
-          .del().where('id', userId);
-      } else {
-        throw new Error('User Not Found');
-      }
-    })
-    .then(() => {
+          return knex('users')
+            .del().where('id', userId);
+        } else {
+          throw new Error('User Not Found');
+        }
+      })
+      .then(() => {
 
-      const user = camelizeKeys(deletedUser);
+        const user = camelizeKeys(deletedUser);
 
-      delete user.createdAt;
-      delete user.updatedAt;
-      delete user.hashedPassword;
+        delete user.createdAt;
+        delete user.updatedAt;
+        delete user.hashedPassword;
 
-      res.render('confirm-user', {
-        firstName: user.firstName || '',
-        lastName: user.lastName || '',
-        userName: user.userName || '',
-        email: user.email || '',
-        pwStatus: 'Deleted',
-        status: 'Deleted'
+        res.render('confirm-user', {
+          firstName: user.firstName || '',
+          lastName: user.lastName || '',
+          userName: user.userName || '',
+          email: user.email || '',
+          pwStatus: 'Deleted',
+          status: 'Deleted'
+        });
+      })
+      .catch((err) => {
+        console.log('PUT ERROR: ', err);
+        res.status(400).send(err);
       });
-    })
-    .catch((err) => {
-      console.log('PUT ERROR: ', err);
-      res.status(400).send(err);
-    });
+  } else res.redirect('../');
 });
+
 
 module.exports = router;
