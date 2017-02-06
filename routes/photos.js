@@ -65,15 +65,20 @@ router.get('/update/:id', (req, res) => {
       .where('photos.id', photoId)
       .then((pic) => {
         let photo = camelizeKeys(pic[0]);
-
-        res.render('edit-photo', {
-          userId: photo.userId,
-          photoId: photo.id,
-          imagePath: photo.imagePath,
-          caption: photo.caption,
-          profileFlag: photo.profileFlag,
-          status: 'Updated'
-        });
+        console.log('update photo for other user returns: ', photo);
+        if (photo) {
+          res.render('edit-photo', {
+            userId: photo.userId,
+            photoId: photo.id,
+            imagePath: photo.imagePath,
+            caption: photo.caption,
+            profileFlag: photo.profileFlag,
+            status: 'Updated'
+          });
+        } else {
+          console.log('You can only update your own photos.');
+          res.redirect('/photos/showone/' + photoId);
+        }
       });
   }
 });
@@ -115,7 +120,7 @@ router.put('/', (req, res) => {
           .where('id', photoId);
 
       } else {
-        alert('Photo Not Found');
+        console.log('Photo Not Found');
       }
     })
     .then((row) => {
@@ -123,6 +128,7 @@ router.put('/', (req, res) => {
       const photo = camelizeKeys(row[0]);
 
       res.render('confirm-photo', {
+        userId: userId,
         imagePath: photo.imagePath,
         caption: photo.caption,
         status: 'Updated'});
@@ -201,7 +207,7 @@ router.delete('/:id', (req, res, next) => {
         return knex('photos')
           .del().where('id', photoId);
       } else {
-        alert('You cannot delete your profile photo.');
+        console.log('You cannot delete your profile photo.');
       }
     })
     .then(() => {
