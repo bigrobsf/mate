@@ -18,7 +18,7 @@ function locationRequest() {
   };
 
   // Actually start the AJAX request
-  $.ajax(requestObject);
+  return $.ajax(requestObject);
 }
 
 //==============================================================================

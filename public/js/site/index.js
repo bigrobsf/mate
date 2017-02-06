@@ -6,5 +6,9 @@
 'use strict';
 
 $(document).ready(() => {
-  locationRequest(); // getlocation.js
+  // locationRequest().then(() => {
+  //   // get everyone's location then build profile cards
+  // })
+  // ; // getlocation.js
+  locationRequest();
 });

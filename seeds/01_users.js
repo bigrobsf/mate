@@ -14,6 +14,8 @@ var users = [{
   user_name: 'tiger',
   email: 'tiger@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 37.7841336,
+  lon: -122.3957437,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -23,6 +25,8 @@ var users = [{
   user_name: 'misteru',
   email: 'mike@misteru.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 33.7715534,
+  lon: -116.7040306,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -32,6 +36,8 @@ var users = [{
   user_name: 'mitch',
   email: 'mitch@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 37.7576763,
+  lon: -122.5076397,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -41,6 +47,8 @@ var users = [{
   user_name: 'mixmutt',
   email: 'derek@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 47.6147628,
+  lon: -122.475988,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -50,6 +58,8 @@ var users = [{
   user_name: 'theamir',
   email: 'amir@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 29.8159955,
+  lon: -95.9617288,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -59,6 +69,8 @@ var users = [{
   user_name: 'dave',
   email: 'dave@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 33.7676338,
+  lon: -84.5606876,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -68,6 +80,8 @@ var users = [{
   user_name: 'pilotoso',
   email: 'rob@gmail.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: -33.4533477,
+  lon: -70.7492334,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }];

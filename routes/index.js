@@ -55,13 +55,8 @@ router.get('/', function(req, res) {
           var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
             lat1, lon1, lat2, lon2, cardProfiles[i].userId);
 
-          // delete when distance function fixed
-          if (cardProfiles[i].userId !== 1) {
-            newCard.distance = Math.floor(Math.random() * 2000);
-          }
-
-          // newCard.distance = distance(lat1, lon1, lat2, lon2);
-          // console.log(newCard.distance);
+          newCard.distance = distance(lat1, lon1, lat2, lon2);
+          console.log(newCard.distance);
 
           profileArray.push(newCard);
         });

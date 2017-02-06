@@ -32,8 +32,6 @@ var profiles = [{
   positions: 'versatile',
   safety: 'condoms',
   hometown: 'San Francisco',
-  lat: 37.7841336,
-  lon: -122.3957437,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -52,8 +50,6 @@ var profiles = [{
   positions: 'top',
   safety: 'ask me',
   hometown: 'Palm Springs',
-  lat: 33.7715534,
-  lon: -116.7040306,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -72,8 +68,6 @@ var profiles = [{
   positions: 'versatile',
   safety: 'ask me',
   hometown: 'San Francisco',
-  lat: 37.7576763,
-  lon: -122.5076397,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -92,8 +86,6 @@ var profiles = [{
   positions: 'versatile',
   safety: 'PrEP',
   hometown: 'Seattle',
-  lat: 47.6147628,
-  lon: -122.475988,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -112,8 +104,6 @@ var profiles = [{
   positions: 'top',
   safety: 'ask me',
   hometown: 'Houston',
-  lat: 29.8159955,
-  lon: -95.9617288,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -132,8 +122,6 @@ var profiles = [{
   positions: 'top',
   safety: 'ask me',
   hometown: 'Atlanta',
-  lat: 33.7676338,
-  lon: -84.5606876,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -152,8 +140,6 @@ var profiles = [{
   positions: 'bottom',
   safety: 'ask me',
   hometown: 'Santiago',
-  lat: -33.4533477,
-  lon: -70.7492334,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }];

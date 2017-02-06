@@ -44,6 +44,12 @@ var distance = function(lat1, lon1, lat2, lon2) {
 
   console.log('in distance function', lat1, lon1, lat2, lon2);
 
+  lat1 = Number(lat1);
+  lat2 = Number(lat2);
+  lon1 = Number(lon1);
+  lon2 = Number(lon2);
+
+
   let latRad1 = lat1.toRadians();
   let latRad2 = lat2.toRadians();
   let deltaLat = (lat2 - lat1).toRadians();
@@ -67,6 +73,8 @@ var distance = function(lat1, lon1, lat2, lon2) {
 
   return dist;
 };
+
+// console.log(distance(40.7486, -73.9864, 30.1234, -120));
 
 module.exports = {
   CardProfile: CardProfile,

@@ -68,11 +68,12 @@ router.get('/update', (req, res) => {
       user = camelizeKeys(user[0]);
 
       if (user) {
-        res.render('edit-user', {firstName: user.firstName,
-                                  lastName: user.lastName,
-                                  userName: user.userName,
-                                     email: user.email
-                                });
+        res.render('edit-user', {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          userName: user.userName,
+             email: user.email
+        });
       }
     });
 
@@ -124,13 +125,14 @@ router.put('/', (req, res) => {
       delete user.updatedAt;
       delete user.hashedPassword;
 
-      res.render('confirm-user', {firstName: user.firstName || '',
-                                   lastName: user.lastName || '',
-                                   userName: user.userName || '',
-                                      email: user.email || '',
-                                   pwStatus: passwordUpdated ? 'Updated' : 'Unchanged',
-                                     status: 'Updated'
-                                  });
+      res.render('confirm-user', {
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        userName: user.userName || '',
+        email: user.email || '',
+        pwStatus: passwordUpdated ? 'Updated' : 'Unchanged',
+        status: 'Updated'
+      });
     })
     .catch((err) => {
       console.log('PUT ERROR: ', err);
@@ -167,13 +169,14 @@ router.delete('/', (req, res) => {
       delete user.updatedAt;
       delete user.hashedPassword;
 
-      res.render('confirm-user', {firstName: user.firstName || '',
-                                   lastName: user.lastName || '',
-                                   userName: user.userName || '',
-                                      email: user.email || '',
-                                   pwStatus: 'Deleted',
-                                     status: 'Deleted'
-                                  });
+      res.render('confirm-user', {
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        userName: user.userName || '',
+        email: user.email || '',
+        pwStatus: 'Deleted',
+        status: 'Deleted'
+      });
     })
     .catch((err) => {
       console.log('PUT ERROR: ', err);

@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.text('user_name').defaultTo('').notNullable();
     table.text('email').unique().notNullable();
     table.specificType('hashed_password', 'char(60)').notNullable();
+    table.decimal('lat').defaultTo(0).notNullable();
+    table.decimal('lon').defaultTo(0).notNullable();
     table.timestamps(true, true);
   });
 };

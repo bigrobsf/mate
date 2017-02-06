@@ -58,7 +58,7 @@
 
           <div class="col s12 m5">  <!-- right column -->
             <h4 class="center">Delete Photo</h4>
-            <form method="POST" action="/photos?_method=DELETE">
+            <form method="POST" action="/photos/<%= photoId%>?_method=DELETE">
               <div class="row center">
                 <input type="hidden" name="_method" value="delete">
               </div>

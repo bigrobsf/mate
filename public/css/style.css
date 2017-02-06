@@ -166,6 +166,10 @@ a.disabled {
   cursor: default;
 }
 
+h4.photo-page-link:hover {
+  color: #d50000;
+}
+
 .main-nav {
   margin-bottom: 20px;
 }
@@ -182,6 +186,10 @@ img.profile-img {
   box-shadow: 0 28px 16px -26px #000;
   -webkit-box-shadow: 0 28px 16px -26px #000;
   -moz-box-shadow: 0 28px 16px -26px #000;
+}
+
+a img.profile-img:hover {
+  border: 1px solid #d50000;
 }
 
 /* =============================================================================
