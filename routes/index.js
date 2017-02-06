@@ -17,13 +17,12 @@ const router = express.Router();
 // =============================================================================
 // show home page
 router.get('/', function(req, res) {
-  let loggedInFlag = false;
+  let userId = 0;
+  let profileArray = [];
 
   if (req.cookies['/token']) {
-    loggedInFlag = true;
+    userId = Number(req.cookies['/token'].split('.')[0]);
   }
-
- let profileArray = [];
 
   knex.select('photos.user_id', 'image_path', 'lat', 'lon', 'user_name')
     .from('photos')
@@ -42,39 +41,78 @@ router.get('/', function(req, res) {
         let lat1 = 0;
         let lon1 = 0;
 
-        if(locs.length) {
+        if (locs.length) {
           loc = locs[0];
           lat1 = loc.lat;
           lon1 = loc.lon;
         }
 
-        cardProfiles.forEach((ele, i) => {
-          let lat2 = cardProfiles[i].lat;
-          let lon2 = cardProfiles[i].lon;
+        if (userId) {
+          console.log('update user location: ', userId, lat1, lon1);
+          knex('users').where('id', userId).update({lat: lat1})
+            .then(() => {
+              knex('users').where('id', userId).update({lon: lon1})
+               .then(() => {
+                 cardProfiles.forEach((ele, i) => {
+                   let lat2 = cardProfiles[i].lat;
+                   let lon2 = cardProfiles[i].lon;
 
-          var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
-            lat1, lon1, lat2, lon2, cardProfiles[i].userId);
+                   var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
+                     lat1, lon1, lat2, lon2, cardProfiles[i].userId);
 
-          newCard.distance = distance(lat1, lon1, lat2, lon2);
-          console.log(newCard.distance);
+                     newCard.distance = distance(lat1, lon1, lat2, lon2);
+                     console.log(newCard.distance);
 
-          profileArray.push(newCard);
-        });
+                     profileArray.push(newCard);
+                   });
 
-        // console.log('from /index unsorted: ', profileArray);
+                   // console.log('from /index unsorted: ', profileArray);
 
-        profileArray.sort((a, b) => {
-          var eleA = a.distance;
-          var eleB = b.distance;
+                   profileArray.sort((a, b) => {
+                     var eleA = a.distance;
+                     var eleB = b.distance;
+                     
+                     return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
+                   });
 
-          return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
-        });
+                   // console.log('from /index sorted: ', profileArray);
 
-        // console.log('from /index sorted: ', profileArray);
+                   res.render('index', {loggedIn: true,
+                     profileArray: profileArray
+                   });
+                 });
+               });
 
-        res.render('index', {loggedIn: loggedInFlag,
-                             profileArray: profileArray
-        });
+        } else {
+
+          cardProfiles.forEach((ele, i) => {
+            let lat2 = cardProfiles[i].lat;
+            let lon2 = cardProfiles[i].lon;
+
+            var newCard = new CardProfile(cardProfiles[i].imagePath, cardProfiles[i].userName,
+              lat1, lon1, lat2, lon2, cardProfiles[i].userId);
+
+            newCard.distance = distance(lat1, lon1, lat2, lon2);
+            console.log(newCard.distance);
+
+            profileArray.push(newCard);
+          });
+
+          // console.log('from /index unsorted: ', profileArray);
+
+          profileArray.sort((a, b) => {
+            var eleA = a.distance;
+            var eleB = b.distance;
+
+            return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
+          });
+
+          // console.log('from /index sorted: ', profileArray);
+
+          res.render('index', {loggedIn: false,
+                               profileArray: profileArray
+          });
+        }
       });
     });
 });

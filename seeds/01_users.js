@@ -5,6 +5,8 @@ var users = [{
   user_name: 'bigrobsf',
   email: 'rjconner@mac.com',
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 37.7841336,
+  lon: -122.3957437,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
