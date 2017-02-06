@@ -243,7 +243,7 @@ router.put('/', (req, res) => {
 router.get('/show/:id', (req, res) => {
   let userId = Number(req.params.id);
 
-  knex.select('user_name', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
+  knex.select('users.id', 'user_name', 'i_am', 'i_like', 'birthdate', 'height', 'weight',
                 'body_hair', 'ethnicity', 'overview', 'looking_for', 'interests',
                 'positions', 'safety', 'hometown', 'profile_flag', 'image_path',
                 'caption')
@@ -258,6 +258,7 @@ router.get('/show/:id', (req, res) => {
 
       if (profile) {
         res.render('show-profile', {
+          userId: profile.id,
           userName: profile.userName,
           iAm: profile.iAm,
           iLike: profile.iLike,

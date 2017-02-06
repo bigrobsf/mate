@@ -13,7 +13,7 @@ const router = express.Router();
 
 // =============================================================================
 // show input form to upload photo
-router.get('/new', function(req, res) {
+router.get('/new', (req, res) => {
   console.log('COOKIE: ', req.cookies);
   if (req.cookies['/token']) {
     res.render('upload');
@@ -56,22 +56,21 @@ router.post('/', (req, res) => {
 
 
 // =============================================================================
-// GET - show photos
+// GET - show photos for selected user
 router.get('/show/:id', (req, res) => {
   let userId = Number(req.params.id);
 
-  knex.select('user_name', 'image_path', 'caption')
+  knex.select('user_name', 'photos.id', 'image_path', 'caption')
     .from('users')
     .join('photos', 'users.id', 'photos.user_id')
     .where('users.id', userId)
     .then((pics) => {
       let photos = camelizeKeys(pics);
-      console.log('photoinfo', photos);
       let userName = photos[0].userName;
       let photoArray = [];
 
       photos.forEach((ele, i) => {
-        var photo = new PhotoInfo(photos[i].imagePath,
+        var photo = new PhotoInfo(photos[i].id, photos[i].imagePath,
           photos[i].caption);
 
         photoArray.push(photo);
@@ -79,6 +78,26 @@ router.get('/show/:id', (req, res) => {
 
       res.render('show-photos', {userName: userName,
                                 photoArray: photoArray});
+    });
+});
+
+// =============================================================================
+// GET - show one photo
+router.get('/showone/:id', (req, res) => {
+  let photoId = Number(req.params.id);
+
+  knex.select('user_name', 'photos.id', 'users.id', 'image_path', 'caption')
+    .from('users')
+    .join('photos', 'users.id', 'photos.user_id')
+    .where('photos.id', photoId)
+    .then((pic) => {
+      let photo = camelizeKeys(pic[0]);
+      console.log('photoinfo', photo);
+
+      res.render('show-photo', {userName: photo.userName,
+                                userId: photo.id,
+                                imagePath: photo.imagePath,
+                                caption: photo.caption});
     });
 });
 

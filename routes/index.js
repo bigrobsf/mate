@@ -74,7 +74,7 @@ router.get('/', function(req, res) {
           return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
         });
 
-        console.log('from /index sorted: ', profileArray);
+        // console.log('from /index sorted: ', profileArray);
 
         res.render('index', {loggedIn: flag,
                              profileArray: profileArray

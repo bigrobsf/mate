@@ -26,7 +26,7 @@ var photos = [{
   id: 4,
   user_id: 1,
   profile_flag: false,
-  image_path: '/images/facing_forward.jpg',
+  image_path: '/images/facing-forward.jpg',
   caption: 'Yeah, I like cats.',
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
