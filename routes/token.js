@@ -72,7 +72,7 @@ router.post('/', (req, res, next) => {
 // DELETE token
 router.get('/delete', (req, res) => {
   res.clearCookie('/token', { path: '/', httpOnly: true });
-  res.redirect('../token/login');
+  res.redirect('../'); // get index
 });
 
 module.exports = router;

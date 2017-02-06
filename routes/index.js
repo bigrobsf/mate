@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
-      console.log('from /index', cardProfiles);
+      // console.log('from /index', cardProfiles);
 
       knex.select('lat', 'lon', 'id').from('curlocation')
       .orderBy('created_at','desc')
@@ -66,7 +66,7 @@ router.get('/', function(req, res) {
           profileArray.push(newCard);
         });
 
-        console.log('from /index unsorted: ', profileArray);
+        // console.log('from /index unsorted: ', profileArray);
 
         profileArray.sort((a, b) => {
           var eleA = a.distance;

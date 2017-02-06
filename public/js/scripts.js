@@ -7,7 +7,7 @@
 
 $(document).ready(() => {
   $('select').material_select();
-  $('.carousel').carousel();
+  $('.carousel').carousel({nowrap: false});
   $('.button-collapse').sideNav({
     menuWidth: 200
   });

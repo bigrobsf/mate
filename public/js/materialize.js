@@ -7583,6 +7583,8 @@ Picker.extend( 'pickadate', DatePicker )
 
           } else if (!options.full_width) {
             var clickedIndex = $(e.target).closest('.carousel-item').index();
+            // https://github.com/Dogfalo/materialize/issues/3859
+            // var diff = Math.abs(center % count < 0?center % count + count:center%count) - clickedIndex;
             var diff = (center % count) - clickedIndex;
 
             // Disable clicks if carousel was shifted by click
