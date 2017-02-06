@@ -17,10 +17,10 @@ const router = express.Router();
 // =============================================================================
 // show home page
 router.get('/', function(req, res) {
-  let flag = false;
+  let loggedInFlag = false;
 
   if (req.cookies['/token']) {
-    flag = true;
+    loggedInFlag = true;
   }
 
  let profileArray = [];
@@ -77,7 +77,7 @@ router.get('/', function(req, res) {
 
         // console.log('from /index sorted: ', profileArray);
 
-        res.render('index', {loggedIn: flag,
+        res.render('index', {loggedIn: loggedInFlag,
                              profileArray: profileArray
         });
       });

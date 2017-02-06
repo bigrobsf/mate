@@ -58,7 +58,7 @@ router.post('/', (req, res, next) => {
 
       res.cookie('/token', user.id + '.cookie.monster.rawr', { path: '/', httpOnly: true });
 
-      res.render('index', { loggedIn: true });
+      res.redirect('../'); // get index
     })
     .catch(bcrypt.MISMATCH_ERROR, () => {
       res.redirect('/token/login' + '?login=invalid');
