@@ -188,6 +188,7 @@ router.get('/showone/:id', (req, res) => {
       console.log('photoinfo', photo);
 
       res.render('show-photo', {
+        msg : '',
         userName: photo.userName,
         userId: photo.id,
         activeUser: activeUser,
@@ -204,34 +205,39 @@ router.delete('/:id', (req, res, next) => {
   let photoId = Number(req.params.id);
   let deletedPhoto;
 
-  knex.select('user_name', 'caption', 'profile_flag')
+  knex.select('user_name', 'caption', 'profile_flag', 'image_path')
     .from('photos')
     .join('users', 'photos.user_id', 'users.id')
     .where('user_id', userId)
     .where('photos.id', photoId)
     .then((pic) => {
       console.log('pic to delete: ', pic);
-      if(!pic.profile_flag) {
-        deletedPhoto = pic;
+      let photo = camelizeKeys(pic[0]);
+      console.log('pic to delete: ', photo.profileFlag);
+      if (photo.profileFlag === false) {
 
         return knex('photos')
-          .del().where('id', photoId);
+          .del().where('id', photoId)
+          .then(() => {
+
+            res.render('confirm-photo', {
+              caption: photo.caption,
+              imagePath: '/images/deleted.jpg',
+              status: 'Deleted'});
+            });
+
       } else {
-        console.log('You cannot delete your profile photo.');
+        let errorMsg = 'You cannot delete your profile photo.';
+        res.render('show-photo', {
+          msg: errorMsg,
+          userName: photo.userName,
+          imagePath: photo.imagePath,
+          photoId: photoId,
+          caption: photo.caption,
+          activeUser: userId,
+          userId: userId
+        });
       }
-    })
-    .then(() => {
-
-      const photo = camelizeKeys(deletedPhoto);
-
-      res.render('confirm-photo', {
-        caption: photo.caption,
-        imagePath: '/images/deleted.jpg',
-        status: 'Deleted'});
-    })
-    .catch((err) => {
-      console.log('DELETE ERROR: ', err);
-      res.status(400).send(err);
     });
 });
 
