@@ -20,17 +20,9 @@
         <h4><%= userName%> - Update Profile</h4>
         <h5><span class="bold">I am:</span> <%= iAm%></h5>
         <h5><span class="bold">I like:</span> <%= iLike%></h5>
-        <h5><span class="bold">Birthdate:</span> <%= birthdate%></h5>
-        <h5><span class="bold">Height:</span> <%= height%> inches</h5>
-        <h5><span class="bold">Weight:</span> <%= weight%> pounds</h5>
         <h5><span class="bold">Body Hair:</span> <%= bodyHair%></h5>
-        <h5><span class="bold">Ethnicity:</span> <%= ethnicity%></h5>
-        <h5><span class="bold">What I do:</span> <%= overview%></h5>
-        <h5><span class="bold">What I'm looking for:</span> <%= lookingFor%></h5>
-        <h5><span class="bold">Interests:</span> <%= interests%></h5>
         <h5><span class="bold">Positions:</span> <%= positions%></h5>
         <h5><span class="bold">Safety:</span> <%= safety%></h5>
-        <h5><span class="bold">Hometown:</span> <%= hometown%></h5>
       </div>
     </div>
 
@@ -84,21 +76,21 @@
               <div class="row">
                 <div class="input-field col s12">
                   <label class="active" for="birthdate">Birthdate: </label>
-                  <input type="date" name="birthdate" id="edit-birthdate">
+                  <input type="date" name="birthdate" id="edit-birthdate" value="<%= birthdate%>">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="height">Height (inches): </label>
-                  <input type="number" min="36" name="height" id="edit-height" class="validate">
+                  <input type="number" min="36" name="height" id="edit-height" value="<%= height%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field  col s12">
                   <label for="weight">Weight (pounds): </label>
-                  <input type="number" min="90" name="weight" id="edit-weight" class="validate">
+                  <input type="number" min="90" name="weight" id="edit-weight" value="<%= weight%>" class="validate">
                 </div>
               </div>
 
@@ -119,28 +111,28 @@
               <div class="row">
                 <div class="input-field col s12">
                   <label for="ethnicity">Ethnicity: </label>
-                  <input type="text" name="ethnicity" id="edit-ethnicity" class="validate">
+                  <input type="text" name="ethnicity" id="edit-ethnicity" value="<%= ethnicity%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="overview">What I do: </label>
-                  <input type="text" name="overview" id="edit-overview" class="validate">
+                  <input type="text" name="overview" id="edit-overview" value="<%= overview%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="lookingFor">What I'm looking for: </label>
-                  <input type="text" name="lookingFor" id="edit-looking-for" class="validate">
+                  <input type="text" name="lookingFor" id="edit-looking-for" value="<%= lookingFor%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="interests">Interests: </label>
-                  <input type="text" name="interests" id="edit-interests" class="validate">
+                  <input type="text" name="interests" id="edit-interests" value="<%= interests%>" class="validate">
                 </div>
               </div>
 
@@ -194,7 +186,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <label for="hometown">Hometown: </label>
-                  <input type="text" name="hometown" id="edit-hometown" class="validate">
+                  <input type="text" name="hometown" id="edit-hometown" value="<%= hometown%>" class="validate">
                 </div>
               </div>
 

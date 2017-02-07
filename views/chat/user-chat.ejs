@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MATE</title>
+  </head>
+  <body>
+
+    <div id="overlay">
+      <div id="overlay-content">
+        <h2>Chat</h2>
+      </div>
+    </div>
+
+    <%- include("../partials/nav", {browse: false, profile: false, photos: false, messages: true}) %>
+
+    <main class="container">
+      <div class="row">
+        <div class="col s12 m12">
+          <h5 class="chat">CHAT</h5>
+        </div>
+      </div>
+
+      <div id="card-grid">
+        <div class="row">
+
+
+        </div> <!-- end first row -->
+
+        <div class="row">
+
+        </div> <!-- end second row -->
+    </div> <!-- end card-grid -->
+    </main>
+
+    <%- include("../partials/footer") %>
+
+  </body>
+</html>

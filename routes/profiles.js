@@ -34,6 +34,20 @@ function formatDate(rawDate) {
 }
 
 // =============================================================================
+// function to return a friendly numeric date format
+function formatNumericDate(rawDate) {
+  let fullDate = new Date(rawDate);
+  let year = fullDate.getFullYear();
+  let month = fullDate.getMonth();
+  let date = fullDate.getDate();
+
+  month = month < 10 ? '0' + month : month;
+  date = date < 10 ? '0' + date : date;
+
+  return `${year}-${month}-${date}`;
+}
+
+// =============================================================================
 // show input form for new profile
 router.get('/new', (req, res) => {
   console.log('COOKIE: ', req.cookies);
@@ -128,7 +142,7 @@ router.get('/update', (req, res) => {
       .then((profile) => {
         profile = camelizeKeys(profile[0]);
 
-        let formattedDate = formatDate(profile.birthdate);
+        let formattedDate = formatNumericDate(profile.birthdate);
 
         if (profile) {
           res.render('edit-profile', {

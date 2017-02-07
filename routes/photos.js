@@ -65,7 +65,7 @@ router.get('/update/:id', (req, res) => {
       .where('photos.id', photoId)
       .then((pic) => {
         let photo = camelizeKeys(pic[0]);
-        console.log('update photo for other user returns: ', photo);
+
         if (photo) {
           res.render('edit-photo', {
             userId: photo.userId,
