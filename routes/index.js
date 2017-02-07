@@ -17,13 +17,13 @@ const router = express.Router();
 // =============================================================================
 // show home page
 router.get('/', function(req, res) {
-  let userId = 0;
+  let curUserId = 0;
   let curApp = '';
   let profileArray = [];
   let loggedInFlag = false;
 
   if (req.cookies['/token']) {
-    userId = Number(req.cookies['/token'].split('.')[0]);
+    curUserId = Number(req.cookies['/token'].split('.')[0]);
     curApp = req.cookies['/token'].split('.')[1];
   }
 
@@ -50,15 +50,16 @@ router.get('/', function(req, res) {
           lon1 = loc.lon;
         }
 
-        if (userId && curApp === 'mate') {
+        if (curUserId && curApp === 'mate') {
           loggedInFlag = true;
-          console.log('update user location: ', userId, lat1, lon1);
-          knex('users').where('id', userId).update({lat: lat1})
+          console.log('update user location: ', curUserId, lat1, lon1);
+          knex('users').where('id', curUserId).update({lat: lat1})
             .then(() => {
-              knex('users').where('id', userId).update({lon: lon1})
+              knex('users').where('id', curUserId).update({lon: lon1})
                 .then(() => {
 
-                  profileArray = createCardProfiles(cardProfiles, lat1, lon1, profileArray);
+                  profileArray = createCardProfiles(cardProfiles, lat1, lon1,
+                    curUserId, profileArray);
 
                   res.render('index', {
                     loggedIn: true,
@@ -69,7 +70,8 @@ router.get('/', function(req, res) {
 
         } else {
 
-          profileArray = createCardProfiles(cardProfiles, lat1, lon1, profileArray);
+          profileArray = createCardProfiles(cardProfiles, lat1, lon1, curUserId,
+            profileArray);
 
           res.render('index', {
             loggedIn: false,
@@ -95,7 +97,7 @@ router.post('/location', function(req, res) {
   .returning('*')
   .then((row) => {
     const loc = camelizeKeys(row[0]);
-      console.log('from /index/location: ',loc);
+      // console.log('from /index/location: ',loc);
   });
 });
 // .catch((err) => {
@@ -116,7 +118,7 @@ router.get('/site/contact', function(req, res) {
 
 // =============================================================================
 // helper function for index route
-function createCardProfiles(cardProfiles, lat1, lon1, profileArray) {
+function createCardProfiles(cardProfiles, lat1, lon1, curUserId, profileArray) {
 
   cardProfiles.forEach((ele, i) => {
     let lat2 = cardProfiles[i].lat;
@@ -136,7 +138,10 @@ function createCardProfiles(cardProfiles, lat1, lon1, profileArray) {
       else if (d > 5 * 5280) newCard.distString += Math.round(d / 5280) + ' miles away';
       else newCard.distString = 'unavailable';
 
-      console.log(newCard.distance);
+      if (curUserId === newCard.userId) {
+        newCard.distance = 0;
+        newCard.distString = '0 feet away';
+      }
 
       profileArray.push(newCard);
   });
@@ -150,7 +155,7 @@ function createCardProfiles(cardProfiles, lat1, lon1, profileArray) {
     return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
   });
 
-  // console.log('from /index sorted: ', profileArray);
+  console.log('from /index sorted: ', profileArray);
 
   return profileArray;
 }
