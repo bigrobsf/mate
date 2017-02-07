@@ -164,13 +164,15 @@ router.put('/', (req, res) => {
     .where('user_id', userId).first()
     .then((profile) => {
       if(profile) {
-        const { iAm, iLike, birthdate, bodyHair, ethnicity,
+        const { iAm, iLike, birthdate, bodyHair, ethnicity, dummy,
                 overview, lookingFor, interests, positions, methods, hometown } = req.body;
 
         let height = Number(req.body.height);
         let weight = Number(req.body.weight);
 
         const updateProfile = {};
+
+        updateProfile.dummy = dummy;
 
         if (iAm) {
           let allIAms = concatSelected(iAm);

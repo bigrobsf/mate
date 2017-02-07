@@ -113,6 +113,7 @@ router.put('/', (req, res) => {
             updatePhoto.profileFlag = true;
             console.log('new profileflag after', updatePhoto.profileFlag);
         }
+
         if (caption) updatePhoto.caption = caption;
 
         return knex('photos')
