@@ -38,13 +38,4 @@ $(document).ready(() => {
       sessionStorage.setItem('displayedSplash', 'true');
     }, 2000);
   }
-
-  // // removes flag from localStorage to enable the splash screen
-  // let enableSplashElement = document.getElementById('clear-splash');
-  // enableSplashElement.addEventListener('mousedown', enableSplash);
-  //
-  // function enableSplash() {
-  //   localStorage.removeItem('displayedSplash');
-  //   console.log('Splash flag cleared.');
-  // }
 });

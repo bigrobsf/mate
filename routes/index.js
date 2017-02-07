@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
     .from('photos')
     .join('profiles', 'photos.user_id', 'profiles.user_id')
     .join('users', 'photos.user_id', 'users.id')
-    .where('users.logged_in', true)
+    .where('logged_in', true)
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
