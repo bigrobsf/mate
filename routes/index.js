@@ -36,18 +36,20 @@ router.get('/', function(req, res) {
       let cardProfiles = camelizeKeys(rows);
       // console.log('from /index', cardProfiles);
 
-      knex.select('lat', 'lon', 'id').from('curlocation')
+      knex.select('lat', 'lon', 'accuracy').from('curlocation')
       .orderBy('created_at','desc')
       .then((locs) => {
 
         let loc;
         let lat1 = 0;
         let lon1 = 0;
+        let accuracy = 0;
 
         if (locs.length) {
           loc = locs[0];
           lat1 = loc.lat;
           lon1 = loc.lon;
+          accuracy = loc.accuracy;
         }
 
         if (curUserId && curApp === 'mate') {
@@ -63,6 +65,7 @@ router.get('/', function(req, res) {
 
                   res.render('index', {
                     loggedIn: true,
+                    accuracy: accuracy,
                     profileArray: profileArray
                   });
                 });
@@ -75,6 +78,7 @@ router.get('/', function(req, res) {
 
           res.render('index', {
             loggedIn: false,
+            accuracy: accuracy,
             profileArray: profileArray
           });
         }
@@ -98,11 +102,11 @@ router.post('/location', function(req, res) {
   .then((row) => {
     const loc = camelizeKeys(row[0]);
       // console.log('from /index/location: ',loc);
+  })
+  .catch((err) => {
+    console.log('PUT ERROR: ', err);
   });
 });
-// .catch((err) => {
-//   console.log('PUT ERROR: ', err);
-// });
 
 // =============================================================================
 // show about page

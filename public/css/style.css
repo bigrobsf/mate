@@ -93,6 +93,24 @@ button.submit:hover {
   height: 44px;
 }
 
+/*.uploadcare-widget-button-open {
+    background-color: #d50000;
+}
+
+.uploadcare-widget-button-open:hover {
+    background-color: #ff5252;
+}
+
+.uploadcare-dialog-big-button {
+    background: #d50000;
+    border-color: #d50000;
+    box-shadow: inset 0 -2px #b71c1c;
+}
+
+.uploadcare-dialog-big-button:hover {
+    background: #ff5252;
+}*/
+
 /* =============================================================================
 Typography */
 

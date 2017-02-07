@@ -7,7 +7,7 @@
 
 $(document).ready(() => {
   var captionElement = document.getElementById('caption');
-  var pfElement = document.getElementById('profile-flag');
+  var pfElement = document.getElementById('profileFlag');
 
   captionElement.addEventListener('input', () => {
     console.log($('#caption').val().length);
