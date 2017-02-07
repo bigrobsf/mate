@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.specificType('hashed_password', 'char(60)').notNullable();
     table.decimal('lat').defaultTo(0).notNullable();
     table.decimal('lon').defaultTo(0).notNullable();
+    table.boolean('logged_in').defaultTo(false).notNullable();
     table.timestamps(true, true);
   });
 };

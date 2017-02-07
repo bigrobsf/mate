@@ -15,14 +15,14 @@ var distance = require('../models/cardprofile.js').distance;
 const router = express.Router();
 
 // =============================================================================
-// show home page
+// show home page with logged in users
 router.get('/', function(req, res) {
   let curUserId = 0;
   let curApp = '';
   let profileArray = [];
   let loggedInFlag = false;
 
-  if (req.cookies['/token']) {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     curUserId = Number(req.cookies['/token'].split('.')[0]);
     curApp = req.cookies['/token'].split('.')[1];
   }
@@ -31,6 +31,7 @@ router.get('/', function(req, res) {
     .from('photos')
     .join('profiles', 'photos.user_id', 'profiles.user_id')
     .join('users', 'photos.user_id', 'users.id')
+    .where('users.logged_in', true)
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
@@ -55,6 +56,7 @@ router.get('/', function(req, res) {
         if (curUserId && curApp === 'mate') {
           loggedInFlag = true;
           console.log('update user location: ', curUserId, lat1, lon1);
+
           knex('users').where('id', curUserId).update({lat: lat1})
             .then(() => {
               knex('users').where('id', curUserId).update({lon: lon1})
@@ -159,7 +161,7 @@ function createCardProfiles(cardProfiles, lat1, lon1, curUserId, profileArray) {
     return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
   });
 
-  console.log('from /index sorted: ', profileArray);
+  // console.log('from /index sorted: ', profileArray);
 
   return profileArray;
 }

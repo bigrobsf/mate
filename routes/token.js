@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 });
 
 // =============================================================================
-// POST token and check for bad email and bad password
+// POST token and get to logged_in = true if valid email and password
 router.post('/', (req, res, next) => {
   const authReq = decamelizeKeys(req.body);
   let user;
@@ -56,9 +56,13 @@ router.post('/', (req, res, next) => {
       delete user.createdAt;
       delete user.updatedAt;
 
-      res.cookie('/token', user.id + '.mate.cookie.rawr', { path: '/', httpOnly: true });
+      knex('users').where('id', user.id).update({logged_in: true})
+        .then(() => {
+          console.log(`user ${user.id} logged IN`);
+          res.cookie('/token', user.id + '.mate.cookie.rawr', { path: '/', httpOnly: true });
+          res.redirect('../'); // get index page
+      });
 
-      res.redirect('../'); // get index
     })
     .catch(bcrypt.MISMATCH_ERROR, () => {
       res.redirect('/token/login' + '?login=invalid');
@@ -71,8 +75,16 @@ router.post('/', (req, res, next) => {
 // =============================================================================
 // DELETE token
 router.get('/delete', (req, res) => {
-  res.clearCookie('/token', { path: '/', httpOnly: true });
-  res.redirect('../'); // get index
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let curUserId = Number(req.cookies['/token'].split('.')[0]);
+    res.clearCookie('/token', { path: '/', httpOnly: true });
+
+    knex('users').where('id', curUserId).update({logged_in: false})
+      .then(() => {
+        console.log(`user ${curUserId} logged OUT`);
+        res.redirect('../'); // get index page
+    });
+  } else res.redirect('../');
 });
 
 module.exports = router;
