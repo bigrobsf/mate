@@ -14,7 +14,6 @@ const router = express.Router();
 // =============================================================================
 // show input form to upload photo
 router.get('/new', (req, res) => {
-  console.log('COOKIE: ', req.cookies);
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     res.render('upload');
   } else {
