@@ -38,7 +38,7 @@ function formatDate(rawDate) {
 function formatNumericDate(rawDate) {
   let fullDate = new Date(rawDate);
   let year = fullDate.getFullYear();
-  let month = fullDate.getMonth();
+  let month = fullDate.getMonth() + 1; // because it is 0-based
   let date = fullDate.getDate();
 
   month = month < 10 ? '0' + month : month;

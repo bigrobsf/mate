@@ -24,6 +24,7 @@ const token = require('./routes/token.js');
 const index = require('./routes/index.js');
 const photos = require('./routes/photos.js');
 const chat = require('./routes/chat.js');
+const aws = require('./routes/aws.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -36,13 +37,14 @@ app.use('/token', token);
 app.use('/', index);
 app.use('/photos', photos);
 app.use('/chat', chat);
+app.use('/aws', aws);
 
 app.set('view engine', 'ejs');
 app.set('views', [path.join(__dirname, 'views/users/'),
                   path.join(__dirname, 'views/profiles/'),
                   path.join(__dirname, 'views/photos/'),
                   path.join(__dirname, 'views/chat/'),
-                  path.join(__dirname, 'views/site/')]);
+                  path.join(__dirname, 'views/site/'),]);
 
 
 // =============================================================================

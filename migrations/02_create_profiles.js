@@ -15,7 +15,6 @@ exports.up = function(knex, Promise) {
     table.text('positions').defaultTo('').notNullable();
     table.text('safety').defaultTo('').notNullable();
     table.text('hometown').defaultTo('').notNullable();
-    table.boolean('dummy').defaultTo(false);
     table.timestamps(true, true);
   });
 };

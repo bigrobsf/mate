@@ -35,57 +35,67 @@ router.get('/', function(req, res) {
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
-       console.log('from /index', cardProfiles);
+      console.log('from /index', cardProfiles);
 
-      knex.select('lat', 'lon', 'accuracy').from('curlocation')
-      .orderBy('created_at','desc')
-      .then((locs) => {
+      knex.select('user_name').from('users')
+      .where('id', curUserId)
+      .then((user) => {
+        if (user.length === 1) var userName = user[0].user_name;
 
-        let loc;
-        let lat1 = 0;
-        let lon1 = 0;
-        let accuracy = 0;
+        knex.select('lat', 'lon', 'accuracy').from('curlocation')
+        .orderBy('created_at','desc')
+        .then((locs) => {
 
-        if (locs.length) {
-          loc = locs[0];
-          lat1 = loc.lat;
-          lon1 = loc.lon;
-          accuracy = loc.accuracy;
-        }
+          let loc;
+          let lat1 = 0;
+          let lon1 = 0;
+          let accuracy = 0;
 
-        if (curUserId && curApp === 'mate') {
-          loggedInFlag = true;
-          console.log('update user location: ', curUserId, lat1, lon1);
+          if (locs.length) {
+            loc = locs[0];
+            lat1 = loc.lat;
+            lon1 = loc.lon;
+            accuracy = loc.accuracy;
+          }
 
-          knex('users').where('id', curUserId).update({lat: lat1})
+          if (curUserId && curApp === 'mate') {
+            loggedInFlag = true;
+            console.log('update user location: ', curUserId, lat1, lon1);
+
+            knex('users').where('id', curUserId).update({lat: lat1})
             .then(() => {
               knex('users').where('id', curUserId).update({lon: lon1})
-                .then(() => {
+              .then(() => {
 
-                  profileArray = createCardProfiles(cardProfiles, lat1, lon1,
-                    curUserId, profileArray);
+                profileArray = createCardProfiles(cardProfiles, lat1, lon1,
+                  curUserId, profileArray);
 
                   res.render('index', {
                     loggedIn: true,
                     accuracy: accuracy,
                     curUserId: curUserId,
+                    userName: userName,
                     profileArray: profileArray
                   });
                 });
               });
 
-        } else {
+            } else {
 
-          profileArray = createCardProfiles(cardProfiles, lat1, lon1, curUserId,
-            profileArray);
+              profileArray = createCardProfiles(cardProfiles, lat1, lon1, curUserId,
+                profileArray);
 
-          res.render('index', {
-            loggedIn: false,
-            accuracy: accuracy,
-            curUserId: 0,
-            profileArray: profileArray
-          });
-        }
+                res.render('index', {
+                  loggedIn: false,
+                  accuracy: accuracy,
+                  curUserId: 0,
+                  userName: '',
+                  profileArray: profileArray
+                });
+              }
+            });
+
+
       });
     });
 });

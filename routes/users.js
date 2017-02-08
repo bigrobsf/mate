@@ -100,7 +100,7 @@ router.put('/', (req, res) => {
         if (firstName) updateUser.firstName = firstName;
         if (lastName) updateUser.lastName = lastName;
         if (userName) updateUser.userName = userName;
-        if (email) updateUser.email = userName;
+        if (email) updateUser.email = email;
         if (password1) {
           bcrypt.hash(password1, 12)
             .then((hashed) => {
