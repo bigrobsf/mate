@@ -35,7 +35,8 @@
     "lodash": "^4.17.4",
     "method-override": "^2.3.7",
     "morgan": "^1.7.0",
-    "pg": "^6.1.2"
+    "pg": "^6.1.2",
+    "websocket": "^1.0.24"
   },
   "devDependencies": {
     "foreman": "^2.0.0"

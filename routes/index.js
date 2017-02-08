@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
-      // console.log('from /index', cardProfiles);
+       console.log('from /index', cardProfiles);
 
       knex.select('lat', 'lon', 'accuracy').from('curlocation')
       .orderBy('created_at','desc')

@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('messages', function (table) {
     table.increments();
-    table.integer('conversation_id').notNullable().references('id').inTable('conversations').onDelete('CASCADE');
-    table.integer('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE');
+    table.integer('user_id1').notNullable().references('id').inTable('users').onDelete('CASCADE');
+    table.integer('user_id2').notNullable().references('id').inTable('users').onDelete('CASCADE');
     table.text('message').defaultTo('').notNullable();
-    table.timestamps(true, false);
+    table.timestamps(true, true);
   });
 };
 

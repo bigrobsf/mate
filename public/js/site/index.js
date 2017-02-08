@@ -9,6 +9,6 @@ $(document).ready(() => {
   // locationRequest().then(() => {
   //   // get everyone's location then build profile cards
   // })
-  // ; // getlocation.js
+  // ; // get-cur-user-location.js
   locationRequest();
 });

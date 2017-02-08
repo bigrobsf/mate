@@ -29,6 +29,8 @@
             </div>
 
             <div class="col m1">  <!-- middle column -->
+              <p hidden id="target-user-id"><%= targetUserId%></p>
+              <p hidden id="cur-user-id"><%= curUserId%></p>
             </div>
 
             <div class="col s12 m6">  <!-- right column -->
@@ -41,6 +43,7 @@
                   <button type="button" class="send" id="send">Send</button>
                   <div id="connect-action">
                     <button type="button" class="connect" id="open">Connect</button>
+                    <button type="button" class="disconnect" id="close">Disconnect</button>
                   </div>
                 </div> <!-- end message form -->
 

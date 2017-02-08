@@ -6,6 +6,8 @@
 const PORT = process.env.PORT || 3001;
 const express = require('express');
 const app = express();
+const { camelizeKeys, decamelizeKeys } = require('humps');
+var knex = require('./db/knex');
 
 let server = require('http').Server(app);
 
@@ -40,8 +42,27 @@ wsServer.on('request', function(req) {
   connection.on('message', function(message) {
     let msgString = message.utf8Data;
     let msgObj = JSON.parse(msgString);
-
+    console.log('message from client: ', msgObj);
     let receivedId = msgObj.clientKey;
+
+    let conversation = {
+      user_id1: msgObj.curUserId,
+      user_id2: msgObj.targetUserId,
+      message: msgObj.text
+    };
+
+    knex('messages')
+    .insert(decamelizeKeys(conversation),
+      ['user_id1', 'user_id2', 'message'])
+    .returning('*')
+    .then((row) => {
+      let test = camelizeKeys(row[0]);
+        console.log('from ws-server.js: ',test);
+
+    })
+    .catch((err) => {
+      console.log('PUT ERROR: ', err);
+    });
 
     // clear client ID from message before broadcasting to other clients
     msgObj.clientKey = '';

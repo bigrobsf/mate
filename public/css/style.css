@@ -186,15 +186,15 @@ Chat buttons */
 }
 
 #message-form button.connect {
-  background: #00c853;
+  background: #43a047;
 }
 
 #message-form button.disconnect {
-  background: #d50000;
+  background: #424242;
 }
 
 #message-form button.send {
-  background: #2962ff;
+  background: #d50000;
 }
 
 #message-form button:hover {

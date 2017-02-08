@@ -17,6 +17,10 @@ window.onload = function() {
   let openBtn = document.getElementById('open');
   let sendBtn = document.getElementById('send');
 
+  let curUserId = Number(document.getElementById('cur-user-id').textContent);
+  let targetUserId = Number(document.getElementById('target-user-id').textContent);
+  console.log('users: ', curUserId, targetUserId);
+
   // Creates a new WebSocket connection, which will fire the open connection event
   let socket = new WebSocket(host, 'sample-protocol');
   let clientKey = '';
@@ -61,13 +65,13 @@ window.onload = function() {
   };
 
   // Close the WebSocket connection when the Disconnect button is clicked
-  // closeBtn.onclick = function(event) {
-  //   event.preventDefault();
-  //
-  //   socket.close();
-  //
-  //   return false;
-  // };
+  closeBtn.onclick = function(event) {
+    event.preventDefault();
+
+    socket.close();
+
+    return false;
+  };
 
   // Reload the browser window when the Connect button is clicked
   openBtn.onclick = function(event) {
@@ -98,8 +102,8 @@ window.onload = function() {
     let message = messageField.value;
 
     if (message.length > 0) {
-      let msg = createMsgObj(message, clientKey);
-
+      let msg = createMsgObj(message, clientKey, curUserId, targetUserId);
+      console.log('message to server: ', msg);
       socket.send(JSON.stringify(msg));
 
       messageList.innerHTML += '<li class="sent"><span>Sent: </span>' +
@@ -115,11 +119,13 @@ window.onload = function() {
 
 // =============================================================================
 // construct message object
-function createMsgObj(message, clientKey) {
+function createMsgObj(message, clientKey, curUserId, targetUserId) {
   let msg = {
     type: 'message',
     msgId: createMsgId(),
     text: message,
+    curUserId: curUserId,
+    targetUserId: targetUserId,
     clientKey: clientKey,
     date: Date.now()
   };
