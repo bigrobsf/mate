@@ -16,9 +16,7 @@
   <main class="container">
     <div class="row">
       <div class="col s12 m12">
-        <h4><%= firstName + " " + lastName%></h4>
-        <h5>User Name: <%= userName%></h5>
-        <h5>Email: <%= email%></h5>
+        <h4><%= userName%></h4>
       </div>
     </div>
 
@@ -34,28 +32,29 @@
               <div class="row">
                 <div class="input-field col s12">
                   <label for="firstName">First Name: </label>
-                  <input type="text" autofocus="true" name="firstName" id="firstName" class="validate">
+                  <input type="text" autofocus="true" name="firstName"
+                    id="firstName" value="<%= firstName%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="lastName">Last Name: </label>
-                  <input type="text" name="lastName" id="lastName" class="validate">
+                  <input type="text" name="lastName" id="lastName" value="<%= lastName%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="userName">User Name: </label>
-                  <input type="text" name="userName" id="userName" class="validate">
+                  <input type="text" name="userName" id="userName" value="<%= userName%>" class="validate">
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <label for="email">Email: </label>
-                  <input type="email" name="email" id="email" class="validate">
+                  <input type="email" name="email" id="email" value="<%= email%>" class="validate">
                 </div>
               </div>
 

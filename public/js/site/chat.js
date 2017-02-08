@@ -61,13 +61,13 @@ window.onload = function() {
   };
 
   // Close the WebSocket connection when the Disconnect button is clicked
-  closeBtn.onclick = function(event) {
-    event.preventDefault();
-
-    socket.close();
-
-    return false;
-  };
+  // closeBtn.onclick = function(event) {
+  //   event.preventDefault();
+  //
+  //   socket.close();
+  //
+  //   return false;
+  // };
 
   // Reload the browser window when the Connect button is clicked
   openBtn.onclick = function(event) {

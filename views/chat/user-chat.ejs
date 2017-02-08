@@ -22,35 +22,35 @@
     <main class="container">
       <div class="row">
         <div class="col s12 m12">
-          <h4 class="chat">CHAT</h4>
-          <div id="chat-wrapper">
-            <div id="status">Connecting...</div>
+          <div class="row"> <!-- first row -->
+            <div class="col s12 m5 center-children">  <!-- left column -->
+              <h4 class="chat">Chat with <%= userName%></h4>
+              <a href="/profiles/show/<%= targetUserId%>"><img class="chat-img" src="<%= imagePath%>" /></a>
+            </div>
 
+            <div class="col m1">  <!-- middle column -->
+            </div>
 
-            <div id="message-form">
-              <textarea id="message-area" placeholder="Write your message here..." autofocus="true" required>
-              </textarea>
-              <button type="button" class="send" id="send">Send</button>
-              <div id="connect-action">
-                <button type="button" class="connect" id="open">Connect</button>
-                <button type="button" class="disconnect" id="close">Disconnect</button>
-              </div>
-            </div>            
-            <ul id="message-log"></ul>
-          </div>
+            <div class="col s12 m6">  <!-- right column -->
+              <div id="chat-wrapper">
+              <div id="status">Connecting...</div>
+
+                <div id="message-form">
+                  <textarea id="message-area" placeholder="Write your message here..." autofocus="true" required>
+                  </textarea>
+                  <button type="button" class="send" id="send">Send</button>
+                  <div id="connect-action">
+                    <button type="button" class="connect" id="open">Connect</button>
+                  </div>
+                </div> <!-- end message form -->
+
+                <ul id="message-log"></ul>
+
+              </div> <!-- end chat wrapper -->
+            </div>
+          </div> <!-- end first row -->
         </div>
       </div>
-
-      <div id="card-grid">
-        <div class="row">
-
-
-        </div> <!-- end first row -->
-
-        <div class="row">
-
-        </div> <!-- end second row -->
-    </div> <!-- end card-grid -->
     </main>
 
     <%- include("../partials/footer") %>

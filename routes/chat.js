@@ -15,11 +15,26 @@ const router = express.Router();
 // =============================================================================
 // show chat with single user
 router.get('/:id', (req, res) => {
-  let targetUser = Number(req.params.id);
+  let targetUserId = Number(req.params.id);
 
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let curUserId = Number(req.cookies['/token'].split('.')[0]);
 
-    res.render('user-chat');
+    knex.select('user_name', 'photos.id', 'image_path')
+      .from('users')
+      .join('photos', 'users.id', 'photos.user_id')
+      .where('users.id', targetUserId)
+      .where('profile_flag', true)
+      .then((target) => {
+        let targetUser = camelizeKeys(target[0]);
+
+        res.render('user-chat', {
+          userName: targetUser.userName,
+          imagePath: targetUser.imagePath,
+          targetUserId: targetUserId,
+          curUserId: curUserId
+        });
+      });
   } else {
     res.redirect('../token/login');
   }
