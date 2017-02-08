@@ -68,6 +68,7 @@ router.get('/', function(req, res) {
                   res.render('index', {
                     loggedIn: true,
                     accuracy: accuracy,
+                    curUserId: curUserId,
                     profileArray: profileArray
                   });
                 });
@@ -81,6 +82,7 @@ router.get('/', function(req, res) {
           res.render('index', {
             loggedIn: false,
             accuracy: accuracy,
+            curUserId: 0,
             profileArray: profileArray
           });
         }
