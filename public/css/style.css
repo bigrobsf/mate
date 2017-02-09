@@ -351,6 +351,7 @@ a img.profile-img:hover {
 }
 
 img.msg-img {
+  margin: 12px 12px 0 0;
   float: left;
   width: 70px;
   height: auto;
