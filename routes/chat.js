@@ -8,6 +8,7 @@ const boom  = require('boom');
 const express = require('express');
 const bcrypt = require('bcrypt-as-promised');
 const Sequelize = require('sequelize');
+const moment = require('moment');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('../db/knex');
 var sequelize = new Sequelize('postgres://localhost:5432/mate_dev');
@@ -63,7 +64,10 @@ router.get('/', (req, res) => {
       .then((messages) => {
         console.log('sequelize: ', messages);
 
-
+        messages.forEach((ele, i) => {
+          var date = ele.created_at;
+          ele.created_at = moment().format('MMMM Do YYYY, h:mm:ss a');
+        });
 
         res.render('conversations', {
           messages: messages
