@@ -213,10 +213,20 @@ button.submit:hover {
   background-color: #ff5252;
 }
 
+div.clr {
+  background-color: #d50000;
+}
+
+div.clr:hover {
+  background-color: #ff5252;
+}
+
 .button-dim {
   width: 140px;
   height: 44px;
 }
+
+
 
 /* =============================================================================
 Typography */

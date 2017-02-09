@@ -18,16 +18,22 @@
       <div class="col s12 m12">
         <h4>Select a Photo</h4>
 
-        <div class="row">
-          <input class="fileInput" name="file"
-            type="file" onChange={_handleImageChange(event)} />
-        </div>
-
         <form id="upload-photo" method="POST" action="/photos">
-
           <div class="row">
-            <div hidden class="input-field col s12 l6">
-              <input type="text" name="imagePath" id="aws-img-path">
+            <div class="file-field input-field col s12 l6">
+               <div class="clr btn button-dim waves-effect waves-light">
+                 <span>Select</span>
+                  <i class="material-icons right">open_in_browser</i>
+                  <input type="file" accept="image/*" id="file-upload">
+               </div>
+               <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" name="imagePath" id="imagePath">
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="col s12 l6">
+              <canvas id="upload-img" class="col s12 l6 no-padding img-select"></canvas>
             </div>
           </div>
 
@@ -56,6 +62,6 @@
   </main>
 
   <%- include("../partials/footer") %>
-  <script type="text/javascript" src="../js/site/photo-upload.js"></script>
+  <script type="text/javascript" src="../js/site/photos.js"></script>
 </body>
 </html>
