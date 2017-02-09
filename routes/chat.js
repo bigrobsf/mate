@@ -7,8 +7,10 @@
 const boom  = require('boom');
 const express = require('express');
 const bcrypt = require('bcrypt-as-promised');
+const Sequelize = require('sequelize');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('../db/knex');
+var sequelize = new Sequelize('postgres://localhost:5432/mate_dev');
 
 const router = express.Router();
 
@@ -54,7 +56,20 @@ router.get('/:id', (req, res) => {
 // =============================================================================
 // show all chats
 router.get('/', (req, res) => {
-  res.redirect('/');
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let curUserId = Number(req.cookies['/token'].split('.')[0]);
+
+    sequelize.query(`select users1.user_name as username1, users2.user_name as username2, users1.id as userid1, users2.id as userid2, message, messages.created_at from users users1, users users2, messages where users1.id = messages.user_id1 and users2.id = messages.user_id2 and (users2.id = ${curUserId} or users1.id = ${curUserId}) order by messages.created_at desc;`, { type: sequelize.QueryTypes.SELECT})
+      .then((messages) => {
+        console.log('sequelize: ', messages);
+
+        res.render('conversations', {
+          messages: messages
+        });
+  });
+
+
+  } else res.redirect('/token/login');
 });
 
 
