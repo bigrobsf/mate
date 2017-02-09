@@ -49,8 +49,13 @@ window.onload = function() {
         console.log('clientKey received from server');
         break;
       case 'message':
-          messageList.innerHTML += '<li class="received"><span>' + msg.curUserName + ': ' +
-            timeStr + '</span>' + msg.text + '</li>';
+        var newItem = document.createElement('li');
+        var text = '<span>' + msg.curUserName + ': ' + timeStr + '</span>' + msg.text;
+
+        newItem.className = 'received';
+        newItem.innerHTML = text;
+
+        messageList.insertBefore(newItem, messageList.childNodes[0]);
         break;
     }
   };
@@ -108,10 +113,13 @@ window.onload = function() {
       console.log('message to server: ', msg);
       socket.send(JSON.stringify(msg));
 
+      var newItem = document.createElement('li');
       var textnode = document.createTextNode(message);
-      messageList.appendChild(textnode);
 
-      messageList.innerHTML += '<li class="sent right-align">' + message + '</li>';
+      newItem.className = 'sent right-align';
+      newItem.appendChild(textnode);
+
+      messageList.insertBefore(newItem, messageList.childNodes[0]);
 
       messageField.value = '';
       messageField.focus();
