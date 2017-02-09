@@ -44,7 +44,7 @@ app.set('views', [path.join(__dirname, 'views/users/'),
                   path.join(__dirname, 'views/profiles/'),
                   path.join(__dirname, 'views/photos/'),
                   path.join(__dirname, 'views/chat/'),
-                  path.join(__dirname, 'views/site/'),]);
+                  path.join(__dirname, 'views/site/')]);
 
 
 // =============================================================================

@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
   };
 
   knex('photos')
-  .insert(decamelizeKeys(newProfile),
+  .insert(decamelizeKeys(newPhoto),
     ['id', 'user_id', 'profile_flag', 'image_path', 'caption'])
     .returning('*')
     .then((row) => {

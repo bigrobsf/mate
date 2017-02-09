@@ -72,8 +72,6 @@ var distance = function(lat1, lon1, lat2, lon2) {
   return dist;
 };
 
-// console.log(distance(40.7486, -73.9864, 30.1234, -120));
-
 module.exports = {
   CardProfile: CardProfile,
   distance: distance

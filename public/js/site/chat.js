@@ -19,10 +19,12 @@ window.onload = function() {
 
   let curUserId = Number(document.getElementById('cur-user-id').textContent);
   let targetUserId = Number(document.getElementById('target-user-id').textContent);
-  console.log('users: ', curUserId, targetUserId);
+  let curUserName = document.getElementById('cur-user-name').textContent;
+
+  console.log('users: ', curUserId, targetUserId, curUserName);
 
   // Creates a new WebSocket connection, which will fire the open connection event
-  let socket = new WebSocket(host, 'sample-protocol');
+  let socket = new WebSocket(host, 'mate-protocol');
   let clientKey = '';
 
   // Set connection status on form to Connected
@@ -36,7 +38,7 @@ window.onload = function() {
   // event is sent to this function
   socket.onmessage = function(event) {
     let msg = JSON.parse(event.data);
-
+    console.log('message from server: ', msg);
     let time = new Date(msg.date);
     let timeStr = time.toLocaleTimeString();
 
@@ -47,8 +49,8 @@ window.onload = function() {
         console.log('clientKey received from server');
         break;
       case 'message':
-        messageList.innerHTML += '<li class="received"><span>Received: ' +
-          timeStr + '</span>' + msg.text + '</li>';
+          messageList.innerHTML += '<li class="received"><span>' + msg.curUserName + ': ' +
+            timeStr + '</span>' + msg.text + '</li>';
         break;
     }
   };
@@ -102,12 +104,14 @@ window.onload = function() {
     let message = messageField.value;
 
     if (message.length > 0) {
-      let msg = createMsgObj(message, clientKey, curUserId, targetUserId);
+      let msg = createMsgObj(message, clientKey, curUserId, targetUserId, curUserName);
       console.log('message to server: ', msg);
       socket.send(JSON.stringify(msg));
 
-      messageList.innerHTML += '<li class="sent"><span>Sent: </span>' +
-        message + '</li>';
+      var textnode = document.createTextNode(message);
+      messageList.appendChild(textnode);
+
+      messageList.innerHTML += '<li class="sent right-align">' + message + '</li>';
 
       messageField.value = '';
       messageField.focus();
@@ -119,12 +123,13 @@ window.onload = function() {
 
 // =============================================================================
 // construct message object
-function createMsgObj(message, clientKey, curUserId, targetUserId) {
+function createMsgObj(message, clientKey, curUserId, targetUserId, curUserName) {
   let msg = {
     type: 'message',
     msgId: createMsgId(),
     text: message,
     curUserId: curUserId,
+    curUserName: curUserName,
     targetUserId: targetUserId,
     clientKey: clientKey,
     date: Date.now()

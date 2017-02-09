@@ -30,7 +30,7 @@ var upload = multer({
   storage: multerS3({
     limits : { fileSize:3000000 },
     s3: s3,
-    bucket: 'mate-bigrobsf',
+    bucket: 'mateapp-bigrobsf',
     key: function (req, file, cb) {
       // console.log(file, 'file in multer');
       cb(null, file.originalname); //use Date.now() for unique file keys
@@ -39,7 +39,7 @@ var upload = multer({
 });
 
 // assume you already have the S3 Bucket created, and it is called ierg4210-shopxx-photos
-var photoBucket = new AWS.S3({params: {Bucket: 'mate-bigrobsf'}});
+var photoBucket = new AWS.S3({params: {Bucket: 'mateapp-bigrobsf'}});
 
 function uploadToS3(file, destFileName, callback) {
   photoBucket
@@ -79,7 +79,7 @@ router.get('/', (req, res) => {
   const fileName = req.query['file-name'];
   const fileType = req.query['file-type'];
   const s3Params = {
-    Bucket: 'mate-bigrobsf',
+    Bucket: 'mateapp-bigrobsf',
     Key: fileName,
     Expires: 60000,
     ContentType: fileType,
@@ -94,7 +94,7 @@ router.get('/', (req, res) => {
     console.log(data, 'data returned');
     const returnData = {
       signedRequest: data,
-      url: `https://mate-bigrobsf.s3.amazonaws.com/${fileName}`
+      url: `https://mateapp-bigrobsf.s3.amazonaws.com/${fileName}`
     };
     console.log('returned data before json ,', returnData);
     res.json(JSON.stringify(returnData));

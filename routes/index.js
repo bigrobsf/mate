@@ -148,7 +148,10 @@ function createCardProfiles(cardProfiles, lat1, lon1, curUserId, profileArray) {
       newCard.distance = distance(lat1, lon1, lat2, lon2);
       var d = newCard.distance;
 
-      if (d < 100) newCard.distString = '< 100 feet away';
+      if (d < 100) {
+        newCard.distString = '< 100 feet away';
+        newCard.distance = 50;
+      }
       else if (d < 1000) newCard.distString += d + ' feet away';
       else if (d < 5200) newCard.distString += (Math.round(d * 100 / 5280) / 100) + ' miles away';
       else if (d >= 5200 && d <= 5400) newCard.distString = '1 mile away';
@@ -173,7 +176,7 @@ function createCardProfiles(cardProfiles, lat1, lon1, curUserId, profileArray) {
     return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
   });
 
-  // console.log('from /index sorted: ', profileArray);
+  console.log('from /index sorted: ', profileArray);
 
   return profileArray;
 }

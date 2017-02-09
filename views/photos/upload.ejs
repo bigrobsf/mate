@@ -18,10 +18,18 @@
       <div class="col s12 m12">
         <h4>Select a Photo</h4>
 
+        <div class="row">
+          <input class="fileInput" name="file"
+            type="file" onChange={_handleImageChange(event)} />
+        </div>
 
+        <form id="upload-photo" method="POST" action="/photos">
+
+          <div class="row">
+            <div hidden class="input-field col s12 l6">
+              <input type="text" name="imagePath" id="aws-img-path">
             </div>
           </div>
-
 
           <div class="row">
             <div class="col s12 l6">
@@ -48,6 +56,6 @@
   </main>
 
   <%- include("../partials/footer") %>
-  <!-- <script type="text/javascript" src="../../js/site/uploadcare.js"></script> -->
+  <script type="text/javascript" src="../js/site/photo-upload.js"></script>
 </body>
 </html>

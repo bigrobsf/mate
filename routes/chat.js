@@ -28,11 +28,21 @@ router.get('/:id', (req, res) => {
       .then((target) => {
         let targetUser = camelizeKeys(target[0]);
 
-        res.render('user-chat', {
-          userName: targetUser.userName,
-          imagePath: targetUser.imagePath,
-          targetUserId: targetUserId,
-          curUserId: curUserId
+        knex.select('user_name')
+          .from('users')
+          .where('id', curUserId)
+          .then((curUser) => {
+            let current = camelizeKeys(curUser[0]);
+
+            console.log('curUserName: ', current.userName);
+
+            res.render('user-chat', {
+              userName: targetUser.userName,
+              imagePath: targetUser.imagePath,
+              targetUserId: targetUserId,
+              curUserId: curUserId,
+              curUserName: current.userName
+            });
         });
       });
   } else {

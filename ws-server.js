@@ -27,7 +27,7 @@ let clients = {};
 
 // listens for connection requests, stores the client info, and sends it to client
 wsServer.on('request', function(req) {
-  let connection = req.accept('sample-protocol', req.origin);
+  let connection = req.accept('mate-protocol', req.origin);
   let id = createUUID();
 
   clients[id] = connection;
@@ -42,13 +42,13 @@ wsServer.on('request', function(req) {
   connection.on('message', function(message) {
     let msgString = message.utf8Data;
     let msgObj = JSON.parse(msgString);
-    console.log('message from client: ', msgObj);
+
     let receivedId = msgObj.clientKey;
 
     let conversation = {
       user_id1: msgObj.curUserId,
       user_id2: msgObj.targetUserId,
-      message: msgObj.text
+      message: msgObj.text.trim()
     };
 
     knex('messages')
@@ -66,6 +66,7 @@ wsServer.on('request', function(req) {
 
     // clear client ID from message before broadcasting to other clients
     msgObj.clientKey = '';
+    console.log(msgObj);
 
     msgString = JSON.stringify(msgObj);
 
