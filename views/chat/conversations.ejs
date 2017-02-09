@@ -22,13 +22,15 @@
     <main class="container">
       <div class="row">
         <div class="col s12 m12">
+          <h4>Message History</h4>
           <div class="row"> <!-- first row -->
-
-            <ul id="message-history">
             <%messages.forEach((message) => { %>
-              <li><%= message.username1%> <%= message.message%></li>
+              <div class="message">
+                <p class="msg-timestamp"><%= message.created_at%></p>
+                <h5><span class="msg-username"><%= message.username1%>:</span> <%= message.message%></h5>
+              </div>
             <% }); %>
-            </
+
           </div> <!-- end first row -->
         </div>
       </div>
