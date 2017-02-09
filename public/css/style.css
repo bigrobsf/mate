@@ -260,10 +260,17 @@ h5 {
 
 .msg-username {
   color: #b71c1c;
+  font-size: 16px;
   text-transform: uppercase;
 }
+
 .msg-timestamp {
   color: #757575;
+}
+
+.msg-text {
+  color: #212121;
+  font-size: 20px;
 }
 /* =============================================================================
 Message History */
@@ -341,6 +348,12 @@ img.chat-img {
 
 a img.profile-img:hover {
   border: 1px solid #d50000;
+}
+
+img.msg-img {
+  float: left;
+  width: 70px;
+  height: auto;
 }
 
 /* =============================================================================

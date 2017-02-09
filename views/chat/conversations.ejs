@@ -26,8 +26,9 @@
           <div class="row"> <!-- first row -->
             <%messages.forEach((message) => { %>
               <div class="message">
+                <img class="msg-img" src="<%= message.image_path%>" />
                 <p class="msg-timestamp"><%= message.created_at%></p>
-                <h5><span class="msg-username"><%= message.username1%>:</span> <%= message.message%></h5>
+                <p><span class="msg-username"><%= message.username1%>:</span> <span class="msg-text"><%= message.message%></span></p>
               </div>
             <% }); %>
 
