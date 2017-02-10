@@ -5,23 +5,10 @@
 /* jshint jquery: true */
 'use strict';
 
+let imgToStore;
+
 $(document).ready(() => {
-  var captionElement = document.getElementById('caption');
-  var pfElement = document.getElementById('profileFlag');
   var fileUploadElement = document.getElementById('file-upload');
-
-  captionElement.addEventListener('input', () => {
-    console.log($('#caption').val().length);
-    if ($('#caption').val().length > 0) {
-      $('#update-photo-btn').removeClass('disabled');
-    } else {
-      $('#update-photo-btn').addClass('disabled');
-    }
-  });
-
-  pfElement.addEventListener('change', () => {
-    $('#update-photo-btn').removeClass('disabled');
-  });
 
   fileUploadElement.addEventListener('change', readFileImage, false);
 });
@@ -41,7 +28,7 @@ function readFileImage() {
     imageObj.onload = function() {
       context.drawImage(imageObj, 0, 0);
 
-      openImgInCanvas(imageObj.src);
+      imgToStore = openImgInCanvas(imageObj.src);
     };
 
     imageObj.src = event.target.result;
@@ -53,7 +40,7 @@ function readFileImage() {
 }
 
 //==============================================================================
-// opens retrieved image in HTML Canvas element
+// opens retrieved image in Canvas element and converts to Base64 dataURL
 function openImgInCanvas(imageURL) {
   let canvas = document.getElementById('upload-img');
   let context = canvas.getContext('2d');
@@ -64,12 +51,36 @@ function openImgInCanvas(imageURL) {
   imageObj.onload = function() {
     canvas.width = imageObj.width;
     canvas.height = imageObj.height;
+
     context.drawImage(this, 0, 0);
+    console.log('dimension check: ', canvas.width, canvas.height, imageObj.width, imageObj.height);
   };
 
   imageObj.src = imageURL;
 
   let dataURL = context.canvas.toDataURL('data/jpeg', 1.0);
-  console.log('toDataURL: ', dataURL);
-  return dataURL;
+  console.log('context: ', context.canvas.width, context.canvas.height);
+
+  storeImageData(dataURL, 0, 0);
+}
+
+//==============================================================================
+// makes POST API to photos route
+function storeImageData(dataURL, width, height) {
+  let dataURLObj = {
+    imageData: dataURL,
+    idWidth: width,
+    idHeight: height
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: '/photos',
+    data: dataURLObj,
+    success: console.log('success'),
+    error: function(jqXHR, textStatus, err) {
+            console.log('text status '+textStatus+', err '+err);
+            }
+  });
+
 }

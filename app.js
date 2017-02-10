@@ -26,7 +26,7 @@ const photos = require('./routes/photos.js');
 const chat = require('./routes/chat.js');
 // const aws = require('./routes/aws.js');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
 

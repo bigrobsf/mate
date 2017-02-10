@@ -5,6 +5,9 @@ exports.up = function(knex, Promise) {
     table.boolean('profile_flag').defaultTo(false);
     table.text('image_path').defaultTo('').notNullable();
     table.text('caption').defaultTo('').notNullable();
+    table.text('image_data');
+    table.integer('id_width').defaultTo(0);
+    table.integer('id_height').defaultTo(0);
     table.timestamps(true, true);
   });
 };

@@ -24,6 +24,7 @@
     "node": "6.8.1"
   },
   "dependencies": {
+    "atob": "^2.0.3",
     "aws-sdk": "^2.10.0",
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.16.0",
