@@ -42,8 +42,10 @@ router.post('/', (req, res) => {
     ['user_id', 'image_path'])
     .returning('*')
     .then((row) => {
+
       const photo = camelizeKeys(row[0]);
-      console.log('NEW PHOTO: ', photo);
+      // console.log('NEW PHOTO: ', photo);
+
       res.render('confirm-photo', {
         profileFlag: false,
         imagePath: photo.imagePath,

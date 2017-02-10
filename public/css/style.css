@@ -388,6 +388,12 @@ img.msg-img {
   height: auto;
 }
 
+img.logo {
+  max-height: 125px;
+  max-width: 250px;
+  margin-bottom: 20px;
+}
+
 /* =============================================================================
 footer */
 
