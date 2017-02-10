@@ -16,7 +16,11 @@ const router = express.Router();
 // show input form to upload photo
 router.get('/new', (req, res) => {
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
-    res.render('upload');
+    let userId = Number(req.cookies['/token'].split('.')[0]);
+
+    res.render('upload', {
+      userId: userId
+    });
   } else {
     res.redirect('../token/login');
   }
@@ -40,10 +44,11 @@ router.post('/', (req, res) => {
     .then((row) => {
       const photo = camelizeKeys(row[0]);
       console.log('NEW PHOTO: ', photo);
-      res.render('confirm-photo', {profileFlag: false,
-                                    imagePath: photo.imagePath,
-                                    caption: photo.caption,
-                                    status: 'Saved'});
+      res.render('confirm-photo', {
+        profileFlag: false,
+        imagePath: photo.imagePath,
+        caption: photo.caption,
+        status: 'Saved'});
     }).catch(err => {
       console.log('POST ERROR: ', err);
       res.status(400).send(err);
@@ -94,7 +99,7 @@ router.put('/', (req, res) => {
     .then((pic) => {
       console.log('pic to update: ', pic);
       if(pic) {
-        let profileFlag = req.body.profileFlag;
+        let profileFlag = req.body.profileFlag || false;
         let caption = req.body.caption;
 
         const updatePhoto = {};

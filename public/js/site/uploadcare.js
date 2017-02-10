@@ -6,7 +6,7 @@
 'use strict';
 
 uploadcare.openDialog(null, {
-  crop: "free",
+  crop: "1024x1024",
   imagesOnly: true
 }).done(function(file) {
   file.promise().done(function(fileInfo){
@@ -15,7 +15,7 @@ uploadcare.openDialog(null, {
 });
 
 //==============================================================================
-//makes POST API to photos route
+// makes POST API to photos route
 function storeImageData(fileInfo) {
   let imgInfoObj = {
     imagePath: fileInfo
@@ -25,10 +25,19 @@ function storeImageData(fileInfo) {
     type: 'POST',
     url: '/photos',
     data: imgInfoObj,
-    success: console.log('success'),
+    success: redirectUserProfile(),
     error: function(jqXHR, textStatus, err) {
             console.log('text status '+textStatus+', err '+err);
             }
   });
 
+}
+
+//==============================================================================
+// redirect to user profile
+function redirectUserProfile() {
+  let userId = document.getElementById('cur-user').textContent;
+  let target = window.location.protocol + '//' + window.location.host + '/photos/show/' + userId;
+
+  window.location = target;
 }
