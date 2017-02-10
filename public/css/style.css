@@ -244,6 +244,16 @@ div.clr:hover {
   background: #ff5252;
 }
 
+.uploadcare-dialog-preview-done {
+  background: #d50000;
+  border-color: #d50000;
+  background-color: #d50000;
+}
+
+.uploadcare-dialog-preview-done:hover {
+  background: #ff5252;
+}
+
 
 /* =============================================================================
 Typography */

@@ -46,10 +46,10 @@ router.post('/', (req, res, next) => {
     .then((row) => {
       if (!row) {
         res.redirect('/token/login' + '?login=invalid');
+      } else {
+        user = camelizeKeys(row);
+        return bcrypt.compare(authReq.password, user.hashedPassword);
       }
-
-      user = camelizeKeys(row);
-      return bcrypt.compare(authReq.password, user.hashedPassword);
     })
     .then(() => {
       delete user.hashedPassword;

@@ -79,6 +79,7 @@ router.post('/', (req, res) => {
 
   let newProfile = {
     userId: userId,
+    message: 'Now add a photo so your profile will appear to others!.',
     iAm: allIAms,
     iLike: allILikes,
     birthdate: req.body.birthdate,
@@ -235,6 +236,7 @@ router.put('/', (req, res) => {
       delete profile.updatedAt;
 
       res.render('confirm-profile', {
+        message: '',
         iAm: profile.iAm,
         iLike: profile.iLike,
         birthdate: formattedDate,
@@ -328,6 +330,7 @@ router.delete('/', (req, res, next) => {
         delete profile.updatedAt;
 
         res.render('confirm-profile', {
+          message: '',
           iAm: profile.iAm,
           iLike: profile.iLike,
           birthdate: formattedDate,

@@ -37,25 +37,36 @@ router.post('/', (req, res) => {
     caption: 'Add a caption!'
   };
 
-  knex('photos')
-  .insert(decamelizeKeys(newPhoto),
-    ['user_id', 'image_path'])
-    .returning('*')
-    .then((row) => {
+  knex.select('user_id').from('photos').where('user_id', userId)
+    .then((pic) => {
+      if (pic.length > 0) {
+        newPhoto.profileFlag = false;
+        console.log('s/b false', newPhoto.profileFlag);
+      } else {
+        newPhoto.profileFlag = true;
+        console.log('s/b true', newPhoto.profileFlag);
+      }
 
-      const photo = camelizeKeys(row[0]);
-      console.log('NEW PHOTO: ', photo);
+      knex('photos')
+      .insert(decamelizeKeys(newPhoto),
+      ['user_id', 'image_path', 'profile_flag', 'caption'])
+      .returning('*')
+      .then((row) => {
 
-      res.render('confirm-photo', {
-        userId: userId,
-        profileFlag: false,
-        imagePath: photo.imagePath,
-        caption: 'Add a caption!',
-        status: 'Saved'});
-    }).catch(err => {
-      console.log('POST ERROR: ', err);
-      res.status(400).send(err);
-  });
+        const photo = camelizeKeys(row[0]);
+        console.log('NEW PHOTO: ', photo);
+
+        res.render('confirm-photo', {
+          userId: userId,
+          profileFlag: false,
+          imagePath: photo.imagePath,
+          caption: photo.caption,
+          status: 'Saved'});
+        }).catch(err => {
+          console.log('POST ERROR: ', err);
+          res.status(400).send(err);
+        });
+    });
 });
 
 // =============================================================================

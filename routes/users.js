@@ -42,13 +42,15 @@ router.post('/', (req, res) => {
       delete user.updatedAt;
       delete user.hashedPassword;
 
-      res.render('confirm-user', {firstName: user.firstName,
-                            lastName: user.lastName,
-                            userName: user.userName,
-                               email: user.email,
-                            pwStatus: 'Saved',
-                              status: 'Added'
-                          });
+      res.render('confirm-user', {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        userName: user.userName,
+        email: user.email,
+        pwStatus: 'Saved',
+        status: 'Added',
+        message: 'Now, login and select Profile to create a profile!'
+      });
     }).catch(err => {
       console.log('POST ERROR: ', err);
       res.status(400).send(err);
@@ -131,7 +133,8 @@ router.put('/', (req, res) => {
         userName: user.userName || '',
         email: user.email || '',
         pwStatus: passwordUpdated ? 'Updated' : 'Unchanged',
-        status: 'Updated'
+        status: 'Updated',
+        message: ''
       });
     })
     .catch((err) => {
@@ -176,7 +179,8 @@ router.delete('/', (req, res) => {
           userName: user.userName || '',
           email: user.email || '',
           pwStatus: 'Deleted',
-          status: 'Deleted'
+          status: 'Deleted',
+          message: 'We are sorry to see you leave!'
         });
       })
       .catch((err) => {
