@@ -25,6 +25,12 @@ router.get('/', function(req, res) {
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     curUserId = Number(req.cookies['/token'].split('.')[0]);
     curApp = req.cookies['/token'].split('.')[1];
+
+    // if users session cookie present, make sure user remains logged in
+    knex('users')
+      .where('id', curUserId)
+      .update({logged_in: true})
+      .then(() => {});
   }
 
   knex.select('photos.user_id', 'image_path', 'lat', 'lon', 'user_name')
