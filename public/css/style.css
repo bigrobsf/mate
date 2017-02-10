@@ -227,7 +227,7 @@ div.clr:hover {
 }
 
 .uploadcare-widget-button-open {
-  background-color: #d50000;
+  visibility: hidden;
 }
 
 .uploadcare-widget-button-open:hover {
@@ -243,13 +243,6 @@ div.clr:hover {
 .uploadcare-dialog-big-button:hover {
   background: #ff5252;
 }
-
-.uploadcare-dialog-button-success {
-  background-color: #d50000;
-  background: #d50000;
-}
-
-
 
 
 /* =============================================================================
@@ -305,6 +298,10 @@ h5 {
 .msg-text {
   color: #212121;
   font-size: 20px;
+}
+
+#uploader-placeholder {
+  font-size: 24px;
 }
 /* =============================================================================
 Message History */

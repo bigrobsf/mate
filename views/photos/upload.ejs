@@ -13,7 +13,7 @@
     UPLOADCARE_PUBLIC_KEY = "7d2ddbbb700aaaacc7b7";
   </script>
 
-  <title>Upload Photo</title>
+  <title>Add Photo</title>
 </head>
 <body>
 
@@ -22,37 +22,36 @@
   <main class="container">
     <div class="row">
       <div class="col s12 m12">
-        <h4>Select a Photo</h4>
+        <h4>Add a Photo</h4>
+<div id="uploader-placeholder">Uploading. Please wait...</div>
 
-        <form id="upload-photo" method="POST" action="/photos">
-          <div class="row">
-            <input
-              type="hidden"
-              role="uploadcare-uploader"
-              data-public-key="7d2ddbbb700aaaacc7b7"
-              data-tabs="file url facebook gdrive gphotos dropbox instagram evernote flickr skydrive"
-              data-image-shrink="1024x1024 80%"
-              data-images-only="true"
-              data-preview-step="true"
-              data-clearable="false"
-              data-multiple="false"
-              data-system-dialog="false"
-              data-crop="1024x1024"
-            />
-          </div>
-          <div class='row'>
-            <div class="col s12 l6">
-              <p hidden id="cur-user"><%= userId%></p>
-              <canvas id="upload-img" class="col s12 l6 no-padding img-select"></canvas>
-            </div>
-          </div>
-        </form>
+        <div class="row">
+          <input
+            type="hidden"
+            role="uploadcare-uploader"
+            data-public-key="7d2ddbbb700aaaacc7b7"
+            data-tabs="file url facebook gdrive gphotos dropbox instagram evernote flickr skydrive"
+            data-image-shrink="1024x1024 80%"
+            data-images-only="true"
+            data-preview-step="true"
+            data-clearable="false"
+            data-multiple="false"
+            data-system-dialog="false"
+            data-crop="1024x1024"
+          />
+        </div>
+        <div class='row'>
+          <div class="col s12 l6">
+            <p hidden id="cur-user"><%= userId%></p>
 
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
   <%- include("../partials/footer") %>
+
   <script src="https://ucarecdn.com/libs/widget/2.10.3/uploadcare.full.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="../../js/site/uploadcare.js"></script>
 </body>

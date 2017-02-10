@@ -60,7 +60,6 @@ router.get('/new', (req, res) => {
       .then((exist) => {
         if (!exist) res.render('make-profile');
         else res.redirect('/profiles/update');
-        // else res.render('edit-profile');
       });
 
   } else {
