@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script>
+    UPLOADCARE_PUBLIC_KEY = '7d2ddbbb700aaaacc7b7';
+  </script>
   <title>Upload Photo</title>
 </head>
 <body>
@@ -20,16 +23,19 @@
 
         <form id="upload-photo" method="POST" action="/photos">
           <div class="row">
-            <div class="file-field input-field col s12 l6">
-               <div class="clr btn button-dim waves-effect waves-light">
-                 <span>Select</span>
-                  <i class="material-icons right">open_in_browser</i>
-                  <input type="file" accept="image/*" id="file-upload">
-               </div>
-               <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" name="imagePath" id="imagePath">
-              </div>
-            </div>
+            <input
+              type="hidden"
+              role="uploadcare-uploader"
+              data-public-key="7d2ddbbb700aaaacc7b7"
+              data-tabs="file url facebook gdrive gphotos dropbox instagram evernote flickr skydrive"
+              data-image-shrink="1024x1024 80%"
+              data-images-only="true"
+              data-preview-step="true"
+              data-clearable="false"
+              data-multiple="false"
+              data-system-dialog="false"
+              data-crop=""
+            />
           </div>
           <div class='row'>
             <div class="col s12 l6">
@@ -62,6 +68,7 @@
   </main>
 
   <%- include("../partials/footer") %>
-  <script type="text/javascript" src="../js/site/photos.js"></script>
+  <script src="https://ucarecdn.com/libs/widget/2.10.3/uploadcare.full.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="../../js/site/uploadcare.js"></script>
 </body>
 </html>

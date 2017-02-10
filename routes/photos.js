@@ -6,6 +6,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt-as-promised');
 const { camelizeKeys, decamelizeKeys } = require('humps');
+const uploadcare = require('../node_modules/uploadcare/lib/main.js');
 var knex = require('../db/knex');
 var PhotoInfo = require('../models/photoinfo.js').PhotoInfo;
 
@@ -28,22 +29,21 @@ router.post('/', (req, res) => {
 
   let newPhoto = {
     userId: userId,
-    profileFlag: req.body.profileFlag,
     imagePath: req.body.imagePath,
-    caption: req.body.caption
+    caption: 'Add a caption!'
   };
 
   knex('photos')
   .insert(decamelizeKeys(newPhoto),
-    ['id', 'user_id', 'profile_flag', 'image_path', 'caption'])
+    ['user_id', 'image_path'])
     .returning('*')
     .then((row) => {
       const photo = camelizeKeys(row[0]);
       console.log('NEW PHOTO: ', photo);
-      res.render('confirm-photo', {profileFlag: photo.profileFlag,
+      res.render('confirm-photo', {profileFlag: false,
                                     imagePath: photo.imagePath,
                                     caption: photo.caption,
-                                    status: 'Added'});
+                                    status: 'Saved'});
     }).catch(err => {
       console.log('POST ERROR: ', err);
       res.status(400).send(err);
