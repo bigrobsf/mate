@@ -10,7 +10,8 @@ $(document).ready(() => {
   var pfElement = document.getElementById('profileFlag');
 
   captionElement.addEventListener('input', () => {
-    console.log($('#caption').val().length);
+    // console.log($('#caption').val().length);
+    
     if ($('#caption').val().length > 0) {
       $('#update-photo-btn').removeClass('disabled');
     } else {

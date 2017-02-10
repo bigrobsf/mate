@@ -44,12 +44,13 @@ router.post('/', (req, res) => {
     .then((row) => {
 
       const photo = camelizeKeys(row[0]);
-      // console.log('NEW PHOTO: ', photo);
+      console.log('NEW PHOTO: ', photo);
 
       res.render('confirm-photo', {
+        userId: userId,
         profileFlag: false,
         imagePath: photo.imagePath,
-        caption: photo.caption,
+        caption: 'Add a caption!',
         status: 'Saved'});
     }).catch(err => {
       console.log('POST ERROR: ', err);
@@ -228,6 +229,7 @@ router.delete('/:id', (req, res, next) => {
           .then(() => {
 
             res.render('confirm-photo', {
+              userId: userId,
               caption: photo.caption,
               imagePath: '/images/deleted.jpg',
               status: 'Deleted'});

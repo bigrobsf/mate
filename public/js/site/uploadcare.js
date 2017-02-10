@@ -9,7 +9,8 @@ uploadcare.openDialog(null, {
   crop: "1024x1024",
   imagesOnly: true
 }).done(function(file) {
-  file.promise().done(function(fileInfo){
+  file.promise().done((fileInfo) => {
+    console.log(fileInfo.cdnUrl);
     storeImageData(fileInfo.cdnUrl);
   });
 });
@@ -27,14 +28,14 @@ function storeImageData(fileInfo) {
     data: imgInfoObj,
     success: redirectUserProfile(),
     error: function(jqXHR, textStatus, err) {
-            console.log('text status '+textStatus+', err '+err);
+            console.log('text status ' + textStatus + ', err ' + err);
             }
   });
 
 }
 
 //==============================================================================
-// redirect to user profile
+// redirect to user photos
 function redirectUserProfile() {
   let userId = document.getElementById('cur-user').textContent;
   let target = window.location.protocol + '//' + window.location.host + '/photos/show/' + userId;
