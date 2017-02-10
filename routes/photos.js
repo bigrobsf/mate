@@ -6,7 +6,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt-as-promised');
 const { camelizeKeys, decamelizeKeys } = require('humps');
-const atob = require('atob');
 var knex = require('../db/knex');
 var PhotoInfo = require('../models/photoinfo.js').PhotoInfo;
 
@@ -29,25 +28,20 @@ router.post('/', (req, res) => {
 
   let newPhoto = {
     userId: userId,
-    profileFlag: false,
-    imageData: req.body.imageData,
-    idWidth: req.body.idWidth,
-    idHeight: req.body.idHeight,
-    caption: 'Now add a caption!'
+    profileFlag: req.body.profileFlag,
+    imagePath: req.body.imagePath,
+    caption: req.body.caption
   };
 
   knex('photos')
   .insert(decamelizeKeys(newPhoto),
-    ['user_id', 'profile_flag', 'image_data', 'id_width', 'id_height', 'caption'])
+    ['id', 'user_id', 'profile_flag', 'image_path', 'caption'])
     .returning('*')
     .then((row) => {
       const photo = camelizeKeys(row[0]);
-      let dims = getImgDimensions(photo.imageData);
-      console.log('dimensions:', dims);
       console.log('NEW PHOTO: ', photo);
-
       res.render('confirm-photo', {profileFlag: photo.profileFlag,
-                                    imagePath: '',
+                                    imagePath: photo.imagePath,
                                     caption: photo.caption,
                                     status: 'Added'});
     }).catch(err => {
@@ -64,8 +58,7 @@ router.get('/update/:id', (req, res) => {
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let userId = Number(req.cookies['/token'].split('.')[0]);
 
-    knex.select('id', 'user_id', 'profile_flag', 'image_path',  'caption',
-      'image_data', 'id_width', 'id_height')
+    knex.select('id', 'user_id', 'profile_flag', 'image_path', 'caption')
       .from('photos')
       .where('photos.user_id', userId)
       .where('photos.id', photoId)
@@ -77,9 +70,6 @@ router.get('/update/:id', (req, res) => {
             userId: photo.userId,
             photoId: photo.id,
             imagePath: photo.imagePath,
-            imageData: photo.imageData || '',
-            idWidth: photo.idWidth,
-            idHeight: photo.idHeight,
             caption: photo.caption,
             profileFlag: photo.profileFlag,
             status: 'Updated'
@@ -250,16 +240,5 @@ router.delete('/:id', (req, res, next) => {
       }
     });
 });
-
-function getImgDimensions(base64) {
-  let header = atob(base64.slice(0, 50)).slice(16,24);
-  let uint8 = Uint8Array.from(header, c => c.charCodeAt(0));
-  let dataView = new DataView(uint8.buffer);
-
-  return {
-    width: dataView.getInt32(0),
-    height: dataView.getInt32(4)
-  };
-}
 
 module.exports = router;

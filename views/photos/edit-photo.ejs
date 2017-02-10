@@ -20,15 +20,6 @@
         <div class="row">
           <div class="col s12 m6">  <!-- left column -->
             <h4>Update Photo</h4>
-            <% var myCanvas = document.getElementById('edit-image') %>
-            <% var ctx = myCanvas.getContext('2d') %>
-            <% var img = new Image %>
-            <% img.onload = function() { %>
-            <% ctx.drawImage(img,0 ,0) } %>
-            <% img.src = %>
-            <%= imageData%>
-            <canvas id="edit-image" width="<%= idWidth %>" height="<%= idHeight %>" class="col s12 m12 no-padding"></canvas>
-            <a href="/photos/show/<%= userId%>"><img src="img.src" class="profile-img" /></a>
             <a href="/photos/show/<%= userId%>"><img src="<%= imagePath%>" class="profile-img" /></a>
             <p class="highlighted"><%= profileFlag ? "This is your profile photo." : "" %></p>
 
