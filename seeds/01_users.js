@@ -7,6 +7,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 37.7841336,
   lon: -122.3957437,
+  accuracy: 1084,
   logged_in: false,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -19,6 +20,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 37.7582657,
   lon: -122.4014102,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -31,6 +33,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 33.7715534,
   lon: -116.7040306,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -43,6 +46,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 37.755144,
   lon: -122.424906,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -55,6 +59,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 47.6147628,
   lon: -122.475988,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -67,6 +72,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 29.8159955,
   lon: -95.9617288,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -79,6 +85,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: 33.7676338,
   lon: -84.5606876,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')
@@ -91,6 +98,7 @@ var users = [{
   hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
   lat: -33.4533477,
   lon: -70.7492334,
+  accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC'),
   updated_at: new Date('2017-01-31 12:26:16 UTC')

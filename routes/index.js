@@ -16,7 +16,7 @@ const router = express.Router();
 
 // =============================================================================
 // show home page with logged in users
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   let curUserId = 0;
   let curApp = '';
   let profileArray = [];
@@ -41,102 +41,111 @@ router.get('/', function(req, res) {
     .where('profile_flag', true)
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
+
       console.log('from /index', cardProfiles);
 
-      knex.select('user_name').from('users')
+      knex.select('lat', 'lon', 'accuracy', 'user_name').from('users')
       .where('id', curUserId)
       .then((user) => {
-        if (user.length === 1) var userName = user[0].user_name;
+        if (user.length === 1 && curApp === 'mate') {
+          let userInfo = camelizeKeys(user[0]);
+          let userName = userInfo.userName;
+          let lat1 = userInfo.lat;
+          let lon1 = userInfo.lon;
+          let accuracy = userInfo.accuracy;
 
-        knex.select('lat', 'lon', 'accuracy').from('curlocation')
-        .orderBy('created_at','desc')
-        .then((locs) => {
+          loggedInFlag = true;
 
-          let loc;
-          let lat1 = 0;
-          let lon1 = 0;
-          let accuracy = 0;
+          profileArray = createCardProfiles(cardProfiles, lat1, lon1,
+            curUserId, profileArray);
 
-          if (locs.length) {
-            loc = locs[0];
-            lat1 = loc.lat;
-            lon1 = loc.lon;
-            accuracy = loc.accuracy;
-          }
+          res.render('index', {
+            loggedIn: true,
+            accuracy: accuracy,
+            curUserId: curUserId,
+            userName: userName,
+            profileArray: profileArray
+          });
 
-          if (curUserId && curApp === 'mate') {
-            loggedInFlag = true;
-            console.log('update user location: ', curUserId, lat1, lon1);
+        } else {
 
-            knex('users').where('id', curUserId).update({lat: lat1})
-            .then(() => {
-              knex('users').where('id', curUserId).update({lon: lon1})
-              .then(() => {
+          knex.select('lat', 'lon', 'accuracy').from('curlocation')
+          .orderBy('created_at','desc')
+          .then((locs) => {
 
-                profileArray = createCardProfiles(cardProfiles, lat1, lon1,
-                  curUserId, profileArray);
+            let loc;
+            let lat1 = 0;
+            let lon1 = 0;
+            let accuracy = 0;
 
-                  res.render('index', {
-                    loggedIn: true,
-                    accuracy: accuracy,
-                    curUserId: curUserId,
-                    userName: userName,
-                    profileArray: profileArray
-                  });
-                });
+            if (locs.length) {
+              loc = locs[0];
+              lat1 = loc.lat;
+              lon1 = loc.lon;
+              accuracy = loc.accuracy;
+            }
+
+            profileArray = createCardProfiles(cardProfiles, lat1, lon1, curUserId,
+              profileArray);
+
+              res.render('index', {
+                loggedIn: false,
+                accuracy: accuracy,
+                curUserId: 0,
+                userName: '',
+                profileArray: profileArray
               });
-
-            } else {
-
-              profileArray = createCardProfiles(cardProfiles, lat1, lon1, curUserId,
-                profileArray);
-
-                res.render('index', {
-                  loggedIn: false,
-                  accuracy: accuracy,
-                  curUserId: 0,
-                  userName: '',
-                  profileArray: profileArray
-                });
-              }
             });
-
-
+          }
       });
     });
 });
 
 // =============================================================================
 // store location
-router.post('/location', function(req, res) {
+router.post('/location', (req, res) => {
   let location = {
     lat: req.body.lat1,
     lon: req.body.lon1,
     accuracy: req.body.accuracy
   };
 
-  knex('curlocation')
-  .insert(decamelizeKeys(location),
-    ['lat', 'lon', 'accuracy'])
-  .returning('*')
-  .then((row) => {
-    const loc = camelizeKeys(row[0]);
-      // console.log('from /index/location: ',loc);
-  })
-  .catch((err) => {
-    console.log('PUT ERROR: ', err);
-  });
+  let curUserId = 0;
+  let curApp = '';
+
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    curUserId = Number(req.cookies['/token'].split('.')[0]);
+    curApp = req.cookies['/token'].split('.')[1];
+
+    knex('users')
+      .update(decamelizeKeys(location),'*')
+      .where('id', curUserId)
+      .then(() => {});
+  } else {
+
+    knex('curlocation')
+    .insert(decamelizeKeys(location),
+      ['lat', 'lon', 'accuracy'])
+    .returning('*')
+    .then((row) => {
+      const loc = camelizeKeys(row[0]);
+        // console.log('from /index/location: ',loc);
+    })
+    .catch((err) => {
+      console.log('PUT ERROR: ', err);
+    });
+  }
 });
 
 // =============================================================================
 // show about page
-router.get('/site/about', function(req, res) {
+router.get('/site/about', (req, res) => {
   res.render('about');
 });
 
 // =============================================================================
 // show contact page
-router.get('/site/contact', function(req, res) {
+router.get('/site/contact', (req, res) => {
   res.render('contact');
 });
 
