@@ -4,4 +4,5 @@
 [X] cannot delete photo, not hitting the route
 [ ] Chat page elements overlap on resize
 [ ] fix password match validation
+[ ] fix form validation
 [ ] new photo post route doesn't render confirm-photo.ejs

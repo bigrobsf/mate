@@ -13,3 +13,5 @@
 [ ] user can view his own chat history chronologically
 [ ] displays geolocation / distance away
 [ ] responsive design
+[ ] change overview, looking_for, and interest to textareas
+[ ] add search by i_like, body_hair, position

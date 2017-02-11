@@ -34,6 +34,7 @@ function saveLocation(data) {
                   'lon1': lon1,
                   'accuracy': accuracy};
 
+// sends the current location to the database
   $.ajax({
     type: 'POST',
     url: '/location',

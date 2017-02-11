@@ -22,7 +22,7 @@ var profiles = [{
   i_am: 'tiger',
   i_like: 'bear',
   birthdate: new Date('1974-11-30 12:26:16 UTC'),
-  height: 7,
+  height: 68,
   weight: 180,
   body_hair: 'hairy',
   ethnicity: 'French',
