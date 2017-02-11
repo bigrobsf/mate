@@ -357,6 +357,14 @@ ul#mobile li a {
   color: #d50000;
 }
 
+a {
+  color: #d50000;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
 a.disabled {
   color: #aaaaaa;
   pointer-events: none;

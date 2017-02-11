@@ -61,14 +61,6 @@ var distance = function(lat1, lon1, lat2, lon2) {
 
   dist = R * c * 3.28; // distance in feet
 
-  // if (d < 100) dist = '< 100 feet away';
-  // else if (d < 1000) dist += d + ' feet away';
-  // else if (d < 5200) dist += (Math.round(d * 100 / 5280) / 100) + ' miles away';
-  // else if (d >= 5200 && d <= 5400) dist = '1 mile away';
-  // else if (d > 5400 && d <= 5 * 5280) dist += (Math.round(d * 10 / 5280) / 10) + ' miles away';
-  // else if (d > 5 * 5280) dist += Math.round(d / 5280) + ' miles away';
-  // else dist = 'unavailable';
-
   return dist;
 };
 
