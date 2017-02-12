@@ -79,7 +79,6 @@ router.post('/', (req, res) => {
 
   let newProfile = {
     userId: userId,
-    message: 'Now add a photo so your profile will appear to others!.',
     iAm: allIAms,
     iLike: allILikes,
     birthdate: req.body.birthdate,
@@ -106,6 +105,7 @@ router.post('/', (req, res) => {
       let formattedDate = formatDate(profile.birthdate);
 
       res.render('confirm-profile', {
+        message: 'Now add a photo so your profile will appear to others!',
         iAm: profile.iAm,
         iLike: profile.iLike,
         birthdate: formattedDate,
