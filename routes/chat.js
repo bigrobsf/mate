@@ -11,7 +11,9 @@ const Sequelize = require('sequelize');
 const moment = require('moment');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('../db/knex');
-var sequelize = new Sequelize('postgres://localhost:5432/mate_dev');
+var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/mate_dev');
+
+
 
 const router = express.Router();
 

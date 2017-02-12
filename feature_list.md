@@ -17,3 +17,4 @@
 [ ] responsive design
 [ ] change overview, looking_for, and interest to textareas
 [ ] add search by i_like, body_hair, position
+[ ] display user photos on profile page rather than on a separate page
