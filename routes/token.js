@@ -25,14 +25,10 @@ router.get('/login', function(req, res) {
 // =============================================================================
 // GET with or without token
 router.get('/', (req, res, next) => {
-  if (req.cookies['/token']) {
-    if (req.cookies['/token'].length > 1) {
-      res.status(200).json(true);
-    } else {
-      res.status(200).json(false);
-    }
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    res.status(200).json(true);
   } else {
-    return next(boom.create(400, 'req.cookies is undefined'));
+    res.status(200).json(false);
   }
 });
 
@@ -71,6 +67,7 @@ router.post('/', (req, res, next) => {
       next(err);
     });
 });
+
 
 // =============================================================================
 // DELETE token

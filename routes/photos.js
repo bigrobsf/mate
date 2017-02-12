@@ -6,7 +6,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt-as-promised');
 const { camelizeKeys, decamelizeKeys } = require('humps');
-const uploadcare = require('../node_modules/uploadcare/lib/main.js');
+const uploadcare = require('../node_modules/uploadcare/lib/main.js')('7d2ddbbb700aaaacc7b7', process.env.SECRET_KEY),
+fs = require('fs');
 var knex = require('../db/knex');
 var PhotoInfo = require('../models/photoinfo.js').PhotoInfo;
 
@@ -234,10 +235,18 @@ router.delete('/:id', (req, res, next) => {
       let photo = camelizeKeys(pic[0]);
       console.log('pic to delete: ', photo.profileFlag);
       if (photo.profileFlag === false) {
+        console.log('image path', photo.imagePath.split('/'));
 
         return knex('photos')
           .del().where('id', photoId)
-          .then(() => {
+          .then((deleted) => {
+            console.log('delete result', deleted);
+            if (deleted) {
+              // uploadcare.files.remove(photo.imagePath, (err, data) => {
+              //   console.log('error: ', err);
+              //   console.log('data: ', data);
+              // });
+            }
 
             res.render('confirm-photo', {
               userId: userId,

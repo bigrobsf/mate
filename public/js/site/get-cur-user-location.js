@@ -41,7 +41,7 @@ function saveLocation(data) {
     data: location,
     success: console.log('success'),
     error: function(jqXHR, textStatus, err) {
-            console.log('text status '+textStatus+', err '+err);
+            console.log('text status ' + textStatus + ', err ' + err);
             }
   });
 }

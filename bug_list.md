@@ -6,3 +6,4 @@
 [ ] fix password match validation
 [ ] fix form validation
 [ ] new photo post route doesn't render confirm-photo.ejs
+[ ] when photo is deleted, also delete from Upload Care

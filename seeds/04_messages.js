@@ -73,15 +73,15 @@ var messages = [{
   user_id1: 1,
   user_id2: 2,
   message: 'perfect',
-  created_at: new Date('2017-01-31 12:28:16 UTC'),
-  updated_at: new Date('2017-01-31 12:28:16 UTC')
+  created_at: new Date('2017-01-31 18:28:16 UTC'),
+  updated_at: new Date('2017-01-31 18:28:16 UTC')
 }, {
   id: 12,
   user_id1: 1,
   user_id2: 2,
   message: "you know, I can't believe this app. No emojis? really?",
-  created_at: new Date('2017-01-31 12:28:30 UTC'),
-  updated_at: new Date('2017-01-31 12:28:30 UTC')
+  created_at: new Date('2017-01-31 18:28:30 UTC'),
+  updated_at: new Date('2017-01-31 18:28:30 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
