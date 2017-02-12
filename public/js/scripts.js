@@ -12,6 +12,11 @@ $(document).ready(() => {
     menuWidth: 200
   });
 
+  let joinElement = document.getElementById('join');
+  let loginElement = document.getElementById('login');
+  let accountElement = document.getElementById('account');
+  let logoutElement = document.getElementById('logout');
+
   // code to display and fade out splash screen
   let displayedSplash = sessionStorage.getItem('displayedSplash');
 
@@ -50,14 +55,38 @@ $(document).ready(() => {
     url: '/token',
     data: tokenStatus,
     success: function(responseText, status) {
-      console.log('responseText', responseText);
+      setNavItemStatus(responseText);
     },
     error: function(jqXHR, textStatus, err) {
             console.log('text status ' + textStatus + ', err ' + err);
             }
   });
-});
 
-function getLoginStatus () {
-  console.log('token status success');
-}
+  function setNavItemStatus (loggedIn) {
+    console.log('logged in? ', loggedIn);
+
+    if (loggedIn) {
+      joinElement.setAttribute('class', 'disabled');
+      loginElement.setAttribute('class', 'disabled');
+
+      if (accountElement.hasAttribute('class')) {
+        accountElement.removeAttribute('class');
+      }
+
+      if (logoutElement.hasAttribute('class')) {
+        logoutElement.removeAttribute('class');
+      }
+    } else {
+      accountElement.setAttribute('class', 'disabled');
+      logoutElement.setAttribute('class', 'disabled');
+
+      if (joinElement.hasAttribute('class')) {
+        joinElement.removeAttribute('class');
+      }
+
+      if (loginElement.hasAttribute('class')) {
+        loginElement.removeAttribute('class');
+      }
+    }
+  }
+});
