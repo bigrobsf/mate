@@ -3,6 +3,7 @@
 [ ] create, update, and delete user accounts
 [ ] create, update, and delete profile
 [ ] upload, update, and delete photos
+[ ] edit forms pre-fill text of input elements
 [ ] User only appears on browse page if they have a profile photo and are logged in
 [ ] browse photos of other users
 [ ] view profiles of other users

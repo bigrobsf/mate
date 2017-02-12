@@ -17,14 +17,14 @@
 
     <div class="row">
       <div class="col s12 m12">
-        <div class="profile z-depth-3">
+        <!-- <div class="profile z-depth-3"> -->
         <h4><%= userName%></h4>
         <h5><span class="bold">I am:</span> <%= iAm%></h5>
         <h5><span class="bold">I like:</span> <%= iLike%></h5>
         <h5><span class="bold">Body Hair:</span> <%= bodyHair%></h5>
         <h5><span class="bold">Positions:</span> <%= positions%></h5>
         <h5><span class="bold">Safety:</span> <%= safety%></h5>
-      </div>
+      <!-- </div> -->
     </div>
     </div>
 
@@ -32,183 +32,183 @@
       <div class="col s12 m12">
         <div class="row">
           <div class="col s12 m6">  <!-- left column -->
-            <h4>Update Profile</h4>
+            <div class="profile z-depth-3">
+              <h4 class="center">Update Profile</h4>
 
-
-
-            <form id="edit-profile" method="POST" action="/profiles?_method=PUT">
-              <div class="row">
-                <div class="input-field col s12">
-                  <select name="iAm" id="edit-am-type" multiple>
-                    <option value="" disabled selected>Select type(s)</option>
-                    <option value="bear">bear</option>
-                    <option value="daddy">daddy</option>
-                    <option value="muscle">muscle</option>
-                    <option value="geek">geek</option>
-                    <option value="jock">jock</option>
-                    <option value="beast">beast</option>
-                    <option value="tiger">tiger</option>
-                    <option value="otter">otter</option>
-                    <option value="poz">poz</option>
-                    <option value="buddy">buddy</option>
-                    <option value="bro">bro</option>
-                  </select>
-                  <label>I am:</label>
+              <form id="edit-profile" method="POST" action="/profiles?_method=PUT">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select name="iAm" id="edit-am-type" multiple>
+                      <option value="" disabled selected>Select type(s)</option>
+                      <option value="bear">bear</option>
+                      <option value="daddy">daddy</option>
+                      <option value="muscle">muscle</option>
+                      <option value="geek">geek</option>
+                      <option value="jock">jock</option>
+                      <option value="beast">beast</option>
+                      <option value="tiger">tiger</option>
+                      <option value="otter">otter</option>
+                      <option value="poz">poz</option>
+                      <option value="buddy">buddy</option>
+                      <option value="bro">bro</option>
+                    </select>
+                    <label>I am:</label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <select name="iLike" id="edit-like-type" multiple>
-                    <option value="" disabled selected>Select type(s)</option>
-                    <option value="bear">bear</option>
-                    <option value="daddy">daddy</option>
-                    <option value="muscle">muscle</option>
-                    <option value="geek">geek</option>
-                    <option value="jock">jock</option>
-                    <option value="beast">beast</option>
-                    <option value="tiger">tiger</option>
-                    <option value="otter">otter</option>
-                    <option value="poz">poz</option>
-                    <option value="buddy">buddy</option>
-                    <option value="bro">bro</option>
-                  </select>
-                  <label>I like:</label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select name="iLike" id="edit-like-type" multiple>
+                      <option value="" disabled selected>Select type(s)</option>
+                      <option value="bear">bear</option>
+                      <option value="daddy">daddy</option>
+                      <option value="muscle">muscle</option>
+                      <option value="geek">geek</option>
+                      <option value="jock">jock</option>
+                      <option value="beast">beast</option>
+                      <option value="tiger">tiger</option>
+                      <option value="otter">otter</option>
+                      <option value="poz">poz</option>
+                      <option value="buddy">buddy</option>
+                      <option value="bro">bro</option>
+                    </select>
+                    <label>I like:</label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label class="active" for="birthdate">Birthdate: </label>
-                  <input type="date" name="birthdate" id="edit-birthdate" value="<%= birthdate%>">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label class="active" for="birthdate">Birthdate: </label>
+                    <input type="date" name="birthdate" id="edit-birthdate" value="<%= birthdate%>">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="height">Height (inches): </label>
-                  <input type="number" min="36" name="height" id="edit-height" value="<%= height%>" class="validate">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="height">Height (inches): </label>
+                    <input type="number" min="36" name="height" id="edit-height" value="<%= height%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field  col s12">
-                  <label for="weight">Weight (pounds): </label>
-                  <input type="number" min="90" name="weight" id="edit-weight" value="<%= weight%>" class="validate">
+                <div class="row">
+                  <div class="input-field  col s12">
+                    <label for="weight">Weight (pounds): </label>
+                    <input type="number" min="90" name="weight" id="edit-weight" value="<%= weight%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <select name="bodyHair" id="edit-bodyhair">
-                    <option value="" disabled selected>I am</option>
-                    <option value="smooth">smooth</option>
-                    <option value="some hair">some hair</option>
-                    <option value="hairy">hairy</option>
-                    <option value="very hairy">very hairy</option>
-                    <option value="gorilla">gorilla</option>
-                  </select>
-                  <label>Body Hair:</label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select name="bodyHair" id="edit-bodyhair">
+                      <option value="" disabled selected>I am</option>
+                      <option value="smooth">smooth</option>
+                      <option value="some hair">some hair</option>
+                      <option value="hairy">hairy</option>
+                      <option value="very hairy">very hairy</option>
+                      <option value="gorilla">gorilla</option>
+                    </select>
+                    <label>Body Hair:</label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="ethnicity">Ethnicity: </label>
-                  <input type="text" name="ethnicity" id="edit-ethnicity" value="<%= ethnicity%>" class="validate">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="ethnicity">Ethnicity: </label>
+                    <input type="text" name="ethnicity" id="edit-ethnicity" value="<%= ethnicity%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="overview">What I do: </label>
-                  <input type="text" name="overview" id="edit-overview" value="<%= overview%>" class="validate">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="overview">What I do: </label>
+                    <input type="text" name="overview" id="edit-overview" value="<%= overview%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="lookingFor">What I'm looking for: </label>
-                  <input type="text" name="lookingFor" id="edit-looking-for" value="<%= lookingFor%>" class="validate">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="lookingFor">What I'm looking for: </label>
+                    <input type="text" name="lookingFor" id="edit-looking-for" value="<%= lookingFor%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="interests">Interests: </label>
-                  <input type="text" name="interests" id="edit-interests" value="<%= interests%>" class="validate">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="interests">Interests: </label>
+                    <input type="text" name="interests" id="edit-interests" value="<%= interests%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <!-- <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="edit-overview" class="materialize-textarea"></textarea>
-                  <label for="overview">What I do: </label>
+                <!-- <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="edit-overview" class="materialize-textarea"></textarea>
+                    <label for="overview">What I do: </label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="edit-looking-for" class="materialize-textarea"></textarea>
-                  <label for="lookingFor">What I'm looking for: </label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="edit-looking-for" class="materialize-textarea"></textarea>
+                    <label for="lookingFor">What I'm looking for: </label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="edit-interests" class="materialize-textarea"></textarea>
-                  <label for="interests">What I enjoy: </label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="edit-interests" class="materialize-textarea"></textarea>
+                    <label for="interests">What I enjoy: </label>
+                  </div>
+                </div> -->
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select name="positions" id="edit-positions" multiple>
+                      <option value="" disabled selected>I am</option>
+                      <option value="top">top</option>
+                      <option value="bottom">bottom</option>
+                      <option value="versatile">versatile</option>
+                      <option value="oral">oral</option>
+                      <option value="N/A">N/A</option>
+                    </select>
+                    <label>Positions: </label>
+                  </div>
                 </div>
-              </div> -->
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <select name="positions" id="edit-positions" multiple>
-                    <option value="" disabled selected>I am</option>
-                    <option value="top">top</option>
-                    <option value="bottom">bottom</option>
-                    <option value="versatile">versatile</option>
-                    <option value="oral">oral</option>
-                    <option value="N/A">N/A</option>
-                  </select>
-                  <label>Positions: </label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select name="methods" id="edit-methods" multiple>
+                      <option value="" disabled selected>Methods</option>
+                      <option value="PrEP">PrEP</option>
+                      <option value="condoms">condoms</option>
+                      <option value="ask me">ask me</option>
+                    </select>
+                    <label>Safety: </label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <select name="methods" id="edit-methods" multiple>
-                    <option value="" disabled selected>Methods</option>
-                    <option value="PrEP">PrEP</option>
-                    <option value="condoms">condoms</option>
-                    <option value="ask me">ask me</option>
-                  </select>
-                  <label>Safety: </label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="hometown">Hometown: </label>
+                    <input type="text" name="hometown" id="edit-hometown" value="<%= hometown%>" class="validate">
+                  </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="hometown">Hometown: </label>
-                  <input type="text" name="hometown" id="edit-hometown" value="<%= hometown%>" class="validate">
+                <input type="hidden" name="_method" value="put">
+
+                <div class="row center">
+                  <button id="update-profile-btn" class="submit btn waves-effect waves-light disabled" type="submit" name="action">Update
+                    <i class="material-icons right">send</i>
+                  </button>
                 </div>
-              </div>
-
-              <input type="hidden" name="_method" value="put">
-
-              <div class="row center">
-                <button id="update-profile-btn" class="submit btn waves-effect waves-light disabled" type="submit" name="action">Update
-                  <i class="material-icons right">send</i>
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
 
           <div class="col m1">  <!-- middle column -->
           </div>
 
           <div class="col s12 m5">  <!-- right column -->
-            <div class="profile">
+            <div class="profile z-depth-3">
               <h4 class="center">Delete Profile</h4>
               <form method="POST" action="/profiles?_method=DELETE">
                 <div class="row center">

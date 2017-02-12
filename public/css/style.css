@@ -37,7 +37,7 @@ body {
 }
 
 div.profile {
-  border: 1px solid #d50000;
+  border: 1px solid #424242;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 10px 20px;
@@ -434,6 +434,9 @@ img.logo {
   max-width: 250px;
   margin-bottom: 20px;
 }
+
+.carousel .carousel-item {
+width:300px !important;}
 
 /* =============================================================================
 footer */
