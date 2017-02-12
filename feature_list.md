@@ -11,7 +11,8 @@
 [ ] user cannot delete profile photo
 [ ] real time chat room that displays username of sender
 [ ] user can view his own chat history chronologically
-[ ] displays geolocation / distance away
+[ ] displays distance away
+[ ] sorts users by distance away
 [ ] responsive design
 [ ] change overview, looking_for, and interest to textareas
 [ ] add search by i_like, body_hair, position

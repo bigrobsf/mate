@@ -409,9 +409,6 @@ img.profile-img {
   max-width: 100%;
   height: auto;
   margin-bottom: 30px;
-  box-shadow: 0 28px 16px -26px #000000;
-  -webkit-box-shadow: 0 28px 16px -26px #000000;
-  -moz-box-shadow: 0 28px 16px -26px #000000;
 }
 
 img.chat-img {

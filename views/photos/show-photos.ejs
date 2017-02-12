@@ -17,7 +17,7 @@
 
     <div class="row">
       <div class="col s12 m12">
-        <a href="/profiles/show/<%= userId%>"><h4 class="photo-page-link"><%= userName%></h4></a>
+        <a href="/profiles/show/<%= userId%>" class="tooltipped" data-position="left" data-delay="100" data-tooltip="View Profile"><h4 class="photo-page-link"><%= userName%></h4></a>
         <div class="carousel">
           <% photoArray.forEach((photo) => { %>
             <a class="carousel-item" href="/photos/showone/<%= photo.photoId%>"><img src="<%= photo.imagePath%>"></a>
@@ -50,7 +50,6 @@
     <div class="footer-copyright">
       <div class="container">
       © 2017 Rob Conner. All Rights Reserved.
-      <p id="clear-splash" class="grey-text right">Clear</p>
       </div>
     </div>
   </footer>

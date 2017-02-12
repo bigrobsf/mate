@@ -17,9 +17,9 @@
 
     <div class="row">
       <div class="col s12 m12">
-        <a href="/profiles/show/<%= userId%>"><h4 class="photo-page-link"><%= userName%></h4></a>
+        <a href="/profiles/show/<%= userId%> " class="tooltipped" data-position="left" data-delay="100" data-tooltip="View Profile"><h4 class="photo-page-link"><%= userName%></h4></a>
         <h5 class="error-msg bold"><%= msg%></h5>
-        <a href="/photos/show/<%= userId%>"><img src="<%= imagePath%>" class="profile-img" /></a>
+        <a href="/photos/show/<%= userId%>" class="tooltipped" data-position="top" data-delay="100" data-tooltip="Return to Photos"><img src="<%= imagePath%>" class="profile-img z-depth-5" /></a>
         <h5><%= caption%></h5>
 
         <% if (activeUser === userId) { %>
@@ -62,7 +62,6 @@
     <div class="footer-copyright">
       <div class="container">
       © 2017 Rob Conner. All Rights Reserved.
-      <p id="clear-splash" class="grey-text right">Clear</p>
       </div>
     </div>
   </footer>

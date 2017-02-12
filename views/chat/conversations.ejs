@@ -25,8 +25,8 @@
           <h4>Message History</h4>
           <div class="row"> <!-- first row -->
             <%messages.forEach((message) => { %>
-              <div class="message">
-                <a href="/chat/<%= message.userid1%>"><img class="msg-img circle responsive-img" src="<%= message.image_path%>" /></a>
+              <div class="message z-depth-2">
+                <a href="/chat/<%= message.userid1%>" class="tooltipped" data-position="left" data-delay="100" data-tooltip="Open Chat"><img class="msg-img circle responsive-img" src="<%= message.image_path%>" /></a>
                 <p class="msg-timestamp"><%= message.created_at%></p>
                 <p><span class="msg-username"><%= message.username1%>:</span> <span class="msg-text"><%= message.message%></span></p>
               </div>
