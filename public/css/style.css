@@ -388,6 +388,10 @@ a.disabled {
   cursor: default;
 }
 
+ul#mobile li a.disabled {
+  color: #aaaaaa;
+}
+
 h4.photo-page-link:hover {
   color: #d50000;
 }

@@ -17,6 +17,12 @@ $(document).ready(() => {
   let accountElement = document.getElementById('account');
   let logoutElement = document.getElementById('logout');
 
+  let joinMobileElement = document.getElementById('join-mobile');
+  let loginMobileElement = document.getElementById('login-mobile');
+  let accountMobileElement = document.getElementById('account-mobile');
+  let logoutMobileElement = document.getElementById('logout-mobile');
+
+  // ===========================================================================
   // code to display and fade out splash screen
   let displayedSplash = sessionStorage.getItem('displayedSplash');
 
@@ -45,6 +51,7 @@ $(document).ready(() => {
     }, 2000);
   }
 
+  // ===========================================================================
   // get login status to enable / disable login / account links in navbar
   let tokenStatus = {
     status: status
@@ -69,6 +76,9 @@ $(document).ready(() => {
       joinElement.setAttribute('class', 'disabled');
       loginElement.setAttribute('class', 'disabled');
 
+      joinMobileElement.setAttribute('class', 'disabled');
+      loginMobileElement.setAttribute('class', 'disabled');
+
       if (accountElement.hasAttribute('class')) {
         accountElement.removeAttribute('class');
       }
@@ -76,9 +86,20 @@ $(document).ready(() => {
       if (logoutElement.hasAttribute('class')) {
         logoutElement.removeAttribute('class');
       }
+
+      if (accountMobileElement.hasAttribute('class')) {
+        accountMobileElement.removeAttribute('class');
+      }
+
+      if (logoutMobileElement.hasAttribute('class')) {
+        logoutMobileElement.removeAttribute('class');
+      }
     } else {
       accountElement.setAttribute('class', 'disabled');
       logoutElement.setAttribute('class', 'disabled');
+
+      accountMobileElement.setAttribute('class', 'disabled');
+      logoutMobileElement.setAttribute('class', 'disabled');
 
       if (joinElement.hasAttribute('class')) {
         joinElement.removeAttribute('class');
@@ -86,6 +107,14 @@ $(document).ready(() => {
 
       if (loginElement.hasAttribute('class')) {
         loginElement.removeAttribute('class');
+      }
+
+      if (joinMobileElement.hasAttribute('class')) {
+        joinMobileElement.removeAttribute('class');
+      }
+
+      if (loginMobileElement.hasAttribute('class')) {
+        loginMobileElement.removeAttribute('class');
       }
     }
   }
