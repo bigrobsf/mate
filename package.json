@@ -7,8 +7,8 @@
     "knex": "knex",
     "nf": "nf start",
     "heroku-postbuild": "knex migrate:latest --env production",
-    "start-ws": "nodemon ws-server.js",
-    "start-app": "nodemon app.js",
+    "start-ws": "node ws-server.js",
+    "start-app": "node app.js",
     "start": "npm run start-ws & npm run start-app & wait",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
