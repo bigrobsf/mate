@@ -26,9 +26,16 @@
           <div class="row"> <!-- first row -->
             <%messages.forEach((message) => { %>
               <div class="message z-depth-2">
-                <a href="/chat/<%= message.userid1%>" class="tooltipped" data-position="left" data-delay="100" data-tooltip="Open Chat"><img class="msg-img circle responsive-img" src="<%= message.image_path%>" /></a>
+                <% if (message.userid1 !== curUserId) { %>
+                <a href="/chat/<%= message.userid1%>">
+                  <% } %>
+                  <img class="msg-img circle responsive-img" src="<%= message.image_path%>" />
+                <% if (message.userid1 !== curUserId) { %>
+                </a>
+                <% } %>
                 <p class="msg-timestamp"><%= message.created_at%></p>
-                <p><span class="msg-username"><%= message.username1%>:</span> <span class="msg-text"><%= message.message%></span></p>
+                <p><span class="msg-username"><%= message.username1%></span> to <span class="msg-username"><%= message.username2%></span>:
+                  <span class="msg-text"><%= message.message%></span></p>
               </div>
             <% }); %>
 

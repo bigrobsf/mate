@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
     .then((rows) => {
       let cardProfiles = camelizeKeys(rows);
 
-      console.log('from /index', cardProfiles);
+      // console.log('from /index', cardProfiles);
 
       knex.select('lat', 'lon', 'accuracy', 'user_name').from('users')
       .where('id', curUserId)
@@ -191,7 +191,7 @@ function createCardProfiles(cardProfiles, lat1, lon1, curUserId, profileArray) {
     return eleA > eleB ? 1 : eleA < eleB ? -1 : 0;
   });
 
-  console.log('from /index sorted: ', profileArray);
+  // console.log('from /index sorted: ', profileArray);
 
   return profileArray;
 }
