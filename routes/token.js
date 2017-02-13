@@ -40,32 +40,34 @@ router.post('/', (req, res, next) => {
 
   knex('users').where('email', authReq.email.toLowerCase()).first()
     .then((row) => {
-      if (!row) {
-        res.redirect('/token/login' + '?login=invalid');
-      } else {
+      if (row) {
         user = camelizeKeys(row);
-        return bcrypt.compare(authReq.password, user.hashedPassword);
-      }
-    })
-    .then(() => {
-      delete user.hashedPassword;
-      delete user.createdAt;
-      delete user.updatedAt;
+        return bcrypt.compare(authReq.password, user.hashedPassword)
 
-      knex('users').where('id', user.id).update({logged_in: true})
         .then(() => {
-          console.log(`user ${user.id} logged IN`);
-          res.cookie('/token', user.id + '.mate.cookie.rawr', { path: '/', httpOnly: true });
-          res.redirect('../'); // get index page
-      });
+          delete user.hashedPassword;
+          delete user.createdAt;
+          delete user.updatedAt;
 
-    })
-    .catch(bcrypt.MISMATCH_ERROR, () => {
-      res.redirect('/token/login' + '?login=invalid');
-    })
-    .catch(err => {
-      next(err);
+          knex('users').where('id', user.id).update({logged_in: true})
+            .then(() => {
+              console.log(`user ${user.id} logged IN`);
+              res.cookie('/token', user.id + '.mate.cookie.rawr', { path: '/', httpOnly: true });
+              res.redirect('../'); // get index page
+          });
+        })
+        .catch(bcrypt.MISMATCH_ERROR, () => {
+          res.redirect('/token/login' + '?login=invalid');
+        })
+        .catch(err => {
+          next(err);
+        });
+
+      } else {
+        res.redirect('/token/login' + '?login=invalid');
+      }
     });
+
 });
 
 

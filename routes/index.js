@@ -121,7 +121,8 @@ router.post('/location', (req, res) => {
       .update(decamelizeKeys(location),'*')
       .where('id', curUserId)
       .then((loc) => {
-        console.log('updating users table from /index/location: ',loc);
+        delete loc[0].hashed_password;
+        console.log('updated users table from /index/location: ',loc);
       });
   } else {
 
@@ -131,7 +132,7 @@ router.post('/location', (req, res) => {
     .returning('*')
     .then((row) => {
       const loc = camelizeKeys(row[0]);
-       console.log('updating curlocation from /index/location: ',loc);
+       console.log('updated curlocation from /index/location: ',loc);
     })
     .catch((err) => {
       console.log('PUT ERROR: ', err);

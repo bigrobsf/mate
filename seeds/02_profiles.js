@@ -12,7 +12,7 @@ var profiles = [{
   looking_for: 'Cliche squid put a bird on it street art selfies semiotics. Copper mug yuccie banjo, shoreditch cardigan scenester sartorial hexagon everyday carry. Put a bird on it pabst meggings, beard iPhone stumptown dreamcatcher banh mi. Portland tumeric four loko copper mug pinterest synth. Aesthetic fap vice 90s, church-key lumbersexual bicycle rights coloring book ramps tote bag semiotics everyday carry literally. Organic kombucha DIY meditation bespoke, banh mi shabby chic kickstarter enamel pin biodiesel direct trade keffiyeh messenger bag flexitarian. Pinterest sartorial woke schlitz, dreamcatcher enamel pin fixie craft beer venmo celiac tote bag cardigan tofu shabby chic.',
   interests: 'science fiction, bodybuilding, software engineering',
   positions: 'top',
-  safety: 'condoms',
+  safety: 'PrEP',
   hometown: 'San Francisco',
   created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
@@ -26,7 +26,7 @@ var profiles = [{
   body_hair: 'hairy',
   ethnicity: 'mixed',
   overview: 'free thinker, writer, organic bodybuilder and golden era fan.',
-  looking_for: 'Cliche squid put a bird on it street art selfies semiotics.',
+  looking_for: 'Marfa brunch typewriter, fingerstache bicycle rights cold-pressed sartorial unicorn snackwave tote bag health goth hashtag truffaut sustainable kogi. Viral jianbing prism hoodie skateboard green juice intelligentsia. Tbh food truck hexagon twee. 8-bit echo park viral mixtape etsy. Raw denim meh copper mug hammock. Freegan chicharrones fashion axe, sriracha four dollar toast vape occupy health goth edison bulb. Chillwave tacos fanny pack af crucifix.',
   interests: 'culture, anthropology, bodybuilding, architecture',
   positions: 'versatile',
   safety: 'condoms',
@@ -58,11 +58,11 @@ var profiles = [{
   height: 69,
   weight: 220,
   body_hair: 'some hair',
-  ethnicity: 'black',
+  ethnicity: 'african',
   overview: 'stuff',
   looking_for: 'more stuff',
   interests: 'even more stuff',
-  positions: 'versatile',
+  positions: 'bottom',
   safety: 'ask me',
   hometown: 'San Francisco',
   created_at: new Date('2017-01-31 12:26:16 UTC')
