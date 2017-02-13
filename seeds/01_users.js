@@ -9,8 +9,7 @@ var users = [{
   lon: -122.3957437,
   accuracy: 1084,
   logged_in: false,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 2,
   first_name: 'Nicolas',
@@ -22,8 +21,7 @@ var users = [{
   lon: -122.4014102,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 3,
   first_name: 'Mike',
@@ -35,8 +33,7 @@ var users = [{
   lon: -116.7040306,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 4,
   first_name: 'Mitch',
@@ -48,8 +45,7 @@ var users = [{
   lon: -122.424906,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 5,
   first_name: 'Derek',
@@ -61,8 +57,7 @@ var users = [{
   lon: -122.475988,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 6,
   first_name: 'Keyvon',
@@ -74,8 +69,7 @@ var users = [{
   lon: -95.9617288,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 7,
   first_name: 'Dave',
@@ -87,8 +81,7 @@ var users = [{
   lon: -84.5606876,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 8,
   first_name: 'Rob',
@@ -100,8 +93,7 @@ var users = [{
   lon: -70.7492334,
   accuracy: 1084,
   logged_in: true,
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
 exports.seed = function(knex, Promise) {

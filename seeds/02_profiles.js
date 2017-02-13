@@ -14,26 +14,24 @@ var profiles = [{
   positions: 'top',
   safety: 'condoms',
   hometown: 'San Francisco',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 2,
   user_id: 2,
-  i_am: 'tiger',
-  i_like: 'bear',
+  i_am: 'tiger, muscle',
+  i_like: 'bear, daddy, muscle, beast',
   birthdate: new Date('1974-11-30 12:26:16 UTC'),
   height: 68,
   weight: 180,
   body_hair: 'hairy',
-  ethnicity: 'French',
+  ethnicity: 'mixed',
   overview: 'free thinker, writer, organic bodybuilder and golden era fan.',
   looking_for: 'Cliche squid put a bird on it street art selfies semiotics.',
   interests: 'culture, anthropology, bodybuilding, architecture',
   positions: 'versatile',
   safety: 'condoms',
   hometown: 'San Francisco',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 3,
   user_id: 3,
@@ -50,8 +48,7 @@ var profiles = [{
   positions: 'top',
   safety: 'ask me',
   hometown: 'Palm Springs',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 4,
   user_id: 4,
@@ -68,8 +65,7 @@ var profiles = [{
   positions: 'versatile',
   safety: 'ask me',
   hometown: 'San Francisco',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 5,
   user_id: 5,
@@ -86,8 +82,7 @@ var profiles = [{
   positions: 'versatile',
   safety: 'PrEP',
   hometown: 'Seattle',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 6,
   user_id: 6,
@@ -104,8 +99,7 @@ var profiles = [{
   positions: 'top',
   safety: 'ask me',
   hometown: 'Houston',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 7,
   user_id: 7,
@@ -122,8 +116,7 @@ var profiles = [{
   positions: 'top',
   safety: 'ask me',
   hometown: 'Atlanta',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 8,
   user_id: 8,
@@ -140,8 +133,7 @@ var profiles = [{
   positions: 'bottom',
   safety: 'ask me',
   hometown: 'Santiago',
-  created_at: new Date('2017-01-31 12:26:16 UTC'),
-  updated_at: new Date('2017-01-31 12:26:16 UTC')
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
