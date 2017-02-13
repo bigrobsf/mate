@@ -45,25 +45,6 @@ wsServer.on('request', function(req) {
 
     let receivedId = msgObj.clientKey;
 
-    let conversation = {
-      user_id1: msgObj.curUserId,
-      user_id2: msgObj.targetUserId,
-      message: msgObj.text.trim()
-    };
-
-    knex('messages')
-    .insert(decamelizeKeys(conversation),
-      ['user_id1', 'user_id2', 'message'])
-    .returning('*')
-    .then((row) => {
-      let test = camelizeKeys(row[0]);
-        console.log('from ws-server.js: ',test);
-
-    })
-    .catch((err) => {
-      console.log('PUT ERROR: ', err);
-    });
-
     // clear client ID from message before broadcasting to other clients
     msgObj.clientKey = '';
     console.log(msgObj);

@@ -12,7 +12,7 @@ function locationRequest() {
   // The object to start the AJAX request using JQuery's format
   let requestObject = {
     url: `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi0kaurEfWwzDKye0ezKEXWhzmZmxEFYI`,
-    method: "POST",
+    method: 'POST',
     success: saveLocation,
     error: logError
   };

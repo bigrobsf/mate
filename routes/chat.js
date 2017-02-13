@@ -18,6 +18,32 @@ var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:
 const router = express.Router();
 
 // =============================================================================
+// POST message
+router.post('/message', (req, res) => {
+  console.log('req.body from chat route: ', req.body);
+  let conversation = {
+    user_id1: req.body.user_id1,
+    user_id2: req.body.user_id2,
+    message: req.body.message
+  };
+
+  console.log('conversation from route: ', conversation);
+
+  knex('messages')
+  .insert(decamelizeKeys(conversation),
+    ['user_id1', 'user_id2', 'message'])
+  .returning('*')
+  .then((row) => {
+    let test = camelizeKeys(row[0]);
+      console.log('from chat.js: ',test);
+
+  })
+  .catch((err) => {
+    console.log('PUT ERROR: ', err);
+  });
+});
+
+// =============================================================================
 // show chat with single user
 router.get('/:id', (req, res) => {
   let targetUserId = Number(req.params.id);

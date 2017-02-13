@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 /* jshint node: true */
 /* jshint browser: true */
+/* jshint jquery: true */
 
 'use strict'; // optional
 
@@ -112,7 +113,24 @@ window.onload = function() {
       let msg = createMsgObj(message, clientKey, curUserId, targetUserId, curUserName);
       console.log('message to server: ', msg);
 
-      // put ajax call to post message to database here
+      let conversation = {
+        user_id1: msg.curUserId,
+        user_id2: msg.targetUserId,
+        message: msg.text.trim()
+      };
+
+      console.log('conversation', conversation);
+
+    // sends the current message to the database
+      $.ajax({
+        type: 'POST',
+        url: '/chat/message',
+        data: conversation,
+        success: console.log('ajax conversation save success'),
+        error: function(jqXHR, textStatus, err) {
+                console.log('save conversation: ' + textStatus + ', err ' + err);
+                }
+      });
 
       socket.send(JSON.stringify(msg));
 
