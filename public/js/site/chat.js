@@ -5,8 +5,8 @@
 'use strict'; // optional
 
 let host = location.origin.replace(/^http/, 'ws');
-// let host = "ws://localhost:3001";
-console.log(host);
+if (host === 'ws://localhost:3007') host = 'ws://localhost:3001';
+// console.log(host);
 
 window.onload = function() {
   let messageField = document.getElementById('message-area');

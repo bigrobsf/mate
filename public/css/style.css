@@ -3,7 +3,8 @@ Site */
 
 a.brand-logo {
   font-size: 3rem;
-  margin-left: 10px;
+  margin-left: 16px;
+  margin-top: 5px;
   font-weight:800;
   color: #d50000;
 }
@@ -267,7 +268,7 @@ div.clr:hover {
   background: #ff5252;
 }
 
-.uploadcare-widget-circle--canvas {
+div.uploadcare-dialog-icon.uploadcare-widget-circle.uploadcare-widget-circle--canvas {
   color: #d50000;
 }
 
@@ -419,6 +420,10 @@ img.chat-img {
 }
 
 a img.profile-img:hover {
+  border: 1px solid #d50000;
+}
+
+a img.card-img:hover {
   border: 1px solid #d50000;
 }
 

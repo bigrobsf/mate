@@ -58,8 +58,8 @@
           <div class="col m1">  <!-- middle column -->
           </div>
           <div class="col s12 m5">  <!-- right column -->
-            <div class="profile z-depth-3">
-              <% if (profileFlag === false) { %>
+            <% if (profileFlag === false) { %>
+              <div class="profile z-depth-3">
                 <h4 class="center">Delete Photo</h4>
                 <form method="POST" action="/photos/<%= photoId%>?_method=DELETE">
                   <div class="row center">
@@ -72,8 +72,8 @@
                     </button>
                   </div>
                 </form>
-              <% } %>
-            </div>
+              </div>
+            <% } %>
           </div>
         </div>
       </div>
