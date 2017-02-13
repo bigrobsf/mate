@@ -112,7 +112,7 @@ router.post('/location', (req, res) => {
 
   let curUserId = 0;
   let curApp = '';
-
+  console.log('in /location route');
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     curUserId = Number(req.cookies['/token'].split('.')[0]);
     curApp = req.cookies['/token'].split('.')[1];
@@ -120,7 +120,9 @@ router.post('/location', (req, res) => {
     knex('users')
       .update(decamelizeKeys(location),'*')
       .where('id', curUserId)
-      .then(() => {});
+      .then((loc) => {
+        console.log('updating users table from /index/location: ',loc);
+      });
   } else {
 
     knex('curlocation')
@@ -129,7 +131,7 @@ router.post('/location', (req, res) => {
     .returning('*')
     .then((row) => {
       const loc = camelizeKeys(row[0]);
-        // console.log('from /index/location: ',loc);
+       console.log('updating curlocation from /index/location: ',loc);
     })
     .catch((err) => {
       console.log('PUT ERROR: ', err);

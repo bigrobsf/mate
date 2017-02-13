@@ -38,7 +38,7 @@ function storeImageData(fileInfo) {
 // redirect to user photos
 function redirectUserProfile() {
   let userId = document.getElementById('cur-user').textContent;
-  let target = window.location.protocol + '//' + window.location.host +'/profiles/show/' + userId;
+  let target = window.location.protocol + '//' + window.location.host +'/photos/show/' + userId;
   console.log(target);
   window.location = target;
 }

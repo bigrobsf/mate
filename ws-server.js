@@ -111,5 +111,5 @@ function createIdObj(id) {
 // =============================================================================
 // Fire up the server
 server.listen(PORT, function() {
-  console.log((new Date()) + ' Server is listening on port ' + PORT);
+  console.log((new Date()) + ' WebSocket server is listening on port ' + PORT);
 });

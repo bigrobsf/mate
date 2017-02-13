@@ -9,7 +9,7 @@
 // makes the AJAX request to the Google Maps Geolocation API
 function locationRequest() {
 
-  // The object we use to start the AJAX request using JQuery's format
+  // The object to start the AJAX request using JQuery's format
   let requestObject = {
     url: `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi0kaurEfWwzDKye0ezKEXWhzmZmxEFYI`,
     method: "POST",
@@ -19,6 +19,12 @@ function locationRequest() {
 
   // Actually start the AJAX request
   return $.ajax(requestObject);
+}
+
+//==============================================================================
+// The event handler for a failed location request
+function logError(err) {
+  console.log('AJAX Error: ', err);
 }
 
 //==============================================================================
@@ -39,15 +45,17 @@ function saveLocation(data) {
     type: 'POST',
     url: '/location',
     data: location,
-    success: console.log('success'),
+    success: console.log('ajax location save success'),
     error: function(jqXHR, textStatus, err) {
-            console.log('text status ' + textStatus + ', err ' + err);
+            console.log('save location: ' + textStatus + ', err ' + err);
             }
   });
 }
 
 //==============================================================================
-// The event handler for a failed ajax request
-function logError(err) {
-  console.log('AJAX Error: ', err);
-}
+// The event handler for a successful location save request
+// function saveSuccess(input) {
+//   let target = window.location.protocol + '//' + window.location.host;
+//   console.log('saveSuccess: ', input, target);
+//   window.location = target;
+// }
