@@ -111,6 +111,9 @@ window.onload = function() {
     if (message.length > 0) {
       let msg = createMsgObj(message, clientKey, curUserId, targetUserId, curUserName);
       console.log('message to server: ', msg);
+
+      // put ajax call to post message to database here
+
       socket.send(JSON.stringify(msg));
 
       var newItem = document.createElement('li');

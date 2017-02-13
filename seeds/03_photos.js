@@ -82,6 +82,20 @@ var photos = [{
   image_path: '/images/pilotoso.jpg',
   caption: 'Welcome to my office!',
   created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 13,
+  user_id: 2,
+  profile_flag: false,
+  image_path: '/images/tiger2.jpg',
+  caption: 'Rawr',
+  created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 14,
+  user_id: 2,
+  profile_flag: false,
+  image_path: '/images/tiger3.jpg',
+  caption: "We're off to Palm Springs!",
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
