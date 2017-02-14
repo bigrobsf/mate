@@ -4,7 +4,6 @@
 /* jshint browser: true */
 
 const express = require('express');
-const bcrypt = require('bcrypt-as-promised');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 const uploadcare = require('../node_modules/uploadcare/lib/main.js')('7d2ddbbb700aaaacc7b7', process.env.SECRET_KEY),
 fs = require('fs');

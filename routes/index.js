@@ -6,7 +6,6 @@
 
 const boom  = require('boom');
 const express = require('express');
-const bcrypt = require('bcrypt-as-promised');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('../db/knex');
 var CardProfile = require('../models/cardprofile.js').CardProfile;

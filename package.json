@@ -7,8 +7,8 @@
     "knex": "knex",
     "nf": "nf start",
     "heroku-postbuild": "knex migrate:latest --env production",
-    "start-ws": "nodemon ws-server.js",
-    "start-app": "nodemon app.js",
+    "start-ws": "node ws-server.js",
+    "start-app": "node app.js",
     "start": "npm run start-ws & npm run start-app & wait",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,8 +26,8 @@
     "node": "6.8.1"
   },
   "dependencies": {
-    "aws-sdk": "^2.10.0",
     "bcrypt-as-promised": "^1.1.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.16.0",
     "boom": "^4.2.0",
     "cookie-parser": "^1.4.3",

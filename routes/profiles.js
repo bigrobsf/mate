@@ -5,7 +5,6 @@
 
 const express = require('express');
 var knex = require('../db/knex');
-const bcrypt = require('bcrypt-as-promised');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 const router = express.Router();
 
