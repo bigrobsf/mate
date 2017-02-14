@@ -20,3 +20,4 @@
 [ ] display user photos on profile page rather than on a separate page
 [ ] implement private chat
 [ ] create user chat room
+[ ] figure out how to hit wifi hotspots, and later cell towers, for more accurate location

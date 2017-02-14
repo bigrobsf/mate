@@ -120,8 +120,10 @@ router.post('/location', (req, res) => {
       .update(decamelizeKeys(location),'*')
       .where('id', curUserId)
       .then((loc) => {
-        delete loc[0].hashed_password;
-        console.log('updated users table from /index/location: ',loc);
+        if (loc.length > 0) {
+          delete loc[0].hashed_password;
+          console.log('updated users table from /index/location: ',loc);
+        }
       });
   } else {
 

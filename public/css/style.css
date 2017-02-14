@@ -7,6 +7,7 @@ a.brand-logo {
   margin-top: 5px;
   font-weight:800;
   color: #d50000;
+  text-shadow: 1px 1px 2px black;
 }
 
 body {
@@ -412,7 +413,8 @@ images */
 img.profile-img {
   border: 1px solid #424242;
   padding: 5px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 800px;
   height: auto;
   margin-bottom: 30px;
 }
