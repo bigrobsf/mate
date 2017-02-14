@@ -17,14 +17,14 @@ const router = express.Router();
 // =============================================================================
 // POST message
 router.post('/message', (req, res) => {
-  // console.log('req.body from chat route: ', req.body);
+  console.log('req.body from chat route: ', req.body);
   let conversation = {
     user_id1: req.body.user_id1,
     user_id2: req.body.user_id2,
     message: req.body.message
   };
 
-  console.log('conversation from route: ', conversation);
+  console.log('conversation received from client chat.js: ', conversation);
 
   knex('messages')
   .insert(decamelizeKeys(conversation),
