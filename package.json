@@ -9,7 +9,7 @@
     "heroku-postbuild": "knex migrate:latest --env production",
     "start-ws": "node ws-server.js",
     "start-app": "node app.js",
-    "start": "npm run start-ws & npm run start-app & wait",
+    "start": "npm run start-ws & npm run start-app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
