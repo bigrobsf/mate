@@ -47,10 +47,11 @@ app.set('views', [path.join(__dirname, 'views/users/'),
 
 // =============================================================================
 // spin up the FTL
-app.listen(PORT, () => {
+const httpServer = app.listen(PORT, () => {
   console.log(`MATE server is running on port ${PORT}`);
 });
 
 module.exports = {
-  app: app
+  app: app,
+  httpServer: httpServer
 };

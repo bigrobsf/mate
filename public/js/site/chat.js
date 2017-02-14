@@ -6,7 +6,7 @@
 'use strict'; // optional
 
 let host = location.origin.replace(/^http/, 'ws');
-if (host === 'ws://localhost:3007') host = 'ws://localhost:3001';
+// if (host === 'ws://localhost:3007') host = 'ws://localhost:3001';
 // console.log(host);
 
 window.onload = function() {

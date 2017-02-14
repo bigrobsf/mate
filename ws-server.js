@@ -5,22 +5,17 @@
 
 const PORT = process.env.PORT || 3001;
 const express = require('express');
-const app = express();
+// const app = express();
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('./db/knex');
+const httpServer = require('./app').httpServer;
 
-let server = require('http').Server(app);
-
-app.use(express.static(__dirname + '/public'));
-
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
+// let server = require('http').Server(app);
 
 let WebSocketServer = require('websocket').server;
 
 let wsServer = new WebSocketServer({
-  httpServer: server
+  httpServer: httpServer
 });
 
 let clients = {};
@@ -91,6 +86,6 @@ function createIdObj(id) {
 
 // =============================================================================
 // Fire up the server
-server.listen(PORT, function() {
-  console.log((new Date()) + ' WebSocket server is listening on port ' + PORT);
-});
+// server.listen(PORT, function() {
+//   console.log((new Date()) + ' WebSocket server is listening on port ' + PORT);
+// });
