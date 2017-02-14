@@ -6,18 +6,18 @@
 
 const boom  = require('boom');
 const express = require('express');
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 const moment = require('moment');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('../db/knex');
-var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/mate_dev');
+// var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/mate_dev');
 
 const router = express.Router();
 
 // =============================================================================
 // POST message
 router.post('/message', (req, res) => {
-  console.log('req.body from chat route: ', req.body);
+  // console.log('req.body from chat route: ', req.body);
   let conversation = {
     user_id1: req.body.user_id1,
     user_id2: req.body.user_id2,
@@ -85,10 +85,12 @@ router.get('/', (req, res) => {
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let curUserId = Number(req.cookies['/token'].split('.')[0]);
 
-    sequelize.query(`select users1.user_name as username1, users2.user_name as username2, users1.id as userid1, users2.id as userid2, message, messages.created_at, image_path from users users1, users users2, messages, photos where users1.id = messages.user_id1 and users2.id = messages.user_id2 and users1.id = photos.user_id and (users2.id = ${curUserId} or users1.id = ${curUserId}) and photos.profile_flag = true order by messages.created_at desc;`, { type: sequelize.QueryTypes.SELECT})
-      .then((messages) => {
+    // sequelize.query(`select users1.user_name as username1, users2.user_name as username2, users1.id as userid1, users2.id as userid2, message, messages.created_at, image_path from users users1, users users2, messages, photos where users1.id = messages.user_id1 and users2.id = messages.user_id2 and users1.id = photos.user_id and (users2.id = ${curUserId} or users1.id = ${curUserId}) and photos.profile_flag = true order by messages.created_at desc;`, { type: sequelize.QueryTypes.SELECT})
+    //   .then((messages) => {
         // console.log('sequelize: ', messages);
-
+      knex.raw(`select users1.user_name as username1, users2.user_name as username2, users1.id as userid1, users2.id as userid2, message, messages.created_at, image_path from users users1, users users2, messages, photos where users1.id = messages.user_id1 and users2.id = messages.user_id2 and users1.id = photos.user_id and (users2.id = ${curUserId} or users1.id = ${curUserId}) and photos.profile_flag = true order by messages.created_at desc;`)
+        .then((messages) => {
+        console.log('knex.raw: ', messages);
         console.log('CURUSERID: ', curUserId);
         messages.forEach((ele, i) => {
           var date = ele.created_at;

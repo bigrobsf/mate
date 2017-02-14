@@ -55,12 +55,12 @@ Input form colors */
 
 /* label color */
 .input-field label {
-  color: #757575
+  color: #616161;
 }
 
 /* option text color */
 ul.dropdown-content.select-dropdown li span {
-  color: #757575;
+  color: #616161;
 }
 
 /* label focus color */
