@@ -2,7 +2,7 @@
   "name": "mate",
   "version": "0.0.1",
   "description": "an app for single men looking for single men",
-  "main": "app.js",
+  "main": "ws-server.js",
   "scripts": {
     "knex": "knex",
     "nf": "nf start",
