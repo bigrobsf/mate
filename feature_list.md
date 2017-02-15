@@ -15,9 +15,11 @@
 [X] displays distance away
 [X] sorts users by distance away
 [X] responsive design
+[ ] add OAUTH to Facebook and validate relationship status of Single
 [ ] change overview, looking_for, and interest to textareas
 [ ] add search by i_like, body_hair, position and list matches
-[ ] display user photos on profile page rather than on a separate page
+[ ] display additional user photos only if viewing user is signed in
 [ ] implement private chat
 [ ] create user chat room
+[ ] send photos in private messages
 [ ] figure out how to hit wifi hotspots, and later cell towers, for more accurate location

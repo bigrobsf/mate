@@ -13,7 +13,6 @@ a.brand-logo {
 body {
   background-color: #dddddd;
   background-image: url("../images/site/nasty_fabric.png");
-
 }
 
 .container {
@@ -92,6 +91,22 @@ ul.dropdown-content.select-dropdown li span {
 .input-field input[type=password]:focus {
   border-bottom: 1px solid #d50000;
   box-shadow: 0 1px 0 0 #d50000;
+}
+
+::-webkit-input-placeholder {
+   color: #616161;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #616161;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #616161;  
+}
+
+:-ms-input-placeholder {
+   color: #616161;  
 }
 
 /* =============================================================================

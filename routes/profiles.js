@@ -104,7 +104,7 @@ router.post('/', (req, res) => {
       let formattedDate = formatDate(profile.birthdate);
 
       res.render('confirm-profile', {
-        message: 'Now add a photo so your profile will appear to others!',
+        message: '',
         iAm: profile.iAm,
         iLike: profile.iLike,
         birthdate: formattedDate,

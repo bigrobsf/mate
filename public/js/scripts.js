@@ -51,6 +51,7 @@ $(document).ready(() => {
     }, 2000);
   }
 
+
   // ===========================================================================
   // get login status to enable / disable login / account links in navbar
   let tokenStatus = {

@@ -6,6 +6,7 @@
 'use strict';
 
 $(document).ready(() => {
+
   var bdElement = document.getElementById('edit-birthdate');
   var heightElement = document.getElementById('edit-height');
   var weightElement = document.getElementById('edit-weight');
