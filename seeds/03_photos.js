@@ -96,6 +96,27 @@ var photos = [{
   image_path: '/images/tiger3.jpg',
   caption: "We're off to Palm Springs!",
   created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 15,
+  user_id: 9,
+  profile_flag: true,
+  image_path: '/images/eric.jpg',
+  caption: "Get at me dawg",
+  created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 16,
+  user_id: 9,
+  profile_flag: false,
+  image_path: '/images/eric2.jpg',
+  caption: "Get at me dawg",
+  created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 17,
+  user_id: 9,
+  profile_flag: false,
+  image_path: '/images/eric3.jpg',
+  caption: "Get at me dawg",
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
 exports.seed = function(knex, Promise) {

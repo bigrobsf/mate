@@ -120,7 +120,7 @@ var profiles = [{
 }, {
   id: 8,
   user_id: 8,
-  i_am: 'muscle, geek, jock',
+  i_am: 'muscle, bear, geek',
   i_like: 'bear, muscle',
   birthdate: new Date('1970-11-15 12:26:16 UTC'),
   height: 70,
@@ -131,6 +131,23 @@ var profiles = [{
   looking_for: 'more stuff',
   interests: 'even more stuff',
   positions: 'bottom',
+  safety: 'ask me',
+  hometown: 'Santiago',
+  created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 9,
+  user_id: 9,
+  i_am: 'muscle, geek, jock',
+  i_like: 'bear, muscle, daddy, beast',
+  birthdate: new Date('1980-11-15 12:26:16 UTC'),
+  height: 70,
+  weight: 190,
+  body_hair: 'hairy',
+  ethnicity: 'jewish',
+  overview: 'stuff',
+  looking_for: 'more stuff',
+  interests: 'even more stuff',
+  positions: 'top',
   safety: 'ask me',
   hometown: 'Santiago',
   created_at: new Date('2017-01-31 12:26:16 UTC')

@@ -94,6 +94,18 @@ var users = [{
   accuracy: 1084,
   logged_in: true,
   created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 9,
+  first_name: 'Eric',
+  last_name: 'Osborn',
+  user_name: 'monkey',
+  email: 'monkey@gmail.com',
+  hashed_password: '$2a$12$bRT3lUzJJttX4QPvB4TTU.QnlD9SokVvWKXU1lGPSStcxjztlbM2C',
+  lat: 37.761479,
+  lon: -122.447039,
+  accuracy: 1084,
+  logged_in: false,
+  created_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
 exports.seed = function(knex, Promise) {

@@ -5,6 +5,7 @@
 /* jshint jquery: true */
 'use strict';
 
+// enables profile update button after changes to these fields in form
 $(document).ready(() => {
   var lNameElement = document.getElementById('lastName');
   var fNameElement = document.getElementById('firstName');

@@ -5,6 +5,7 @@
 /* jshint jquery: true */
 'use strict';
 
+// upload care panel
 uploadcare.openPanel('#uploader-placeholder', null, {
   crop: "1024x1024",
   imagesOnly: true

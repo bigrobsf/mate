@@ -5,6 +5,7 @@
 /* jshint jquery: true */
 'use strict';
 
+// enables update button after changes to text fields in forms
 $(document).ready(() => {
 
   var bdElement = document.getElementById('edit-birthdate');
