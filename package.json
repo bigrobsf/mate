@@ -7,7 +7,7 @@
     "knex": "knex",
     "nf": "nf start",
     "heroku-postbuild": "knex migrate:latest --env production",
-    "start:": "nodemon ws-server.js",
+    "start:": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "bcrypt-as-promised": "^1.1.0",
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.16.0",
     "boom": "^4.2.0",
     "cookie-parser": "^1.4.3",
@@ -39,7 +38,6 @@
     "morgan": "^1.7.0",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.30.2",
     "uploadcare": "^0.4.3",
     "uploadcare-node": "^0.1.1",
     "websocket": "^1.0.24"

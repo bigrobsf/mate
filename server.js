@@ -5,12 +5,9 @@
 
 const PORT = process.env.PORT || 3001;
 const express = require('express');
-// const app = express();
 const { camelizeKeys, decamelizeKeys } = require('humps');
 var knex = require('./db/knex');
 const httpServer = require('./app').httpServer;
-
-// let server = require('http').Server(app);
 
 let WebSocketServer = require('websocket').server;
 
@@ -83,9 +80,3 @@ function createIdObj(id) {
 
   return initMsg;
 }
-
-// =============================================================================
-// Fire up the server
-// server.listen(PORT, function() {
-//   console.log((new Date()) + ' WebSocket server is listening on port ' + PORT);
-// });
