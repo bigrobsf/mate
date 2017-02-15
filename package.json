@@ -7,7 +7,7 @@
     "knex": "knex",
     "nf": "nf start",
     "heroku-postbuild": "knex migrate:latest --env production",
-    "start:": "nodemon server.js",
+    "start:": "nodemon ws-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
