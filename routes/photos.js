@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
     caption: 'Add a caption!'
   };
 
+  // if user doesn't have any photos, set the first photo uploaded as profile photo
   knex.select('user_id').from('photos').where('user_id', userId)
     .then((pic) => {
       if (pic.length > 0) {
@@ -56,6 +57,7 @@ router.post('/', (req, res) => {
         const photo = camelizeKeys(row[0]);
         console.log('NEW PHOTO: ', photo);
 
+        // this never runs for some reason - it's on the bug list
         res.render('confirm-photo', {
           userId: userId,
           profileFlag: false,
@@ -118,8 +120,7 @@ router.put('/', (req, res) => {
 
         const updatePhoto = {};
 
-        console.log('new profileflag before', profileFlag);
-
+        // if new photo is selected as profile, set existing photo's flag to false
         if (profileFlag === 'on') {
           knex('photos')
             .where ('user_id', userId)
@@ -129,7 +130,6 @@ router.put('/', (req, res) => {
               console.log('previous flag has been set to false');
             });
             updatePhoto.profileFlag = true;
-            console.log('new profileflag after', updatePhoto.profileFlag);
         }
 
         if (caption) updatePhoto.caption = caption;

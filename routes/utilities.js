@@ -4,6 +4,7 @@
 /* jshint browser: true */
 /* jshint jquery: true */
 
+// not currently used
 $(document).ready(() => {
   let makeProfileInfoBtn = document.getElementById('make-profile-btn');
   makeProfileInfoBtn.addEventListener('click', makeProfile);

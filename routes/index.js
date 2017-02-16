@@ -43,6 +43,7 @@ router.get('/', (req, res) => {
 
       // console.log('from /index', cardProfiles);
 
+      // get user's location for use in creating profile cards
       knex.select('lat', 'lon', 'accuracy', 'user_name').from('users')
       .where('id', curUserId)
       .then((user) => {
@@ -67,7 +68,7 @@ router.get('/', (req, res) => {
           });
 
         } else {
-
+          // if user is not signed in, pull location from curlocation table
           knex.select('lat', 'lon', 'accuracy').from('curlocation')
           .orderBy('created_at','desc')
           .then((locs) => {
@@ -101,7 +102,7 @@ router.get('/', (req, res) => {
 });
 
 // =============================================================================
-// store location
+// store location in user's user account if logged in, otherwise in curlocation table
 router.post('/location', (req, res) => {
   let location = {
     lat: req.body.lat1,

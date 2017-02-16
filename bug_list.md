@@ -8,3 +8,4 @@
 [ ] new photo post route doesn't render confirm-photo.ejs
 [ ] when photo is deleted, also delete from Upload Care
 [X] resolve Roboto font issue that appears in Firefox
+[ ] timestamps for messages in database are 8 hours ahead

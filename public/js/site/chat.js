@@ -22,7 +22,7 @@ window.onload = function() {
   let targetUserId = Number(document.getElementById('target-user-id').textContent);
   let curUserName = document.getElementById('cur-user-name').textContent;
 
-  console.log('users: ', curUserId, targetUserId, curUserName);
+  // console.log('users: ', curUserId, targetUserId, curUserName);
 
   // Creates a new WebSocket connection, which will fire the open connection event
   let socket = new WebSocket(host, 'mate-protocol');
@@ -47,7 +47,7 @@ window.onload = function() {
     switch(msg.type) {
       case 'id':
         clientKey = msg.clientKey;
-        console.log('clientKey received from server');
+        // console.log('clientKey received from server');
         break;
       case 'message':
         var newItem = document.createElement('li');
@@ -119,7 +119,7 @@ window.onload = function() {
         message: msg.text.trim()
       };
 
-      console.log('conversation', conversation);
+      // console.log('conversation', conversation);/
 
     // sends the current message to the database
       $.ajax({

@@ -139,7 +139,7 @@ var profiles = [{
   user_id: 9,
   i_am: 'muscle, geek, jock',
   i_like: 'bear, muscle, daddy, beast',
-  birthdate: new Date('1980-11-15 12:26:16 UTC'),
+  birthdate: new Date('1980-08-17 12:26:16 UTC'),
   height: 70,
   weight: 190,
   body_hair: 'hairy',
@@ -149,7 +149,7 @@ var profiles = [{
   interests: 'even more stuff',
   positions: 'top',
   safety: 'ask me',
-  hometown: 'Santiago',
+  hometown: 'San Francisco',
   created_at: new Date('2017-01-31 12:26:16 UTC')
 }];
 
