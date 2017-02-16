@@ -11,7 +11,7 @@ This project currently uses the following techologies:
 **Database:** PostgreSQL
 **Version control:** Git, GitHub
 **API:** Google Maps Geolocation
-**Chat:** WebSockets
+**Chat:** WebSockets 
 
 ##Feature List
 
