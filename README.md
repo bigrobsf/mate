@@ -5,13 +5,14 @@ MATE will be an app for single men who want to meet other single men. It is my r
 This project currently uses the following techologies:
 
 **Frontend:** JavaScript, jQuery, HTML  
-**Backend:** Node.js, Express.js, Knex.js  
+**Backend:** Node.js, Express.js    
 **Pages:** EJS  
 **CSS:** Materialize  
 **Database:** PostgreSQL  
+**SQL builder:** Knex.js    
 **Version control:** Git, GitHub  
 **API:** Google Maps Geolocation  
-**Chat:** WebSockets   
+**Chat/Messaging:** HTML5 WebSockets  
 
 ##Feature List
 
