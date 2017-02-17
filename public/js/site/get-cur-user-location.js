@@ -7,33 +7,52 @@
 
 //==============================================================================
 // makes the AJAX request to the Google Maps Geolocation API
-function locationRequest() {
+// function locationRequest() {
+//
+//   // The object to start the AJAX request using JQuery's format
+//   let requestObject = {
+//     url: `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi0kaurEfWwzDKye0ezKEXWhzmZmxEFYI`,
+//     method: 'POST',
+//     success: saveLocation,
+//     error: logError
+//   };
+//
+//   // Actually start the AJAX request
+//   return $.ajax(requestObject);
 
-  // The object to start the AJAX request using JQuery's format
-  let requestObject = {
-    url: `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi0kaurEfWwzDKye0ezKEXWhzmZmxEFYI`,
-    method: 'POST',
-    success: saveLocation,
-    error: logError
+//==============================================================================
+// makes location request to the browser's NavigatorGeolocation Web API
+function locationRequest() {
+  var options = {
+    enableHighAccuracy: false,
+    timeout: 5000,
+    maximumAge: 300000 // 5 minutes
   };
 
-  // Actually start the AJAX request
-  return $.ajax(requestObject);
+  navigator.geolocation.getCurrentPosition(saveLocation, error, options);
 }
+
 
 //==============================================================================
 // The event handler for a failed location request
-function logError(err) {
-  console.log('AJAX Error: ', err);
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
 }
+
+// function logError(err) {
+//   console.log('Get Location Error: ', err);
+// }
 
 //==============================================================================
 // The event handler for a successful ajax request
 function saveLocation(data) {
   console.log('my location: ', data);
-  let lat1 = data.location.lat;
-  let lon1 = data.location.lng;
-  let accuracy = data.accuracy;
+  // let lat1 = data.location.lat;
+  // let lon1 = data.location.lng;
+  // let accuracy = data.accuracy;
+  let lat1 = data.coords.latitude;
+  let lon1 = data.coords.longitude;
+  let accuracy = data.coords.accuracy;
 
 
   let location = {'lat1': lat1,
@@ -45,7 +64,7 @@ function saveLocation(data) {
     type: 'POST',
     url: '/location',
     data: location,
-    success: console.log('ajax location save success'),
+    success: console.log('location save success'),
     error: function(jqXHR, textStatus, err) {
             console.log('save location: ' + textStatus + ', err ' + err);
             }

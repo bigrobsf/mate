@@ -11,8 +11,8 @@ This project currently uses the following techologies:
 **Database:** PostgreSQL  
 **SQL builder:** Knex.js    
 **Version control:** Git, GitHub  
-**API:** Google Maps Geolocation  
-**Chat/Messaging:** HTML5 WebSockets  
+**Location:** NavigatorGeolocation API
+**Chat/Messaging:** HTML5 WebSockets API
 
 ##Feature List
 
@@ -30,7 +30,7 @@ This project currently uses the following techologies:
 * Edit forms pre-fill text of input elements
 
 **Photos**
-* First photo uploded to account automatically is set as the profile photo
+* First photo uploaded to account automatically is set as the profile photo
 * User can change profile photo
 * Photo set as profile photo cannot be deleted
 
@@ -40,16 +40,19 @@ This project currently uses the following techologies:
 
 ##What's Next
 
-**Features**
-* Implement OAUTH to Facebook and use it to validate a relationship status of single
+**Site**
+* Implement the app using React and Redux
+* Implement the app using React Native
+* Promise-fy location function
 * Add search capability
+* Limit the number of photos to 10
+
+**User authentication and authorization**
+* Implement OAUTH to Facebook and use it to validate a relationship status of single
 * Require user to be signed in to view non-profile photos of other users
+
+**Chat / messaging**
 * Implement private chat
 * Create a chat room for logged in users
 * Add ability to send photos in messages
 * Add message notifications
-* Limit the number of photos to 10
-
-**Implementation**
-* Implement the app using React and Redux
-* Implement the app using React Native

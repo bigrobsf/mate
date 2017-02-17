@@ -6,11 +6,13 @@
 'use strict';
 
 $(document).ready(() => {
+
   // locationRequest().then(() => {
   //   // get everyone's location then build profile cards
   // })
   // ;
 
   // in get-cur-user-location.js
+
   locationRequest();
 });
