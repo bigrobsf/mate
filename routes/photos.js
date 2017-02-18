@@ -37,9 +37,12 @@ router.post('/', (req, res) => {
     caption: 'Add a caption!'
   };
 
+  console.log('new photo to save: ', newPhoto);
+
   // if user doesn't have any photos, set the first photo uploaded as profile photo
   knex.select('user_id').from('photos').where('user_id', userId)
     .then((pic) => {
+
       if (pic.length > 0) {
         newPhoto.profileFlag = false;
         console.log('s/b false', newPhoto.profileFlag);
@@ -58,12 +61,12 @@ router.post('/', (req, res) => {
         console.log('NEW PHOTO: ', photo);
 
         // this never runs for some reason - it's on the bug list
-        res.render('confirm-photo', {
-          userId: userId,
-          profileFlag: false,
-          imagePath: photo.imagePath,
-          caption: photo.caption,
-          status: 'Saved'});
+        // res.render('confirm-photo', {
+        //   userId: userId,
+        //   profileFlag: false,
+        //   imagePath: photo.imagePath,
+        //   caption: photo.caption,
+        //   status: 'Saved'});
         }).catch(err => {
           console.log('POST ERROR: ', err);
           res.status(400).send(err);
@@ -168,21 +171,33 @@ router.get('/show/:id', (req, res) => {
     .join('photos', 'users.id', 'photos.user_id')
     .where('users.id', userId)
     .then((pics) => {
-      let photos = camelizeKeys(pics);
-      let userName = photos[0].userName;
-      let photoArray = [];
+      if (pics.length > 0) {
+        let photos = camelizeKeys(pics[0]);
+        let userName = photos.userName;
+        let photoArray = [];
 
-      photos.forEach((ele, i) => {
-        var photo = new PhotoInfo(photos[i].id, photos[i].imagePath,
-          photos[i].caption);
+        photos.forEach((ele, i) => {
+          var photo = new PhotoInfo(photos[i].id, photos[i].imagePath,
+            photos[i].caption);
 
-        photoArray.push(photo);
-      });
+          photoArray.push(photo);
+        });
 
-      res.render('show-photos', {
-        userId: userId,
-        userName: userName,
-        photoArray: photoArray});
+        res.render('show-photos', {
+          userId: userId,
+          userName: userName || 'error: photo not saved to database',
+          photoArray: photoArray || []
+        });
+
+        } else {
+          console.log('New photo not saved to database. User ID: ', userId);
+
+          res.render('show-photos', {
+            userId: userId,
+            userName: 'error: photo not saved to database',
+            photoArray: []
+          });
+        }
     });
 });
 

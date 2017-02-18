@@ -53,7 +53,7 @@ router.get('/new', (req, res) => {
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let userId = Number(req.cookies['/token'].split('.')[0]);
     console.log(userId);
-    
+
     // check to see if profile already exists or not
     knex.select('id').from('profiles')
       .where('user_id', userId).first()
@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
     userId: userId,
     iAm: allIAms,
     iLike: allILikes,
-    birthdate: req.body.birthdate,
+    birthdate: req.body.birthdate || new Date('1980-01-01 12:26:16 UTC'),
     height: Number(req.body.height),
     weight: Number(req.body.weight),
     bodyHair: req.body.bodyHair,

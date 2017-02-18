@@ -52,8 +52,7 @@ function saveLocation(data) {
   // let accuracy = data.accuracy;
   let lat1 = data.coords.latitude;
   let lon1 = data.coords.longitude;
-  let accuracy = data.coords.accuracy;
-
+  let accuracy = Math.round(data.coords.accuracy);
 
   let location = {'lat1': lat1,
                   'lon1': lon1,

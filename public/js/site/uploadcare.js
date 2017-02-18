@@ -23,6 +23,8 @@ function storeImageData(fileInfo) {
     imagePath: fileInfo
   };
 
+  console.log('in uploadcare.js imagePath: ', fileInfo);
+
   $.ajax({
     type: 'POST',
     url: '/photos',
