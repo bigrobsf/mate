@@ -172,8 +172,8 @@ router.get('/show/:id', (req, res) => {
     .where('users.id', userId)
     .then((pics) => {
       if (pics.length > 0) {
-        let photos = camelizeKeys(pics[0]);
-        let userName = photos.userName;
+        let photos = camelizeKeys(pics);
+        let userName = photos[0].userName;
         let photoArray = [];
 
         photos.forEach((ele, i) => {
