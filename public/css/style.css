@@ -151,7 +151,7 @@ h1 {
 
 
 /* =============================================================================
-Message log */
+Private message log */
 
 ul#message-log {
   list-style: none;
@@ -189,6 +189,37 @@ ul#message-log  li span {
 }
 
 /* =============================================================================
+Chatroom message log */
+
+ul#chatroom-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+ul#chatroom-log  li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+ul#chatroom-log  li:first-child {
+  margin-top: 20px;
+  border-top: 1px solid #aaaaaa;
+}
+
+ul#chatroom-log  li span {
+  display: inline-block;
+  width: 90px;
+  font-weight: bold;
+  color: #757575;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* =============================================================================
 Message composition area */
 
 textarea {
@@ -205,6 +236,9 @@ textarea {
   margin-top: 18px;
 }
 
+#chatroom-form {
+  margin-top: 18px;
+}
 /* =============================================================================
 Chat buttons */
 
@@ -233,6 +267,38 @@ Chat buttons */
 }
 
 #message-form button:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+/* =============================================================================
+Chat buttons */
+
+#chatroom-form button {
+  display: inline-block;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 10px 14px;
+  color: white;
+  margin: 0 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#chatroom-form button.connect {
+  background: #43a047;
+}
+
+#chatroom-form button.disconnect {
+  background: #424242;
+}
+
+#chatroom-form button.send {
+  background: #d50000;
+}
+
+#chatroom-form button:hover {
   opacity: 0.75;
   cursor: pointer;
 }

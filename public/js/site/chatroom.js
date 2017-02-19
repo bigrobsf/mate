@@ -9,7 +9,7 @@ let host = location.origin.replace(/^http/, 'ws');
 
 window.onload = function() {
   let messageField = document.getElementById('message-area');
-  let messageList = document.getElementById('message-log');
+  let chatroomList = document.getElementById('chatroom-log');
   let socketStatus = document.getElementById('status');
 
   let closeBtn = document.getElementById('close');
@@ -17,7 +17,6 @@ window.onload = function() {
   let sendBtn = document.getElementById('send');
 
   let curUserId = Number(document.getElementById('cur-user-id').textContent);
-  let targetUserId = Number(document.getElementById('target-user-id').textContent);
   let curUserName = document.getElementById('cur-user-name').textContent;
 
   // console.log('users: ', curUserId, targetUserId, curUserName);
@@ -48,16 +47,13 @@ window.onload = function() {
         break;
 
       case 'message':
-        if (curUserId === msg.targetUserId && targetUserId === msg.curUserId) {
-          var newItem = document.createElement('li');
-          var text = '<span>' + msg.curUserName + ': ' + timeStr + '</span>' + msg.text;
+        var newItem = document.createElement('li');
+        var text = '<span>' + msg.curUserName + ': ' + timeStr + '</span>' + msg.text;
 
-          newItem.className = 'received';
-          newItem.innerHTML = text;
+        newItem.className = 'received';
+        newItem.innerHTML = text;
 
-          messageList.insertBefore(newItem, messageList.childNodes[0]);
-        }
-
+        chatroomList.insertBefore(newItem, chatroomList.childNodes[0]);
         break;
     }
   };
@@ -111,7 +107,7 @@ window.onload = function() {
     let message = messageField.value;
 
     if (message.length > 0) {
-      let msg = createMsgObj(message, clientKey, curUserId, targetUserId, curUserName);
+      let msg = createMsgObj(message, clientKey, curUserId, curUserName);
       console.log('message to server: ', msg);
 
       let conversation = {
@@ -122,17 +118,6 @@ window.onload = function() {
 
       // console.log('conversation', conversation);/
 
-    // sends the current message to the database
-      $.ajax({
-        type: 'POST',
-        url: '/chat/message',
-        data: conversation,
-        success: console.log('ajax conversation save success'),
-        error: function(jqXHR, textStatus, err) {
-                console.log('save conversation: ' + textStatus + ', err ' + err);
-                }
-      });
-
       socket.send(JSON.stringify(msg));
 
       var newItem = document.createElement('li');
@@ -141,7 +126,7 @@ window.onload = function() {
       newItem.className = 'sent right-align';
       newItem.appendChild(textnode);
 
-      messageList.insertBefore(newItem, messageList.childNodes[0]);
+      chatroomList.insertBefore(newItem, chatroomList.childNodes[0]);
 
       messageField.value = '';
       messageField.focus();
@@ -153,14 +138,13 @@ window.onload = function() {
 
 // =============================================================================
 // construct message object
-function createMsgObj(message, clientKey, curUserId, targetUserId, curUserName) {
+function createMsgObj(message, clientKey, curUserId, curUserName) {
   let msg = {
     type: 'message',
     msgId: createMsgId(),
     text: message,
     curUserId: curUserId,
     curUserName: curUserName,
-    targetUserId: targetUserId,
     clientKey: clientKey,
     date: Date.now()
   };

@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <%- include("../partials/nav", {browse: false, profile: false, photos: false, messages: true}) %>
+    <%- include("../partials/nav", {browse: false, photos: false, chatroom: false, messages: true}) %>
 
     <main class="container">
       <div class="row">
@@ -27,7 +27,7 @@
             <%messages.forEach((message) => { %>
               <div class="message z-depth-2">
                 <% if (message.userid1 !== curUserId) { %>
-                <a href="/chat/<%= message.userid1%>">
+                <a href="/chat/private/<%= message.userid1%>">
                   <% } %>
                   <img class="msg-img circle responsive-img" src="<%= message.image_path%>" />
                 <% if (message.userid1 !== curUserId) { %>
