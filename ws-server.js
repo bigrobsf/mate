@@ -18,7 +18,7 @@ let wsServer = new WebSocketServer({
 let clients = {};
 
 // listens for connection requests, stores the client info, and sends it to client
-wsServer.on('request', function(req) {
+wsServer.on('request', (req) => {
   let connection = req.accept('mate-protocol', req.origin);
   let id = createUUID();
 
@@ -31,7 +31,7 @@ wsServer.on('request', function(req) {
   console.log((new Date()) + ' Connection accepted [' + id + ']');
 
   // listens for incoming messages and broadcasts them to all other clients
-  connection.on('message', function(message) {
+  connection.on('message', (message) => {
     let msgString = message.utf8Data;
     let msgObj = JSON.parse(msgString);
 
@@ -51,7 +51,7 @@ wsServer.on('request', function(req) {
   });
 
   // listens for close requests
-  connection.on('close', function(reasonCode, description) {
+  connection.on('close', (reasonCode, description) => {
     delete clients[id];
 
     console.log((new Date()) + ' Peer' + connection.remoteAddress +

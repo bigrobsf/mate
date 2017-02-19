@@ -137,16 +137,29 @@ router.get('/history', (req, res) => {
         messages: messages,
         curUserId: curUserId
       });
-  });
-
+    });
 
   } else res.redirect('/token/login');
 });
 
 // =============================================================================
-// show chat page
+// show chatroom page
 router.get('/open', (req, res) => {
-  res.render('chatroom');
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let curUserId = Number(req.cookies['/token'].split('.')[0]);
+
+    knex.select('user_name')
+      .from('users')
+      .where('id', curUserId)
+      .then((curUser) => {
+        let current = camelizeKeys(curUser[0]);
+
+        res.render('chatroom', {
+          curUserId: curUserId,
+          curUserName: current.userName
+        });
+    });
+  } else res.redirect('/token/login');
 });
 
 
