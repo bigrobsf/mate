@@ -60,7 +60,7 @@ wsServer.on('request', function(req) {
 });
 
 // =============================================================================
-// UUID generator - not guaranteed to be unique, but good enough for demo purposes
+// UUID generator - not guaranteed to be unique, but close enough
 function createUUID() {
   return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
 }

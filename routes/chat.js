@@ -13,9 +13,43 @@ var knex = require('../db/knex');
 const router = express.Router();
 
 // =============================================================================
-// POST message
+// GET last message
+router.get('/message', (req, res) => {
+
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let curUserId = Number(req.cookies['/token'].split('.')[0]);
+
+    knex.raw(`select users1.user_name as username1,
+      users2.user_name as username2,
+      users1.id as userid1,users2.id as userid2,
+      message, messages.created_at
+      from users users1, users users2, messages
+      where users1.id = messages.user_id1
+      and users2.id = messages.user_id2
+      and users2.id = ${curUserId}
+      order by messages.created_at desc
+      fetch first 1 rows only;`)
+      .then((message) => {
+
+        if (message.length > 0) {
+          message = message.rows[0];
+          console.log('MESSAGE TEST', message);
+          res.status(200).json(message);
+        } else {
+          res.status(200).json(false);
+        }
+      });
+  } else {
+    res.status(200).json(false);
+  }
+
+
+});
+
+// =============================================================================
+// POST single message
 router.post('/message', (req, res) => {
-  console.log('req.body from chat route: ', req.body);
+  // console.log('req.body from chat route: ', req.body);
   let conversation = {
     user_id1: req.body.user_id1,
     user_id2: req.body.user_id2,
@@ -40,7 +74,7 @@ router.post('/message', (req, res) => {
 
 // =============================================================================
 // show chat with single user
-router.get('/:id', (req, res) => {
+router.get('/private/:id', (req, res) => {
   let targetUserId = Number(req.params.id);
 
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
@@ -79,11 +113,18 @@ router.get('/:id', (req, res) => {
 
 // =============================================================================
 // show message history
-router.get('/', (req, res) => {
+router.get('/history', (req, res) => {
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     let curUserId = Number(req.cookies['/token'].split('.')[0]);
 
-    knex.raw(`select users1.user_name as username1, users2.user_name as username2, users1.id as userid1, users2.id as userid2, message, messages.created_at, image_path from users users1, users users2, messages, photos where users1.id = messages.user_id1 and users2.id = messages.user_id2 and users1.id = photos.user_id and (users2.id = ${curUserId} or users1.id = ${curUserId}) and photos.profile_flag = true order by messages.created_at desc;`)
+    knex.raw(`select users1.user_name as username1,
+      users2.user_name as username2, users1.id as userid1,
+      users2.id as userid2, message, messages.created_at, image_path
+      from users users1, users users2, messages, photos
+      where users1.id = messages.user_id1 and users2.id = messages.user_id2
+      and users1.id = photos.user_id
+      and (users2.id = ${curUserId} or users1.id = ${curUserId})
+      and photos.profile_flag = true order by messages.created_at desc;`)
       .then((messages) => {
       messages = messages.rows;
       // console.log('knex.raw: ', messages);
@@ -100,6 +141,12 @@ router.get('/', (req, res) => {
 
 
   } else res.redirect('/token/login');
+});
+
+// =============================================================================
+// show chat page
+router.get('/open', (req, res) => {
+  res.render('chatroom');
 });
 
 

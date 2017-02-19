@@ -10,3 +10,4 @@
 [X] resolve Roboto font issue that appears in Firefox
 [ ] timestamps for messages in database are 8 hours ahead
 [ ] Heroku application error when uploading photos from iOS both Chrome and Safari
+[ ] fix location for anonymous user

@@ -15,11 +15,13 @@ $(document).ready(() => {
   let joinElement = document.getElementById('join');
   let loginElement = document.getElementById('login');
   let accountElement = document.getElementById('account');
+  let profileElement = document.getElementById('profile');
   let logoutElement = document.getElementById('logout');
 
   let joinMobileElement = document.getElementById('join-mobile');
   let loginMobileElement = document.getElementById('login-mobile');
   let accountMobileElement = document.getElementById('account-mobile');
+  let profileMobileElement = document.getElementById('profile-mobile');
   let logoutMobileElement = document.getElementById('logout-mobile');
 
   // ===========================================================================
@@ -84,6 +86,10 @@ $(document).ready(() => {
         accountElement.removeAttribute('class');
       }
 
+      if (profileElement.hasAttribute('class')) {
+        profileElement.removeAttribute('class');
+      }
+
       if (logoutElement.hasAttribute('class')) {
         logoutElement.removeAttribute('class');
       }
@@ -92,14 +98,20 @@ $(document).ready(() => {
         accountMobileElement.removeAttribute('class');
       }
 
+      if (profileMobileElement.hasAttribute('class')) {
+        profileMobileElement.removeAttribute('class');
+      }
+
       if (logoutMobileElement.hasAttribute('class')) {
         logoutMobileElement.removeAttribute('class');
       }
     } else {
       accountElement.setAttribute('class', 'disabled');
+      profileElement.setAttribute('class', 'disabled');
       logoutElement.setAttribute('class', 'disabled');
 
       accountMobileElement.setAttribute('class', 'disabled');
+      profileMobileElement.setAttribute('class', 'disabled');
       logoutMobileElement.setAttribute('class', 'disabled');
 
       if (joinElement.hasAttribute('class')) {

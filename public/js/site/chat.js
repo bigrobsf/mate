@@ -6,8 +6,6 @@
 'use strict'; // optional
 
 let host = location.origin.replace(/^http/, 'ws');
-// if (host === 'ws://localhost:3007') host = 'ws://localhost:3001';
-// console.log(host);
 
 window.onload = function() {
   let messageField = document.getElementById('message-area');
@@ -39,7 +37,7 @@ window.onload = function() {
   // event is sent to this function
   socket.onmessage = function(event) {
     let msg = JSON.parse(event.data);
-    console.log('message from server: ', msg);
+    // console.log('message from server: ', msg);
     let time = new Date(msg.date);
     let timeStr = time.toLocaleTimeString();
 
@@ -47,16 +45,19 @@ window.onload = function() {
     switch(msg.type) {
       case 'id':
         clientKey = msg.clientKey;
-        // console.log('clientKey received from server');
         break;
+
       case 'message':
-        var newItem = document.createElement('li');
-        var text = '<span>' + msg.curUserName + ': ' + timeStr + '</span>' + msg.text;
+        if (curUserId === msg.targetUserId && targetUserId === msg.curUserId) {
+          var newItem = document.createElement('li');
+          var text = '<span>' + msg.curUserName + ': ' + timeStr + '</span>' + msg.text;
 
-        newItem.className = 'received';
-        newItem.innerHTML = text;
+          newItem.className = 'received';
+          newItem.innerHTML = text;
 
-        messageList.insertBefore(newItem, messageList.childNodes[0]);
+          messageList.insertBefore(newItem, messageList.childNodes[0]);
+        }
+
         break;
     }
   };
