@@ -20,8 +20,8 @@
 [ ] change overview, looking_for, and interest to textareas
 [ ] add search by i_like, body_hair, position and list matches
 [ ] display additional user photos only if viewing user is signed in
-[ ] implement private chat
-[ ] create user chat room
+[X] implement private chat
+[X] create user chat room
 [ ] implement message notifications
 [ ] send photos in private messages
-[ ] figure out how to hit wifi hotspots, and later cell towers, for more accurate location
+[X] make location more accurate

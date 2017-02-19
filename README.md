@@ -36,6 +36,7 @@ This project currently uses the following techologies:
 
 **Chat / Messaging**
 * Real-time chat the displays username of sender
+* Real-time chatroom for logged in users
 * User can view message history
 
 ##What's Next
@@ -52,7 +53,5 @@ This project currently uses the following techologies:
 * Require user to be signed in to view non-profile photos of other users
 
 **Chat / messaging**
-* Implement private chat
-* Create a chat room for logged in users
 * Add ability to send photos in messages
 * Add message notifications
