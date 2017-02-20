@@ -1,6 +1,6 @@
 {
   "name": "mate",
-  "version": "0.0.1.1",
+  "version": "0.0.1",
   "description": "the app for single men looking for single men",
   "main": "ws-server.js",
   "scripts": {
