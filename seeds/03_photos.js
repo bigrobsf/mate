@@ -108,25 +108,39 @@ var photos = [{
   user_id: 9,
   profile_flag: false,
   image_path: '/images/eric2.jpg',
-  caption: "Get at me dawg",
+  caption: "GoREELa",
   created_at: new Date('2017-01-31 12:26:16 UTC')
 }, {
   id: 17,
   user_id: 9,
   profile_flag: false,
   image_path: '/images/eric3.jpg',
-  caption: "Get at me dawg",
+  caption: "Shades.",
   created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 18,
+  user_id: 10,
+  profile_flag: true,
+  image_path: 'https://ucarecdn.com/f472de2c-b5fb-49dd-8a4b-b4466e60821b/-/crop/1402x1404/0,153/-/resize/1024x1024/',
+  caption: "Add a caption!",
+  created_at: new Date('2017-02-18 18:09:40 UTC')
+}, {
+  id: 19,
+  user_id: 10,
+  profile_flag: false,
+  image_path: 'https://ucarecdn.com/ef427a50-760e-45d4-9e38-2f97622cbed8/-/crop/1536x1536/50,0/-/resize/1024x1024/',
+  caption: "Add a caption!",
+  created_at: new Date('2017-02-18 18:10:21 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
 	var seedPromises = [];
 
 	for (var index in photos) {
-    	seedPromises.push(knex('photos').insert(photos[index]));
+    seedPromises.push(knex('photos').insert(photos[index]));
   }
-    // Delete all, then run the updates
-    return knex('photos').del().then(function() {
-        return Promise.all(seedPromises);
-  	});
+  // Delete all, then run the updates
+  return knex('photos').del().then(function() {
+    return Promise.all(seedPromises);
+	});
 };

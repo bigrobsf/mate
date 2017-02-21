@@ -55,4 +55,5 @@ This project currently uses the following techologies:
 
 **Chat / messaging**
 * Add ability to send photos in messages
+* Group message history by conversation
 * Add emojis?

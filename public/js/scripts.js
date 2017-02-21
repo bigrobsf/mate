@@ -135,7 +135,7 @@ $(document).ready(() => {
   }
 
   // ===========================================================================
-  // set message notification class
+  // set message notification
   let messageStatus = {
     status: status
   };

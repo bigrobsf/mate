@@ -106,18 +106,30 @@ var users = [{
   accuracy: 1084,
   logged_in: false,
   created_at: new Date('2017-01-31 12:26:16 UTC')
+}, {
+  id: 10,
+  first_name: 'Derek',
+  last_name: 'Britz',
+  user_name: 'InkedTex425',
+  email: 'derekbritz@gmail.com',
+  hashed_password: '$2a$12$SfRsj7iVbOU5DdN4NWPQDuf5.ZkrHf9efLCQ7n.2EWa6so2AHY6RG',
+  lat: 32.78,
+  lon: -96.81,
+  accuracy: 50,
+  logged_in: false,
+  created_at: new Date('2017-02-17 02:52:09 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
 	var seedPromises = [];
 
 	for (var index in users) {
-    	seedPromises.push(knex('users').insert(users[index]));
+    seedPromises.push(knex('users').insert(users[index]));
   }
-    // Delete all, then run the updates
-    return knex('users').del().then(function() {
-        return Promise.all(seedPromises);
-  	});
+  // Delete all, then run the updates
+  return knex('users').del().then(function() {
+    return Promise.all(seedPromises);
+	});
 };
 
  // bigger

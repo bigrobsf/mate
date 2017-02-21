@@ -157,10 +157,10 @@ exports.seed = function(knex, Promise) {
 	var seedPromises = [];
 
 	for (var index in profiles) {
-    	seedPromises.push(knex('profiles').insert(profiles[index]));
+    seedPromises.push(knex('profiles').insert(profiles[index]));
   }
-    // Delete all, then run the updates
-    return knex('profiles').del().then(function() {
-        return Promise.all(seedPromises);
-  	});
+  // Delete all, then run the updates
+  return knex('profiles').del().then(function() {
+    return Promise.all(seedPromises);
+	});
 };

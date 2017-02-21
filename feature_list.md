@@ -24,5 +24,6 @@
 [X] create user chat room
 [X] implement message notifications
 [ ] send photos in private messages
+[ ] group message history by conversation
 [X] make location more accurate
 [ ] add emojis?

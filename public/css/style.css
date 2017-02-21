@@ -454,7 +454,7 @@ Cards */
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
   color: #d50000;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {

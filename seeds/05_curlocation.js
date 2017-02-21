@@ -10,10 +10,10 @@ exports.seed = function(knex, Promise) {
 	var seedPromises = [];
 
 	for (var index in curlocation) {
-    	seedPromises.push(knex('curlocation').insert(curlocation[index]));
+    seedPromises.push(knex('curlocation').insert(curlocation[index]));
   }
   // Delete all, then run the updates
   return knex('curlocation').del().then(function() {
-      return Promise.all(seedPromises);
+    return Promise.all(seedPromises);
 	});
 };

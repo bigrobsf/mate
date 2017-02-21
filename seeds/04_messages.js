@@ -82,16 +82,58 @@ var messages = [{
   message: "you know, I can't believe this app. No emojis? really?",
   created_at: new Date('2017-01-31 18:28:30 UTC'),
   updated_at: new Date('2017-01-31 18:28:30 UTC')
+}, {
+  id: 13,
+  user_id1: 1,
+  user_id2: 2,
+  message: "hey there",
+  created_at: new Date('2017-02-15 19:29:47 UTC'),
+  updated_at: new Date('2017-02-15 19:29:47 UTC')
+}, {
+  id: 14,
+  user_id1: 1,
+  user_id2: 2,
+  message: "tap tap tap ... is this thing on?",
+  created_at: new Date('2017-02-15 19:30:04 UTC'),
+  updated_at: new Date('2017-02-15 19:30:04 UTC')
+}, {
+  id: 15,
+  user_id1: 2,
+  user_id2: 1,
+  message: "hey kodi",
+  created_at: new Date('2017-02-15 19:30:19 UTC'),
+  updated_at: new Date('2017-02-15 19:30:19 UTC')
+}, {
+  id: 16,
+  user_id1: 2,
+  user_id2: 1,
+  message: "yo",
+  created_at: new Date('2017-02-15 20:38:35 UTC'),
+  updated_at: new Date('2017-02-15 20:38:35 UTC')
+}, {
+  id: 17,
+  user_id1: 1,
+  user_id2: 2,
+  message: "test from my android tablet",
+  created_at: new Date('2017-02-16 07:57:59 UTC'),
+  updated_at: new Date('2017-02-16 07:57:59 UTC')
+}, {
+  id: 18,
+  user_id1: 1,
+  user_id2: 9,
+  message: "let me know if you see this one",
+  created_at: new Date('2017-02-20 01:29:03 UTC'),
+  updated_at: new Date('2017-02-20 01:29:03 UTC')
 }];
 
 exports.seed = function(knex, Promise) {
 	var seedPromises = [];
 
 	for (var index in messages) {
-    	seedPromises.push(knex('messages').insert(messages[index]));
+    seedPromises.push(knex('messages').insert(messages[index]));
   }
-    // Delete all, then run the updates
-    return knex('messages').del().then(function() {
-        return Promise.all(seedPromises);
-  	});
+  // Delete all, then run the updates
+  return knex('messages').del().then(function() {
+    return Promise.all(seedPromises);
+	});
 };
