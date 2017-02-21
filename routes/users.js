@@ -24,7 +24,7 @@ router.get('/message', (req, res, next) => {
     knex('users').select('message')
     .where('id', userId)
     .then((result) => {
-      
+      console.log('message check result', result);
       if (result.length > 0) result = result[0].message;
       else result = false;
 

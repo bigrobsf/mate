@@ -8,6 +8,6 @@
 [ ] new photo post route doesn't render confirm-photo.ejs
 [ ] when photo is deleted, also delete from Upload Care
 [X] resolve Roboto font issue that appears in Firefox
-[ ] timestamps for messages in database are 8 hours ahead
-[ ] Heroku application error when uploading photos from iOS both Chrome and Safari
+[X] timestamps for messages in database are 8 hours ahead - needed to set timezone in Heroku
+[X] Heroku application error when uploading photos from iOS both Chrome and Safari - unknown why it is working now
 [ ] fix location for anonymous user

@@ -48,7 +48,7 @@
 
           <p class="list-title">User authentication and authorization
             <ul class="bullets">
-              <li>Passwords are hashed. The hash is stored, the password is not</li>
+              <li>Passwords are hashed and salted. The salted hash is stored, the password is not</li>
               <li>User can create, update, and delete their account</li>
               <li>User can create, update, and delete their profile</li>
               <li>User can upload, update, and delete photographs</li>
@@ -88,7 +88,6 @@
             <ul class="bullets">
               <li>Implement OAUTH to Facebook and use it to validate a relationship
                 status of single</li>
-              <li>Add a salt to the hashed password</li>
               <li>Handle forgotten passwords</li>
               <li>Require user to be signed in to view non-profile photos of other users</li>
             </ul>

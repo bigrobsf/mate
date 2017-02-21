@@ -145,7 +145,7 @@ $(document).ready(() => {
     url: '/users/message',
     data: messageStatus,
     success: function(responseText, status) {
-      setNewMsgStatus(responseText);
+      if (responseText === true) setNewMsgStatus(responseText);
     },
     error: function(jqXHR, textStatus, err) {
             console.log('text status ' + textStatus + ', err ' + err);
@@ -154,7 +154,7 @@ $(document).ready(() => {
 
   function setNewMsgStatus(msg) {
     console.log('message? ', msg);
-    if (msg) $('#msg-tab').addClass('msg-notify');
+    $('#msg-tab').addClass('msg-notify');
   }
 
 });
