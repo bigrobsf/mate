@@ -112,7 +112,7 @@ router.post('/location', (req, res) => {
 
   let curUserId = 0;
   let curApp = '';
-  console.log('in /location route');
+  // console.log('in /location route');
   if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
     curUserId = Number(req.cookies['/token'].split('.')[0]);
     curApp = req.cookies['/token'].split('.')[1];
@@ -123,7 +123,7 @@ router.post('/location', (req, res) => {
       .then((loc) => {
         if (loc.length > 0) {
           delete loc[0].hashed_password;
-          console.log('updated users table from /index/location: ',loc);
+          // console.log('updated users table from /index/location: ',loc);
         }
       });
   } else {

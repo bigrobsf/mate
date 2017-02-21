@@ -8,6 +8,8 @@
 let host = location.origin.replace(/^http/, 'ws');
 
 window.onload = function() {
+  $('#msg-tab').addClass('active');
+
   let messageField = document.getElementById('message-area');
   let messageList = document.getElementById('message-log');
   let socketStatus = document.getElementById('status');

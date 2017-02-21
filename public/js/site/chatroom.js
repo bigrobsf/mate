@@ -8,6 +8,8 @@
 let host = location.origin.replace(/^http/, 'ws');
 
 window.onload = function() {
+  $('#chatroom-tab').addClass('active');
+  
   let messageField = document.getElementById('message-area');
   let chatroomList = document.getElementById('chatroom-log');
   let socketStatus = document.getElementById('status');

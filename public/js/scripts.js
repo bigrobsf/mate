@@ -8,7 +8,6 @@
 $(document).ready(() => {
   // materialize components
   $('select').material_select();
-  $('ul.tabs').tabs();
   $('.carousel').carousel({nowrap: false});
   $('.button-collapse').sideNav({
     menuWidth: 200

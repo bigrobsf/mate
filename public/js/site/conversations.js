@@ -7,7 +7,7 @@
 
 window.onload = function() {
   let history = document.getElementById('message-history');
-
+  $('#msg-tab').addClass('active');
   setMsgStatusFalse();
 };
 

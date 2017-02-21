@@ -16,6 +16,10 @@ uploadcare.openPanel('#uploader-placeholder', null, {
   });
 });
 
+// set add photo tab to active
+$('#photo-tab').addClass('active');
+
+
 //==============================================================================
 // makes POST API to photos route
 function storeImageData(fileInfo) {
