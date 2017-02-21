@@ -32,6 +32,7 @@ window.onload = function() {
   socket.onopen = function(event) {
     socketStatus.innerHTML = 'Connected.';
     socketStatus.className = 'open';
+    openBtn.className = 'disabled';
     console.log(socketStatus.innerHTML);
   };
 
@@ -72,6 +73,7 @@ window.onload = function() {
   // Set connection status on form to Disconnected
   socket.onclose = function(event) {
     socketStatus.innerHTML = 'Disconnected from WebSocket.';
+    openBtn.className = 'connect';
     socketStatus.className = 'closed';
   };
 

@@ -303,6 +303,11 @@ Chat buttons */
   cursor: pointer;
 }
 
+#open.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* =============================================================================
 Buttons */
 
