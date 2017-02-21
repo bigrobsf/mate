@@ -4,25 +4,25 @@
       <a href="/" class="brand-logo">MATE</a>
       <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a id = "join" href="/users/new">Join</a></li>
-        <li><a id = "login" href="/token/login">Login</a></li>
-        <li><a id = "account" href="/users/update">Account</a></li>
-        <li><a id = "profile" href="/profiles/new">Profile</a></li>
-        <li><a id = "logout" href="/token/delete">Logout</a></li>
+        <li><a id="join" href="/users/new">Join</a></li>
+        <li><a id="login" href="/token/login">Login</a></li>
+        <li><a id="account" href="/users/update">Account</a></li>
+        <li><a id="profile" href="/profiles/new">Profile</a></li>
+        <li><a id="logout" href="/token/delete">Logout</a></li>
       </ul>
       <ul class="side-nav" id="mobile">
-        <li><a id = "join-mobile" href="/users/new">Join</a></li>
-        <li><a id = "login-mobile" href="/token/login">Login</a></li>
-        <li><a id = "account-mobile" href="/users/update">Account</a></li>
-        <li><a id = "profile-mobile" href="/profiles/new">Profile</a></li>
-        <li><a id = "logout-mobile" href="/token/delete">Logout</a></li>
+        <li><a id="join-mobile" href="/users/new">Join</a></li>
+        <li><a id="login-mobile" href="/token/login">Login</a></li>
+        <li><a id="account-mobile" href="/users/update">Account</a></li>
+        <li><a id="profile-mobile" href="/profiles/new">Profile</a></li>
+        <li><a id="logout-mobile" href="/token/delete">Logout</a></li>
       </ul>
 
       <ul class="tabs tabs-transparent">
         <li class="tab"><a class='<%= browse ? "active" : ""%>' href="/">Browse</a></li>
         <li class="tab"><a class='<%= photos ? "active" : ""%>' href="/photos/new">Add Photo</a></li>
         <li class="tab"><a class='<%= chatroom ? "active" : ""%>' href="/chat/open">Chat Room</a></li>
-        <li class="tab"><a class='<%= messages ? "active" : ""%>' href="/chat/history">Messages</a></li>
+        <li class="tab"><a id="msg-tab" class='<%= messages ? "active" : ""%>' href="/chat/history">Messages</a></li>
       </ul>
     </div>
   </nav>

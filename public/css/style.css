@@ -440,6 +440,11 @@ div.message {
   background: linear-gradient(to right,#e0e0e0, #bdbdbd, #9e9e9e);
 }
 
+a.msg-notify {
+  color: #ffd600 !important;
+  font-weight: bold;
+}
+
 /* =============================================================================
 Cards */
 

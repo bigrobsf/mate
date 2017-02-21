@@ -131,7 +131,7 @@ router.get('/history', (req, res) => {
       // console.log('CURUSERID: ', curUserId);
       messages.forEach((ele, i) => {
         var date = ele.created_at;
-        ele.created_at = moment(date).format('MMMM Do YYYY, h:mm:ss a');
+        ele.created_at = moment.utc(date).local().format('MMMM Do YYYY, h:mm:ss a');
       });
       res.render('conversations', {
         messages: messages,

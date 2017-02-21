@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
     table.decimal('lon').defaultTo(0).notNullable();
     table.decimal('accuracy').defaultTo(0).notNullable();
     table.boolean('logged_in').defaultTo(false).notNullable();
+    table.boolean('message').defaultTo(false).notNullable();
     table.timestamps(true, true);
   });
 };

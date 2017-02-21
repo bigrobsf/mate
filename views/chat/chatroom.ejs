@@ -11,12 +11,6 @@
   </head>
   <body>
 
-    <div id="overlay">
-      <div id="overlay-content">
-        <h2>Chat Room</h2>
-      </div>
-    </div>
-
     <%- include("../partials/nav", {browse: false, photos: false, chatroom: true, messages: false}) %>
 
     <main class="container">
@@ -30,6 +24,7 @@
             </div>
 
             <div class="col s12 m8">  <!-- middle column -->
+              <h5>Chat Room</h5>
               <div id="chat-wrapper">
                 <div id="status">Connecting...</div>
 

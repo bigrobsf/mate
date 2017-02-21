@@ -11,18 +11,12 @@
   </head>
   <body>
 
-    <div id="overlay">
-      <div id="overlay-content">
-        <h2>Chat List</h2>
-      </div>
-    </div>
-
     <%- include("../partials/nav", {browse: false, photos: false, chatroom: false, messages: true}) %>
 
     <main class="container">
       <div class="row">
         <div class="col s12 m12">
-          <h4>Message History</h4>
+          <h5>All Messages</h5>
           <div class="row"> <!-- first row -->
             <%messages.forEach((message) => { %>
               <div class="message z-depth-2">

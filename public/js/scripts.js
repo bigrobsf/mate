@@ -6,12 +6,14 @@
 'use strict';
 
 $(document).ready(() => {
+  // materialize components
   $('select').material_select();
   $('.carousel').carousel({nowrap: false});
   $('.button-collapse').sideNav({
     menuWidth: 200
   });
 
+  // login status elements
   let joinElement = document.getElementById('join');
   let loginElement = document.getElementById('login');
   let accountElement = document.getElementById('account');
@@ -131,4 +133,11 @@ $(document).ready(() => {
       }
     }
   }
+
+  // ===========================================================================
+  // set message notification class
+  function setNewMsgStatus() {
+    $('#msg-tab').addClass('msg-notify');
+  }
+
 });
