@@ -14,7 +14,7 @@ window.onload = function() {
   let messageList = document.getElementById('message-log');
   let socketStatus = document.getElementById('status');
 
-  let closeBtn = document.getElementById('close');
+  // let closeBtn = document.getElementById('close');
   let openBtn = document.getElementById('open');
   let sendBtn = document.getElementById('send');
 
@@ -76,13 +76,13 @@ window.onload = function() {
   };
 
   // Close the WebSocket connection when the Disconnect button is clicked
-  closeBtn.onclick = function(event) {
-    event.preventDefault();
-
-    socket.close();
-
-    return false;
-  };
+  // closeBtn.onclick = function(event) {
+  //   event.preventDefault();
+  //
+  //   socket.close();
+  //
+  //   return false;
+  // };
 
   // Reload the browser window when the Connect button is clicked
   openBtn.onclick = function(event) {

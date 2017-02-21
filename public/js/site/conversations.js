@@ -8,6 +8,7 @@
 window.onload = function() {
   let history = document.getElementById('message-history');
   $('#msg-tab').addClass('active');
+  $('#msg-tab').removeClass('msg-notify'); // immediately remove message notification
   setMsgStatusFalse();
 };
 
@@ -34,7 +35,7 @@ function setMsgStatusFalse() {
 
 function setReadMsgStatus(msg) {
   console.log('message? ', msg);
-  $('#msg-tab').removeClass('msg-notify');
+  // $('#msg-tab').removeClass('msg-notify');
 }
 
 // end
