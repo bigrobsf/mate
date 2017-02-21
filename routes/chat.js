@@ -63,12 +63,17 @@ router.post('/message', (req, res) => {
     ['user_id1', 'user_id2', 'message'])
   .returning('*')
   .then((row) => {
-    let test = camelizeKeys(row[0]);
-      console.log('from chat.js: ',test);
 
+    let test = camelizeKeys(row[0]);
+    console.log('from chat.js: ',test);
+
+    knex('users').where('id', conversation.user_id2).update({message: true})
+      .then((result) => {
+        console.log('message flag updated', result);
+    });
   })
   .catch((err) => {
-    console.log('PUT ERROR: ', err);
+    console.log('POST ERROR: ', err);
   });
 });
 
@@ -119,7 +124,7 @@ router.get('/history', (req, res) => {
 
     knex.raw(`select users1.user_name as username1,
       users2.user_name as username2, users1.id as userid1,
-      users2.id as userid2, message, messages.created_at, image_path
+      users2.id as userid2, messages.message, messages.created_at, image_path
       from users users1, users users2, messages, photos
       where users1.id = messages.user_id1 and users2.id = messages.user_id2
       and users1.id = photos.user_id
@@ -131,7 +136,7 @@ router.get('/history', (req, res) => {
       // console.log('CURUSERID: ', curUserId);
       messages.forEach((ele, i) => {
         var date = ele.created_at;
-        ele.created_at = moment.utc(date).local().format('MMMM Do YYYY, h:mm:ss a');
+        ele.created_at = moment(date).format('MMMM Do YYYY, h:mm:ss a');
       });
       res.render('conversations', {
         messages: messages,

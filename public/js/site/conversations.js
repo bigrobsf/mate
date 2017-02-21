@@ -8,8 +8,33 @@
 window.onload = function() {
   let history = document.getElementById('message-history');
 
-  $('#msg-tab').removeClass('msg-notify');
+  setMsgStatusFalse();
 };
 
+//==============================================================================
+// makes POST to users route
+function setMsgStatusFalse() {
+  let messageStatus = {
+    status: false
+  };
+
+  $.ajax({
+    type: 'PUT',
+    url: '/users/message',
+    data: messageStatus,
+    success: function(responseText, status) {
+      setReadMsgStatus(responseText);
+    },
+    error: function(jqXHR, textStatus, err) {
+            console.log('text status ' + textStatus + ', err ' + err);
+            }
+  });
+
+}
+
+function setReadMsgStatus(msg) {
+  console.log('message? ', msg);
+  $('#msg-tab').removeClass('msg-notify');
+}
 
 // end

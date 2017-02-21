@@ -22,6 +22,7 @@
 [ ] display additional user photos only if viewing user is signed in
 [X] implement private chat
 [X] create user chat room
-[ ] implement message notifications
+[X] implement message notifications
 [ ] send photos in private messages
 [X] make location more accurate
+[ ] add emojis?

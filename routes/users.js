@@ -16,6 +16,46 @@ router.get('/new', function(req, res) {
 });
 
 // =============================================================================
+// GET - check message status
+router.get('/message', (req, res, next) => {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let userId = Number(req.cookies['/token'].split('.')[0]);
+
+    knex('users').select('message')
+    .where('id', userId)
+    .then((result) => {
+      
+      if (result.length > 0) result = result[0].message;
+      else result = false;
+
+      res.status(200).json(result);
+    });
+
+  } else {
+    res.redirect('../token/login');
+  }
+});
+
+// =============================================================================
+// PUT - set message status to false
+router.put('/message', (req, res, next) => {
+  if (req.cookies['/token'] && req.cookies['/token'].split('.')[1] === 'mate') {
+    let userId = Number(req.cookies['/token'].split('.')[0]);
+
+    knex('users')
+    .where('id', userId)
+    .where('message', true)
+    .update({message: false})
+    .then(() => {
+      console.log('users.message test has been set to false');
+    });
+
+  } else {
+    res.redirect('../token/login');
+  }
+});
+
+// =============================================================================
 // POST new user
 router.post('/', (req, res) => {
 

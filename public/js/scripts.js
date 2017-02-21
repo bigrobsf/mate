@@ -8,6 +8,7 @@
 $(document).ready(() => {
   // materialize components
   $('select').material_select();
+  $('ul.tabs').tabs();
   $('.carousel').carousel({nowrap: false});
   $('.button-collapse').sideNav({
     menuWidth: 200
@@ -136,8 +137,25 @@ $(document).ready(() => {
 
   // ===========================================================================
   // set message notification class
-  function setNewMsgStatus() {
-    $('#msg-tab').addClass('msg-notify');
+  let messageStatus = {
+    status: status
+  };
+
+  $.ajax({
+    type: 'GET',
+    url: '/users/message',
+    data: messageStatus,
+    success: function(responseText, status) {
+      setNewMsgStatus(responseText);
+    },
+    error: function(jqXHR, textStatus, err) {
+            console.log('text status ' + textStatus + ', err ' + err);
+            }
+  });
+
+  function setNewMsgStatus(msg) {
+    console.log('message? ', msg);
+    if (msg) $('#msg-tab').addClass('msg-notify');
   }
 
 });
