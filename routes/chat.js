@@ -135,7 +135,7 @@ router.get('/history', (req, res) => {
       // console.log('knex.raw: ', messages);
       // console.log('CURUSERID: ', curUserId);
       messages.forEach((ele, i) => {
-        var date = ele.created_at;
+        var date = new Date(ele.created_at - 48000000); // subtract 8 hours from UTC
         ele.created_at = moment(date).format('MMMM Do YYYY, h:mm:ss a');
       });
       res.render('conversations', {
