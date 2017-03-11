@@ -11,7 +11,7 @@ This project currently uses the following techologies:
 **Database:** PostgreSQL  
 **SQL builder:** Knex.js    
 **Version control:** Git, GitHub  
-**Location:** NavigatorGeolocation API
+**Location:** NavigatorGeolocation API  
 **Chat/Messaging:** HTML5 WebSockets API
 
 ##Feature List
