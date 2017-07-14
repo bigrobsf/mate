@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
 });
 
 // =============================================================================
-// POST token and get to logged_in = true if valid email and password
+// POST token and set to logged_in = true if valid email and password
 router.post('/', (req, res, next) => {
   const authReq = decamelizeKeys(req.body);
   let user;

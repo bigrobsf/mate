@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/bigrobsf/mate#readme",
   "engines": {
-    "node": "6.8.1"
+    "node": "6.11.1"
   },
   "dependencies": {
     "bcrypt-as-promised": "^1.1.0",
